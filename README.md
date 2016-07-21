@@ -1,5 +1,5 @@
 # Viscosity
-A Swift3.0 Autolayout tool for iOS
+A Swift3.0 Autolayout tool for iOS.
 
 ```swift
 import UIKit
@@ -31,4 +31,4 @@ class ViewController: UIViewController {
 
 ## If you have any suggestions
 Please email to my mailbox:`wzxjiang@foxmail.com`<br/>
-And I only learned swift3.0 for one day,so if where is wrong, please correct me.Thanks!
+And I only learned swift3.0 for one day, **so if where is wrong, please correct me. Thanks!**
