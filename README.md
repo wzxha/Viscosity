@@ -1,5 +1,5 @@
 # Viscosity
-A Swift Autolayout tool for iOS
+A Swift3.0 Autolayout tool for iOS
 
 ```swift
 import UIKit
@@ -9,7 +9,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let redView = UIView()
-        redView.backgroundColor = UIColor.red()
         self.view.addSubview(redView)
         redView.vis_makeConstraints { (make) in
             make.centerX.equalTo(self.view)
@@ -19,7 +18,6 @@ class ViewController: UIViewController {
         }
         
         let blueView = UIView()
-        blueView.backgroundColor = UIColor.blue()
         self.view.addSubview(blueView)
         blueView.vis_makeConstraints { (make) in
             make.left.equalTo(redView.vis_right(), offset: 10)
@@ -27,22 +25,6 @@ class ViewController: UIViewController {
             make.top.equalTo(redView.vis_top())
             make.height.equalTo(redView)
         }
-        
-        let greenView = UIView()
-        greenView.backgroundColor = UIColor.green()
-        self.view.addSubview(greenView)
-        greenView.vis_makeConstraints { (make) in
-            make.left.equalTo(self.view, offset: 10)
-            make.right.equalTo(redView.vis_left(), offset: -10)
-            make.top.equalTo(redView.vis_top())
-            make.height.equalTo(redView)
-        }
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 ```
