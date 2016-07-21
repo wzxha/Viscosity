@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    func vis_makeConstraints(maker: (_ : VisConstraintMaker) -> Void) -> Void {
+    func vis_makeConstraints(maker: (_: VisConstraintMaker) -> Void) -> Void {
         let make = VisConstraintMaker.init(item: self)
         maker(make)
         make.install()
