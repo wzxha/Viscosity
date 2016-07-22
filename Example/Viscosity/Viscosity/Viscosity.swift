@@ -16,38 +16,53 @@ extension UIView {
         make.install()
     }
     
-    func vis_left() -> VisConstraint{
-        return self.setDirection(direction: .left);
+    var vis_left: VisConstraint {
+        get {
+            return self.setDirection(direction: .left);
+        }
+    }
+
+    var vis_right: VisConstraint {
+        get {
+            return self.setDirection(direction: .right);
+        }
     }
     
-    func vis_right() -> VisConstraint{
-        return self.setDirection(direction: .right);
+    var vis_top: VisConstraint {
+        get {
+            return self.setDirection(direction: .top);
+        }
     }
     
-    func vis_top() -> VisConstraint{
-        return self.setDirection(direction: .top);
+    var vis_bottom: VisConstraint {
+        get {
+            return self.setDirection(direction: .bottom);
+        }
     }
     
-    func vis_bottom() -> VisConstraint{
-        return self.setDirection(direction: .bottom);
+    var vis_width: VisConstraint {
+        get {
+            return self.setDirection(direction: .width);
+        }
     }
     
-    func vis_width() -> VisConstraint{
-        return self.setDirection(direction: .width);
+    var vis_height: VisConstraint {
+        get {
+            return self.setDirection(direction: .height);
+        }
     }
     
-    func vis_height() -> VisConstraint{
-        return self.setDirection(direction: .height);
+    var vis_centerX: VisConstraint {
+        get {
+            return self.setDirection(direction: .centerX);
+        }
     }
     
-    func vis_centerX() -> VisConstraint{
-        return self.setDirection(direction: .centerX);
+    var vis_centerY: VisConstraint {
+        get {
+            return self.setDirection(direction: .centerY);
+        }
     }
-    
-    func vis_centerY() -> VisConstraint{
-        return self.setDirection(direction: .centerY);
-    }
-    
     
     private func setDirection(direction: NSLayoutAttribute) -> VisConstraint {
         let constraint = VisConstraint()

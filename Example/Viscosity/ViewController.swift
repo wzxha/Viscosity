@@ -26,9 +26,9 @@ class ViewController: UIViewController {
         blueView.backgroundColor = UIColor.blue()
         self.view.addSubview(blueView)
         blueView.vis_makeConstraints { (make) in
-            make.left.equalTo(redView.vis_right(), offset: 10)
+            make.left.equalTo(redView.vis_right, offset: 10)
             make.right.equalTo(self.view, offset: -10)
-            make.top.equalTo(redView.vis_top())
+            make.top.equalTo(redView.vis_top)
             make.height.equalTo(redView)
         }
         
@@ -37,8 +37,8 @@ class ViewController: UIViewController {
         self.view.addSubview(greenView)
         greenView.vis_makeConstraints { (make) in
             make.left.equalTo(self.view, offset: 10)
-            make.right.equalTo(redView.vis_left(), offset: -10)
-            make.top.equalTo(redView.vis_top())
+            make.right.equalTo(redView.vis_left, offset: -10)
+            make.top.equalTo(redView.vis_top)
             make.height.equalTo(redView)
         }
         
