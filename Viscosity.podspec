@@ -6,9 +6,8 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/Wzxhaha/Viscosity'
   s.authors = { 'WzxJiang' => 'wzxjiang@foxmail.com' }
   s.source = { :git => 'https://github.com/Wzxhaha/Viscosity.git', :tag => '0.0.2' }
-
+  s.platform = :ios
   s.ios.deployment_target = '8.0'
-
   s.source_files = 'Viscosity/*.swift'
   s.requires_arc = true
 end
