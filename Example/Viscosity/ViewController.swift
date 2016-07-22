@@ -41,7 +41,6 @@ class ViewController: UIViewController {
             make.top.equalTo(redView.vis_top)
             make.height.equalTo(redView)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
