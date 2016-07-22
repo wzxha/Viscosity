@@ -20,9 +20,9 @@ class ViewController: UIViewController {
         let blueView = UIView()
         self.view.addSubview(blueView)
         blueView.vis_makeConstraints { (make) in
-            make.left.equalTo(redView.vis_right(), offset: 10)
+            make.left.equalTo(redView.vis_right, offset: 10)
             make.right.equalTo(self.view, offset: -10)
-            make.top.equalTo(redView.vis_top())
+            make.top.equalTo(redView.vis_top)
             make.height.equalTo(redView)
         }
     }
@@ -30,5 +30,5 @@ class ViewController: UIViewController {
 ```
 
 ## If you have any suggestions
-Please email to my mailbox:`wzxjiang@foxmail.com`<br/>
-And I only learned swift3.0 for one day, **so if where is wrong, please correct me. Thanks!**
+Please email to `wzxjiang@foxmail.com`<br/>
+**if where is wrong, please correct me. Thanks!**
