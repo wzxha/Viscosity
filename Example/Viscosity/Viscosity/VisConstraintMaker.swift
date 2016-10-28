@@ -85,83 +85,78 @@ class VisConstraintMaker: NSObject {
     /// install
     func install() -> Void {
         for direction in self.directions {
-            self.addConstraintWith(direction: direction)
+            self.addConstraint(direction: direction)
         }
     }
     
-    private func addConstraintWith(direction: VisDirection) -> Void {
+    private func addConstraint(direction: VisDirection) -> Void {
         switch direction {
         case .left:
-            self.addConstraintWith(constraint: self.left, direction: .left)
+            self.addConstraint(constraint: self.left, direction: .left)
         case .right:
-            self.addConstraintWith(constraint: self.right, direction: .right)
+            self.addConstraint(constraint: self.right, direction: .right)
         case .top:
-            self.addConstraintWith(constraint: self.top, direction: .top)
+            self.addConstraint(constraint: self.top, direction: .top)
         case .bottom:
-            self.addConstraintWith(constraint: self.bottom, direction: .bottom)
+            self.addConstraint(constraint: self.bottom, direction: .bottom)
         case .width:
-            self.addConstraintWith(constraint: self.width, direction: .width)
+            self.addConstraint(constraint: self.width, direction: .width)
         case .height:
-            self.addConstraintWith(constraint: self.height, direction: .height)
+            self.addConstraint(constraint: self.height, direction: .height)
         case .centerX:
-            self.addConstraintWith(constraint: self.centerX, direction: .centerX)
+            self.addConstraint(constraint: self.centerX, direction: .centerX)
         case .centerY:
-            self.addConstraintWith(constraint: self.centerY, direction: .centerY)
+            self.addConstraint(constraint: self.centerY, direction: .centerY)
         }
     }
     
-    private func addConstraintWith(constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
+    private func addConstraint(constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
         let toItem: AnyObject  = constraint.toItem
-        
-        if toItem is UIView {
-            self.addConstraintViewWith(toItem: toItem as! UIView, constraint: constraint, direction: direction)
+        if toItem is VisConstraint{
+            self.addConstraintItemConstraint(toItemConstraint: toItem as! VisConstraint, constraint: constraint, direction: direction)
         } else if toItem is CGFloat {
-            self.addConstraintCGFloatWith(toItem: toItem as! CGFloat, constraint: constraint, direction: direction)
-        } else if toItem is Int{
-            self.addConstraintIntWith(toItem: toItem as! Int, constraint: constraint, direction: direction)
-        } else if toItem is VisConstraint{
-            self.addConstraintItemConstraintWith(toItemConstraint: toItem as! VisConstraint, constraint: constraint, direction: direction)
+            self.addConstraintFloat(toItem: toItem as! CGFloat, constraint: constraint, direction: direction)
+        } else if toItem is Int {
+            self.addConstraintFloat(toItem: toItem as! CGFloat, constraint: constraint, direction: direction)
+        } else {
+            self.addConstraintView(toItem: toItem, constraint: constraint, direction: direction)
         }
     }
     
-    private func addConstraintViewWith(toItem: UIView, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
+    private func addConstraintView(toItem: Any, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
         self.superView?.addConstraint(
-            NSLayoutConstraint.init(item: self.item,
-                                    attribute: direction,
-                                    relatedBy: constraint.relation,
-                                    toItem: toItem,
-                                    attribute: direction,
+            NSLayoutConstraint.init(item:       self.item,
+                                    attribute:  direction,
+                                    relatedBy:  constraint.relation,
+                                    toItem:     toItem as! UIView,
+                                    attribute:  direction,
                                     multiplier: constraint.multiplier,
-                                    constant: constraint.offset)
+                                    constant:   constraint.offset)
         )
     }
     
-    private func addConstraintCGFloatWith(toItem: CGFloat, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
+    private func addConstraintFloat(toItem: CGFloat, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
         self.superView?.addConstraint(
-            NSLayoutConstraint.init(item: self.item,
-                                    attribute: direction,
-                                    relatedBy: constraint.relation,
-                                    toItem: nil,
-                                    attribute: direction,
+            NSLayoutConstraint.init(item:       self.item,
+                                    attribute:  direction,
+                                    relatedBy:  constraint.relation,
+                                    toItem:     nil,
+                                    attribute:  direction,
                                     multiplier: constraint.multiplier,
-                                    constant: toItem)
+                                    constant:   toItem)
         )
 
     }
     
-    private func addConstraintIntWith(toItem: Int, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
-        self.addConstraintCGFloatWith(toItem: CGFloat(toItem), constraint: constraint, direction: direction)
-    }
-    
-    private func addConstraintItemConstraintWith(toItemConstraint: VisConstraint, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
+    private func addConstraintItemConstraint(toItemConstraint: VisConstraint, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
         self.superView?.addConstraint(
-            NSLayoutConstraint.init(item: self.item,
-                                    attribute: direction,
-                                    relatedBy: constraint.relation,
-                                    toItem: toItemConstraint.fromItem,
-                                    attribute: toItemConstraint.direction!,
+            NSLayoutConstraint.init(item:       self.item,
+                                    attribute:  direction,
+                                    relatedBy:  constraint.relation,
+                                    toItem:     toItemConstraint.fromItem,
+                                    attribute:  toItemConstraint.direction!,
                                     multiplier: constraint.multiplier,
-                                    constant: constraint.offset)
+                                    constant:   constraint.offset)
         )
     }
 }
