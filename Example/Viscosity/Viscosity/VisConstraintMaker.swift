@@ -19,6 +19,7 @@ class VisConstraintMaker: NSObject {
         case height
         case centerX
         case centerY
+        case center
     }
     
     //MARK: - lazy load
@@ -62,6 +63,10 @@ class VisConstraintMaker: NSObject {
         return VisConstraint()
     }()
 
+    lazy var center: VisConstraint = {
+        self.directions.append(.center)
+        return VisConstraint()
+    }()
     
     var directions: [VisDirection] = []
     var item:UIView!
@@ -71,11 +76,11 @@ class VisConstraintMaker: NSObject {
         super.init()
         self.item = item
         
-        if ((self.item.superview) != nil) {
-            self.superView = self.item.superview
-        } else {
+        guard self.item.superview != nil else {
             return
         }
+        
+        self.superView = self.item.superview
         
         if self.item.translatesAutoresizingMaskIntoConstraints {
             self.item.translatesAutoresizingMaskIntoConstraints = false
@@ -107,6 +112,9 @@ class VisConstraintMaker: NSObject {
             self.addConstraint(constraint: self.centerX, direction: .centerX)
         case .centerY:
             self.addConstraint(constraint: self.centerY, direction: .centerY)
+        case .center:
+            self.addConstraint(constraint: self.center, direction: .centerX)
+            self.addConstraint(constraint: self.center, direction: .centerY)
         }
     }
     

@@ -16,8 +16,7 @@ class ViewController: UIViewController {
         blueView.backgroundColor = UIColor.blue
         self.view.addSubview(blueView)
         blueView.vis_makeConstraints { (make) in
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view)
+            make.center.equalTo(self.view)
             make.width.equalTo(50)
             make.height.equalTo(50)
         }
