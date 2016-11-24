@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E2368651D4094C50031B4F8 /* Viscosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2368641D4094C50031B4F8 /* Viscosity.swift */; };
-		1E2368671D4095990031B4F8 /* VisConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2368661D4095990031B4F8 /* VisConstraintMaker.swift */; };
-		1E2368691D40973E0031B4F8 /* VisConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2368681D40973E0031B4F8 /* VisConstraint.swift */; };
+		1E4315471DE704A30091DE90 /* VisConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4315441DE704A30091DE90 /* VisConstraint.swift */; };
+		1E4315481DE704A30091DE90 /* VisConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4315451DE704A30091DE90 /* VisConstraintMaker.swift */; };
+		1E4315491DE704A30091DE90 /* Viscosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4315461DE704A30091DE90 /* Viscosity.swift */; };
 		1E78206D1D407E72003B8D27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78206C1D407E72003B8D27 /* AppDelegate.swift */; };
 		1E78206F1D407E72003B8D27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78206E1D407E72003B8D27 /* ViewController.swift */; };
 		1E7820721D407E72003B8D27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E7820701D407E72003B8D27 /* Main.storyboard */; };
@@ -37,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E2368641D4094C50031B4F8 /* Viscosity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viscosity.swift; sourceTree = "<group>"; };
-		1E2368661D4095990031B4F8 /* VisConstraintMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisConstraintMaker.swift; sourceTree = "<group>"; };
-		1E2368681D40973E0031B4F8 /* VisConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisConstraint.swift; sourceTree = "<group>"; };
+		1E4315441DE704A30091DE90 /* VisConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisConstraint.swift; sourceTree = "<group>"; };
+		1E4315451DE704A30091DE90 /* VisConstraintMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisConstraintMaker.swift; sourceTree = "<group>"; };
+		1E4315461DE704A30091DE90 /* Viscosity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viscosity.swift; sourceTree = "<group>"; };
 		1E7820691D407E72003B8D27 /* Viscosity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viscosity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E78206C1D407E72003B8D27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E78206E1D407E72003B8D27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +80,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E4315431DE704A30091DE90 /* Viscosity */ = {
+			isa = PBXGroup;
+			children = (
+				1E4315441DE704A30091DE90 /* VisConstraint.swift */,
+				1E4315451DE704A30091DE90 /* VisConstraintMaker.swift */,
+				1E4315461DE704A30091DE90 /* Viscosity.swift */,
+			);
+			name = Viscosity;
+			path = ../../Viscosity;
+			sourceTree = "<group>";
+		};
 		1E7820601D407E72003B8D27 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +114,7 @@
 		1E78206B1D407E72003B8D27 /* Viscosity */ = {
 			isa = PBXGroup;
 			children = (
-				1E78209A1D407E82003B8D27 /* Viscosity */,
+				1E4315431DE704A30091DE90 /* Viscosity */,
 				1E78206C1D407E72003B8D27 /* AppDelegate.swift */,
 				1E78206E1D407E72003B8D27 /* ViewController.swift */,
 				1E7820701D407E72003B8D27 /* Main.storyboard */,
@@ -130,16 +141,6 @@
 				1E78208E1D407E72003B8D27 /* Info.plist */,
 			);
 			path = ViscosityUITests;
-			sourceTree = "<group>";
-		};
-		1E78209A1D407E82003B8D27 /* Viscosity */ = {
-			isa = PBXGroup;
-			children = (
-				1E2368641D4094C50031B4F8 /* Viscosity.swift */,
-				1E2368661D4095990031B4F8 /* VisConstraintMaker.swift */,
-				1E2368681D40973E0031B4F8 /* VisConstraint.swift */,
-			);
-			path = Viscosity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,10 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E2368651D4094C50031B4F8 /* Viscosity.swift in Sources */,
+				1E4315491DE704A30091DE90 /* Viscosity.swift in Sources */,
+				1E4315471DE704A30091DE90 /* VisConstraint.swift in Sources */,
 				1E78206F1D407E72003B8D27 /* ViewController.swift in Sources */,
-				1E2368671D4095990031B4F8 /* VisConstraintMaker.swift in Sources */,
-				1E2368691D40973E0031B4F8 /* VisConstraint.swift in Sources */,
+				1E4315481DE704A30091DE90 /* VisConstraintMaker.swift in Sources */,
 				1E78206D1D407E72003B8D27 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

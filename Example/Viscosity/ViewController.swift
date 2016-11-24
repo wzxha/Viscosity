@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         }
         
         let label = UILabel()
-        label.text = "12312312837218937891273821798372189378921738217389721983728917389217389721893792817389172398721893798217398217398721893721897398217389217398721";
+        label.text = "text...";
         label.numberOfLines = 0;
         self.view.addSubview(label)
         label.vis_makeConstraints { (make) in
