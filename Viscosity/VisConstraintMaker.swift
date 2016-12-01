@@ -9,162 +9,211 @@
 import UIKit
 
 class VisConstraintMaker: NSObject {
-    //MARK: - enum VisDirection
-    enum VisDirection: Int {
-        case left
-        case right
-        case top
-        case bottom
-        case width
-        case height
-        case centerX
-        case centerY
-        case center
+    
+    enum VisConstraintMakerType {
+        case normal
+        case replace
+        case update
+    }
+    
+    var constraints: [VisConstraint] = []
+    var view: UIView!
+    var superView: UIView!
+    var type: VisConstraintMakerType = .normal
+    
+    init(view: UIView) {
+        super.init()
+        
+        guard view.superview != nil else {
+            return
+        }
+        
+        if view.translatesAutoresizingMaskIntoConstraints {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        self.view = view
+        self.superView = view.superview
+    }
+    
+    func install() -> Void {
+        if type == .replace {
+            self.removeAllConstraints()
+        }
+        
+        if type == .update {
+            for constraint in constraints {
+                self.removeConstraint(constraint)
+                self.addConstraint(constraint: constraint)
+            }
+        } else {
+            for constraint in constraints {
+                self.addConstraint(constraint: constraint)
+            }
+        }
+    }
+    
+    
+    //MARK: - Add
+    private func addConstraint(constraint: VisConstraint) -> Void {
+        let toItem  = constraint.toItem
+        
+        if toItem is UIView {
+            self.addConstraintWithView(toItem as! UIView,
+                                       constraint: constraint)
+        } else if toItem is VisConstraint {
+            self.addConstraintWithConstraint(toItem as! VisConstraint,
+                                             constraint: constraint)
+            
+        } else if toItem is NSNumber {
+            self.addConstraintWithNumber(toItem as! NSNumber,
+                                         constraint: constraint)
+        }
+    }
+    
+    private func addConstraintWithView(_ toItem: UIView, constraint: VisConstraint) -> Void {
+        let layoutConstraint: NSLayoutConstraint
+            = NSLayoutConstraint(item:       view,
+                                 attribute:  constraint.attribute,
+                                 relatedBy:  constraint.relation,
+                                 toItem:     toItem,
+                                 attribute:  constraint.attribute,
+                                 multiplier: constraint.multiplier,
+                                 constant:   constraint.offset)
+        
+        layoutConstraint.identifier =
+            String(format: "%@_%d",
+                   Unmanaged.passUnretained(view).toOpaque().debugDescription,
+                   constraint.attribute.rawValue)
+        
+        self.superView?.addConstraint(layoutConstraint)
+    }
+    
+    private func addConstraintWithConstraint(_ toConstraint: VisConstraint, constraint: VisConstraint) -> Void {
+        let layoutConstraint: NSLayoutConstraint
+            = NSLayoutConstraint(item:       view,
+                                 attribute:  constraint.attribute,
+                                 relatedBy:  constraint.relation,
+                                 toItem:     toConstraint.toItem,
+                                 attribute:  toConstraint.attribute,
+                                 multiplier: constraint.multiplier,
+                                 constant:   constraint.offset)
+        
+        layoutConstraint.identifier =
+            String(format: "%@_%d",
+                   Unmanaged.passUnretained(view).toOpaque().debugDescription,
+                   constraint.attribute.rawValue)
+        
+        self.superView?.addConstraint(layoutConstraint)
+    }
+    
+    private func addConstraintWithNumber(_ toItem: NSNumber, constraint: VisConstraint) -> Void {
+        let layoutConstraint: NSLayoutConstraint
+            = NSLayoutConstraint(item:       view,
+                                 attribute:  constraint.attribute,
+                                 relatedBy:  constraint.relation,
+                                 toItem:     nil,
+                                 attribute:  .notAnAttribute,
+                                 multiplier: constraint.multiplier,
+                                 constant:   CGFloat(toItem.floatValue))
+        
+        layoutConstraint.identifier =
+            String(format: "%@_%d",
+                   Unmanaged.passUnretained(view).toOpaque().debugDescription,
+                   constraint.attribute.rawValue)
+        
+        self.superView?.addConstraint(layoutConstraint)
+    }
+    
+    //MARK: - Remove
+    private func removeAllConstraints() -> Void {
+        let identifier =
+            String.init(format: "%@",
+                        Unmanaged.passUnretained(view).toOpaque().debugDescription)
+        
+        var constraints: [NSLayoutConstraint] = []
+        
+        for constraint in self.superView.constraints {
+            if constraint.identifier?.contains(identifier) == true  {
+                constraints.append(constraint)
+            }
+        }
+        
+        self.superView.removeConstraints(constraints)
+    }
+    
+    private func removeConstraint(_ vis_constraint: VisConstraint) -> Void {
+        let identifier =
+            String.init(format: "%@_%d",
+                        Unmanaged.passUnretained(view).toOpaque().debugDescription,
+                        vis_constraint.attribute.rawValue)
+        for constraint in self.superView.constraints {
+            if constraint.identifier == identifier  {
+                self.superView.removeConstraint(constraint)
+                return
+            }
+        }
     }
     
     //MARK: - lazy load
     lazy var left: VisConstraint = {
-        self.directions.append(.left)
-        return VisConstraint()
+        var left = VisConstraint()
+        left.attribute = .left
+        self.constraints.append(left)
+        return left
     }()
     
     lazy var right: VisConstraint = {
-        self.directions.append(.right)
-        return VisConstraint()
+        var right = VisConstraint()
+        right.attribute = .right
+        self.constraints.append(right)
+        return right
     }()
     
     lazy var top: VisConstraint = {
-        self.directions.append(.top)
-        return VisConstraint()
+        var top = VisConstraint()
+        top.attribute = .top
+        self.constraints.append(top)
+        return top
     }()
-
+    
     lazy var bottom: VisConstraint = {
-        self.directions.append(.bottom)
-        return VisConstraint()
+        var bottom = VisConstraint()
+        bottom.attribute = .bottom
+        self.constraints.append(bottom)
+        return bottom
     }()
     
     lazy var width: VisConstraint = {
-        self.directions.append(.width)
-        return VisConstraint()
+        var width = VisConstraint()
+        width.attribute = .width
+        self.constraints.append(width)
+        return width
     }()
     
     lazy var height: VisConstraint = {
-        self.directions.append(.height)
-        return VisConstraint()
+        var height = VisConstraint()
+        height.attribute = .height
+        self.constraints.append(height)
+        return height
     }()
     
     lazy var centerX: VisConstraint = {
-        self.directions.append(.centerX)
-        return VisConstraint()
+        var centerX = VisConstraint()
+        centerX.attribute = .centerX
+        self.constraints.append(centerX)
+        return centerX
     }()
     
     lazy var centerY: VisConstraint = {
-        self.directions.append(.centerY)
-        return VisConstraint()
+        var centerY = VisConstraint()
+        centerY.attribute = .centerY
+        self.constraints.append(centerY)
+        return centerY
     }()
 
-    lazy var center: VisConstraint = {
-        self.directions.append(.center)
-        return VisConstraint()
-    }()
-    
-    var directions: [VisDirection] = []
-    var item:UIView!
-    var superView:UIView?
-    
-    init(item: UIView) {
-        super.init()
-        self.item = item
-        
-        guard self.item.superview != nil else {
-            return
-        }
-        
-        self.superView = self.item.superview
-        
-        if self.item.translatesAutoresizingMaskIntoConstraints {
-            self.item.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
-    /// install
-    func install() -> Void {
-        for direction in self.directions {
-            self.addConstraint(direction: direction)
-        }
-    }
-    
-    private func addConstraint(direction: VisDirection) -> Void {
-        switch direction {
-        case .left:
-            self.addConstraint(constraint: self.left, direction: .left)
-        case .right:
-            self.addConstraint(constraint: self.right, direction: .right)
-        case .top:
-            self.addConstraint(constraint: self.top, direction: .top)
-        case .bottom:
-            self.addConstraint(constraint: self.bottom, direction: .bottom)
-        case .width:
-            self.addConstraint(constraint: self.width, direction: .width)
-        case .height:
-            self.addConstraint(constraint: self.height, direction: .height)
-        case .centerX:
-            self.addConstraint(constraint: self.centerX, direction: .centerX)
-        case .centerY:
-            self.addConstraint(constraint: self.centerY, direction: .centerY)
-        case .center:
-            self.addConstraint(constraint: self.center, direction: .centerX)
-            self.addConstraint(constraint: self.center, direction: .centerY)
-        }
-    }
-    
-    private func addConstraint(constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
-        let toItem: AnyObject  = constraint.toItem
-        if toItem is VisConstraint{
-            self.addConstraintItemConstraint(toItemConstraint: toItem as! VisConstraint, constraint: constraint, direction: direction)
-        } else if toItem is CGFloat {
-            self.addConstraintFloat(toItem: toItem as! CGFloat, constraint: constraint, direction: direction)
-        } else if toItem is Int {
-            self.addConstraintFloat(toItem: toItem as! CGFloat, constraint: constraint, direction: direction)
-        } else {
-            self.addConstraintView(toItem: toItem, constraint: constraint, direction: direction)
-        }
-    }
-    
-    private func addConstraintView(toItem: Any, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
-        self.superView?.addConstraint(
-            NSLayoutConstraint.init(item:       self.item,
-                                    attribute:  direction,
-                                    relatedBy:  constraint.relation,
-                                    toItem:     toItem as! UIView,
-                                    attribute:  direction,
-                                    multiplier: constraint.multiplier,
-                                    constant:   constraint.offset)
-        )
-    }
-    
-    private func addConstraintFloat(toItem: CGFloat, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
-        self.superView?.addConstraint(
-            NSLayoutConstraint.init(item:       self.item,
-                                    attribute:  direction,
-                                    relatedBy:  constraint.relation,
-                                    toItem:     nil,
-                                    attribute:  direction,
-                                    multiplier: constraint.multiplier,
-                                    constant:   toItem)
-        )
-
-    }
-    
-    private func addConstraintItemConstraint(toItemConstraint: VisConstraint, constraint: VisConstraint, direction: NSLayoutAttribute) -> Void {
-        self.superView?.addConstraint(
-            NSLayoutConstraint.init(item:       self.item,
-                                    attribute:  direction,
-                                    relatedBy:  constraint.relation,
-                                    toItem:     toItemConstraint.fromItem,
-                                    attribute:  toItemConstraint.direction!,
-                                    multiplier: constraint.multiplier,
-                                    constant:   constraint.offset)
-        )
-    }
+// TODO: - []
+//    lazy var center: [VisConstraint] = {
+//        return [self.centerX, self.centerY]
+//    }()
 }

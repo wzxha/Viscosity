@@ -83,9 +83,9 @@
 		1E4315431DE704A30091DE90 /* Viscosity */ = {
 			isa = PBXGroup;
 			children = (
+				1E4315461DE704A30091DE90 /* Viscosity.swift */,
 				1E4315441DE704A30091DE90 /* VisConstraint.swift */,
 				1E4315451DE704A30091DE90 /* VisConstraintMaker.swift */,
-				1E4315461DE704A30091DE90 /* Viscosity.swift */,
 			);
 			name = Viscosity;
 			path = ../../Viscosity;

@@ -10,38 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let label = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let blueView = UIView()
-        blueView.backgroundColor = UIColor.blue
-        self.view.addSubview(blueView)
-        blueView.vis_makeConstraints { (make) in
-            make.center.equalTo(self.view)
-            make.width.equalTo(50)
-            make.height.equalTo(50)
-        }
-        
-        let label = UILabel()
         label.text = "text...";
         label.numberOfLines = 0;
         self.view.addSubview(label)
         label.vis_makeConstraints { (make) in
-            make.left.greaterThanOrEqualTo(self.view, offset: 10)
-            make.right.equalTo(blueView.vis_left, offset: -10)
-            make.top.equalTo(blueView);
+            make.left.equalTo(self.view, offset: 100)
+            make.top.equalTo(self.view, offset: 100);
         }
 
         let greenView = UIView()
         greenView.backgroundColor = UIColor.green
         self.view.addSubview(greenView)
         greenView.vis_makeConstraints { (make) in
-            make.left.equalTo(blueView.vis_right, offset: 10)
-            make.bottom.equalTo(blueView.vis_top, offset: -10)
-            make.height.equalTo(blueView, multiplier: 2)
-            make.width.equalTo(blueView, multiplier: 1.5)
+            make.left.equalTo(label.vis_right, offset: 10)
+            make.top.equalTo(label.vis_bottom, offset: -10)
+            make.height.equalTo(label, multiplier: 2)
+            make.width.equalTo(label, multiplier: 1.5)
         }
+        
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        label.vis_updateConstraints { (make) in
+//            make.top.equalTo(self.view, offset: 300);
+//            make.left.equalTo(self.view, offset: 300);
+//        }
+        label.vis_remakeConstraints { (make) in
+            make.right.equalTo(self.view, offset: -300);
+            make.bottom.equalTo(self.view, offset: -30);
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
