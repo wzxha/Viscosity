@@ -8,10 +8,10 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make.left.equalTo(self.view.vis_right, offset: -300);
+   make.left.equalTo(self.view.vis_right, offset: -300)
    make.right.greaterThanOrEqualTo(self.view, multiplier: 2, offset: 0)
    make.height.lessThanOrEqualTo(30)
-   make.bottom.equalTo(self.view, offset: -30);
+   make.bottom.equalTo(self.view, offset: -30)
  }
 ```
 
@@ -19,7 +19,7 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_updateConstraints { (make) in
-   make.left.equalTo(self.view.vis_right, offset: -300);
+   make.left.equalTo(self.view.vis_right, offset: -300)
  }
 ```
 
@@ -27,8 +27,8 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_remakeConstraints { (make) in
-   make.right.equalTo(self.view, offset: -300);
-   make.bottom.equalTo(self.view, offset: -30);
+   make.right.equalTo(self.view, offset: -300)
+   make.bottom.equalTo(self.view, offset: -30)
  }
 ```
 # Todo
