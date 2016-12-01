@@ -37,7 +37,6 @@ Autolayout tool for iOS.
 
 # If you have any suggestions
 Please email to `wzxjiang@foxmail.com`<br/>
-**if where is wrong, please correct me. Thanks!**
 
 # License
 
