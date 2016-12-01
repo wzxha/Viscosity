@@ -9,7 +9,9 @@ Autolayout tool for iOS.
 ```swift
  view.vis_makeConstraints { (make) in
    make.left.equalTo(self.view.vis_right, offset: -300);
-   make.bottom.equalTo(self.view, offset: -30);
+   make.right.greaterThanOrEqualTo(self.view, multiplier: 2, offset: 0)
+   make.height.lessThanOrEqualTo(30)
+   make.bottom.equalTo(self.view, offset: -30);
  }
 ```
 
