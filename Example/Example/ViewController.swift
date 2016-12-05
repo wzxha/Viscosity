@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Viscosity
 
 class ViewController: UIViewController {
 
@@ -21,7 +22,6 @@ class ViewController: UIViewController {
         label.vis_makeConstraints { (make) in
             make.left.equalTo(self.view, offset: 100)
             make.top.equalTo(self.view, offset: 100);
-            make.height.equalTo(10)
         }
 
         greenView.backgroundColor = UIColor.green

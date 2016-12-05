@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E7820681D407E72003B8D27"
-               BuildableName = "Viscosity.app"
+               BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
+               BuildableName = "Viscosity.framework"
                BlueprintName = "Viscosity"
                ReferencedContainer = "container:Viscosity.xcodeproj">
             </BuildableReference>
@@ -28,36 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E78207C1D407E72003B8D27"
-               BuildableName = "ViscosityTests.xctest"
-               BlueprintName = "ViscosityTests"
-               ReferencedContainer = "container:Viscosity.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E7820871D407E72003B8D27"
-               BuildableName = "ViscosityUITests.xctest"
-               BlueprintName = "ViscosityUITests"
-               ReferencedContainer = "container:Viscosity.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E7820681D407E72003B8D27"
-            BuildableName = "Viscosity.app"
-            BlueprintName = "Viscosity"
-            ReferencedContainer = "container:Viscosity.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -71,23 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E7820681D407E72003B8D27"
-            BuildableName = "Viscosity.app"
+            BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
+            BuildableName = "Viscosity.framework"
             BlueprintName = "Viscosity"
             ReferencedContainer = "container:Viscosity.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -97,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E7820681D407E72003B8D27"
-            BuildableName = "Viscosity.app"
+            BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
+            BuildableName = "Viscosity.framework"
             BlueprintName = "Viscosity"
             ReferencedContainer = "container:Viscosity.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

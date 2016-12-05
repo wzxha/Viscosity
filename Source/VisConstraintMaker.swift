@@ -5,10 +5,30 @@
 //  Created by WzxJiang on 16/7/21.
 //  Copyright © 2016年 WzxJiang. All rights reserved.
 //
+//  https://github.com/Wzxhaha/Viscosity
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
 
 import UIKit
 
-class VisConstraintMaker: NSObject {
+public class VisConstraintMaker: NSObject {
     
     enum VisConstraintMakerType {
         case normal
@@ -156,56 +176,56 @@ class VisConstraintMaker: NSObject {
     }
     
     //MARK: - lazy load
-    lazy var left: VisConstraint = {
+    public lazy var left: VisConstraint = {
         var left = VisConstraint()
         left.attribute = .left
         self.constraints.append(left)
         return left
     }()
     
-    lazy var right: VisConstraint = {
+    public lazy var right: VisConstraint = {
         var right = VisConstraint()
         right.attribute = .right
         self.constraints.append(right)
         return right
     }()
     
-    lazy var top: VisConstraint = {
+    public lazy var top: VisConstraint = {
         var top = VisConstraint()
         top.attribute = .top
         self.constraints.append(top)
         return top
     }()
     
-    lazy var bottom: VisConstraint = {
+    public lazy var bottom: VisConstraint = {
         var bottom = VisConstraint()
         bottom.attribute = .bottom
         self.constraints.append(bottom)
         return bottom
     }()
     
-    lazy var width: VisConstraint = {
+    public lazy var width: VisConstraint = {
         var width = VisConstraint()
         width.attribute = .width
         self.constraints.append(width)
         return width
     }()
     
-    lazy var height: VisConstraint = {
+    public lazy var height: VisConstraint = {
         var height = VisConstraint()
         height.attribute = .height
         self.constraints.append(height)
         return height
     }()
     
-    lazy var centerX: VisConstraint = {
+    public lazy var centerX: VisConstraint = {
         var centerX = VisConstraint()
         centerX.attribute = .centerX
         self.constraints.append(centerX)
         return centerX
     }()
     
-    lazy var centerY: VisConstraint = {
+    public lazy var centerY: VisConstraint = {
         var centerY = VisConstraint()
         centerY.attribute = .centerY
         self.constraints.append(centerY)

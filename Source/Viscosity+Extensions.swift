@@ -5,10 +5,30 @@
 //  Created by WzxJiang on 16/7/21.
 //  Copyright © 2016年 WzxJiang. All rights reserved.
 //
+//  https://github.com/Wzxhaha/Viscosity
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     func vis_makeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self)
@@ -31,49 +51,49 @@ extension UIView {
         maker.install()
     }
     
-    var vis_left: VisConstraint {
+    public var vis_left: VisConstraint {
         get {
             return self.constraint(attribute: .left);
         }
     }
 
-    var vis_right: VisConstraint {
+    public var vis_right: VisConstraint {
         get {
             return self.constraint(attribute: .right);
         }
     }
     
-    var vis_top: VisConstraint {
+    public var vis_top: VisConstraint {
         get {
             return self.constraint(attribute: .top);
         }
     }
     
-    var vis_bottom: VisConstraint {
+    public var vis_bottom: VisConstraint {
         get {
             return self.constraint(attribute: .bottom);
         }
     }
     
-    var vis_width: VisConstraint {
+    public var vis_width: VisConstraint {
         get {
             return self.constraint(attribute: .width);
         }
     }
     
-    var vis_height: VisConstraint {
+    public var vis_height: VisConstraint {
         get {
             return self.constraint(attribute: .height);
         }
     }
     
-    var vis_centerX: VisConstraint {
+    public var vis_centerX: VisConstraint {
         get {
             return self.constraint(attribute: .centerX);
         }
     }
     
-    var vis_centerY: VisConstraint {
+    public var vis_centerY: VisConstraint {
         get {
             return self.constraint(attribute: .centerY);
         }
