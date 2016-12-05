@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "text...";
+        label.text = "text..."
         label.numberOfLines = 0;
         self.view.addSubview(label)
         label.vis_makeConstraints { (make) in
@@ -37,11 +37,11 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         label.vis_updateConstraints { (make) in
-            make.height.equalTo(greenView);
+            make.height.equalTo(greenView)
         }
 //        label.vis_remakeConstraints { (make) in
-//            make.right.equalTo(self.view, offset: -300);
-//            make.bottom.equalTo(self.view, offset: -30);
+//            make.right.equalTo(self.view, offset: -300)
+//            make.bottom.equalTo(self.view, offset: -30)
 //        }
     }
     
