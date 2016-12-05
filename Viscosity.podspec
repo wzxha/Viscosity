@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary = 'Harness the power of auto layout with a simplified, chainable, and compile time safe syntax.'
   s.homepage = 'https://github.com/Wzxhaha/Viscosity'
   s.authors = { 'WzxJiang' => 'wzxjiang@foxmail.com' }
-  s.source = { :git => 'https://github.com/Wzxhaha/Viscosity.git', :tag => 0.0.4}
+  s.source = { :git => 'https://github.com/Wzxhaha/Viscosity.git', :tag => '0.0.4'}
   s.platform = :ios
   s.ios.deployment_target = '8.0'
   s.source_files = 'Source/*.swift'
