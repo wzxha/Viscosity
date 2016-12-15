@@ -129,21 +129,101 @@ public class VisConstraint: NSObject {
 
 public extension Array where Element: VisConstraint {
     
-    func equalTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+    //MARK: - relation
+    public func equalTo <T> (_ toItem: T) -> Void {
+        self.equalTo(toItem, offset: nil)
+    }
+    
+    public func greaterThanOrEqualTo <T> (_ toItem: T) -> Void {
+        self.greaterThanOrEqualTo(toItem, offsets: nil)
+    }
+    
+    public func lessThanOrEqualTo <T> (_ toItem: T) -> Void {
+        self.lessThanOrEqualTo(toItem, offsets: nil)
+    }
+    
+    //MARK: - relation offset
+    public func equalTo <T> (_ toItem: T, offset: [CGFloat]?) -> Void {
+        self.equalTo(toItem,
+                     multiplier: 1,
+                     offsets: offset)
+    }
+    
+    public func greaterThanOrEqualTo <T> (_ toItem: T, offsets: [CGFloat]?) -> Void {
+        self.greaterThanOrEqualTo(toItem,
+                                  multiplier: 1,
+                                  offsets: offsets)
+    }
+    
+    public func lessThanOrEqualTo <T> (_ toItem: T, offsets: [CGFloat]?) -> Void {
+        self.lessThanOrEqualTo(toItem,
+                               multiplier: 1,
+                               offsets: offsets)
+    }
+    
+    //MARK: - relation multiplier
+    public func equalTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
+        self.equalTo(toItem,
+                     multiplier: multiplier,
+                     offsets: nil)
+    }
+    
+    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
+        self.greaterThanOrEqualTo(toItem,
+                                  multiplier: multiplier,
+                                  offsets: nil)
+    }
+    
+    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
+        self.lessThanOrEqualTo(toItem,
+                               multiplier: multiplier,
+                               offsets: nil)
+    }
+    
+    
+    //MARK: - relation offset multiplier
+    public func equalTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
         for (index, constraint) in self.enumerated() {
-            constraint.equalTo(toItem, multiplier: multiplier, offset: offset[index])
+            var offset: CGFloat = 0
+            
+            if offsets != nil {
+                let offsets = offsets!
+                if  offsets.count > index {
+                    offset = offsets[index]
+                }
+            }
+            
+            constraint.equalTo(toItem, multiplier: multiplier, offset: offset)
         }
     }
     
-    func greaterThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
         for (index, constraint) in self.enumerated() {
-            constraint.greaterThanOrEqualTo(toItem, multiplier: multiplier, offset: offset[index])
+            var offset: CGFloat = 0
+            
+            if offsets != nil {
+                let offsets = offsets!
+                if  offsets.count > index {
+                    offset = offsets[index]
+                }
+            }
+            
+            constraint.greaterThanOrEqualTo(toItem, multiplier: multiplier, offset: offset)
         }
     }
     
-    func lessThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
         for (index, constraint) in self.enumerated() {
-            constraint.lessThanOrEqualTo(toItem, multiplier: multiplier, offset: offset[index])
+            var offset: CGFloat = 0
+            
+            if offsets != nil {
+                let offsets = offsets!
+                if  offsets.count > index {
+                    offset = offsets[index]
+                }
+            }
+            
+            constraint.lessThanOrEqualTo(toItem, multiplier: multiplier, offset: offset)
         }
     }
 

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         label.numberOfLines = 0;
         self.view.addSubview(label)
         label.vis_makeConstraints { (make) in
-            make.center.equalTo(self.view, multiplier: 1, offset: [100.0, 2.0])
+            make.center.equalTo(self.view, multiplier: 1, offsets: [100.0, 2.0])
         }
 
 //        greenView.backgroundColor = UIColor.green
