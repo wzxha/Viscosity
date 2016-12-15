@@ -232,8 +232,7 @@ public class VisConstraintMaker: NSObject {
         return centerY
     }()
 
-// TODO: - []
-//    lazy var center: [VisConstraint] = {
-//        return [self.centerX, self.centerY]
-//    }()
+    public lazy var center: [VisConstraint] = {
+        return [self.centerX, self.centerY]
+    }()
 }

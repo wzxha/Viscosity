@@ -99,6 +99,12 @@ public extension UIView {
         }
     }
     
+    public var vis_center: [VisConstraint] {
+        get {
+            return [self.constraint(attribute: .centerX), self.constraint(attribute: .centerY)]
+        }
+    }
+    
     private func constraint(attribute: NSLayoutAttribute) -> VisConstraint {
         let constraint = VisConstraint()
         constraint.toItem    = self

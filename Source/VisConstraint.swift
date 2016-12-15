@@ -127,18 +127,24 @@ public class VisConstraint: NSObject {
     }
 }
 
-public extension Array {
+public extension Array where Element: VisConstraint {
     
-    func equalTo(_ toItem: AnyObject, multiplier: CGFloat, offset: CGPoint) -> Void {
-        
+    func equalTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+        for (index, constraint) in self.enumerated() {
+            constraint.equalTo(toItem, multiplier: multiplier, offset: offset[index])
+        }
     }
     
-    func greaterThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: CGPoint) -> Void {
-        
+    func greaterThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+        for (index, constraint) in self.enumerated() {
+            constraint.greaterThanOrEqualTo(toItem, multiplier: multiplier, offset: offset[index])
+        }
     }
     
-    func lessThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: CGPoint) -> Void {
-        
+    func lessThanOrEqualTo(_ toItem: AnyObject, multiplier: CGFloat, offset: [CGFloat]) -> Void {
+        for (index, constraint) in self.enumerated() {
+            constraint.lessThanOrEqualTo(toItem, multiplier: multiplier, offset: offset[index])
+        }
     }
 
 }

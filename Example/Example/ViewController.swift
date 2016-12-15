@@ -20,25 +20,24 @@ class ViewController: UIViewController {
         label.numberOfLines = 0;
         self.view.addSubview(label)
         label.vis_makeConstraints { (make) in
-            make.left.equalTo(self.view, offset: 100)
-            make.top.equalTo(self.view, offset: 100);
+            make.center.equalTo(self.view, multiplier: 1, offset: [100.0, 2.0])
         }
 
-        greenView.backgroundColor = UIColor.green
-        self.view.addSubview(greenView)
-        greenView.vis_makeConstraints { (make) in
-            make.left.equalTo(label.vis_right, offset: 10)
-            make.top.equalTo(label.vis_bottom, offset: -10)
-            make.height.equalTo(100)
-            make.width.equalTo(label, multiplier: 1.5)
-        }
+//        greenView.backgroundColor = UIColor.green
+//        self.view.addSubview(greenView)
+//        greenView.vis_makeConstraints { (make) in
+//            make.left.equalTo(label.vis_right, offset: 10)
+//            make.top.equalTo(label.vis_bottom, offset: -10)
+//            make.height.equalTo(100)
+//            make.width.equalTo(label, multiplier: 1.5)
+//        }
         
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        label.vis_updateConstraints { (make) in
-            make.height.equalTo(greenView)
-        }
+//        label.vis_updateConstraints { (make) in
+//            make.height.equalTo(greenView)
+//        }
 //        label.vis_remakeConstraints { (make) in
 //            make.right.equalTo(self.view, offset: -300)
 //            make.bottom.equalTo(self.view, offset: -30)
