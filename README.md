@@ -2,6 +2,9 @@
 ![image](https://img.shields.io/badge/Language-Swift3-blue.svg)<br/>
 Autolayout tool for iOS.
 
+# Update Log
+- Add Constraint 'Center' in 2016.12.15
+
 # Example
 
 ### Normal
