@@ -75,6 +75,18 @@ public extension UIView {
         }
     }
     
+    public var vis_leading: VisConstraint {
+        get {
+            return self.constraint(attribute: .leading)
+        }
+    }
+    
+    public var vis_trailing: VisConstraint {
+        get {
+            return self.constraint(attribute: .trailing)
+        }
+    }
+    
     public var vis_width: VisConstraint {
         get {
             return self.constraint(attribute: .width);
@@ -99,9 +111,25 @@ public extension UIView {
         }
     }
     
+    public var vis_lastBaseline: VisConstraint {
+        get {
+            return self.constraint(attribute: .lastBaseline)
+        }
+    }
+    
     public var vis_center: [VisConstraint] {
         get {
-            return [self.constraint(attribute: .centerX), self.constraint(attribute: .centerY)]
+            return [self.constraint(attribute: .centerX),
+                    self.constraint(attribute: .centerY)]
+        }
+    }
+    
+    public var vis_edge: [VisConstraint] {
+        get {
+            return [self.constraint(attribute: .top),
+                    self.constraint(attribute: .left),
+                    self.constraint(attribute: .bottom),
+                    self.constraint(attribute: .right)]
         }
     }
     

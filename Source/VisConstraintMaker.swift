@@ -204,6 +204,20 @@ public class VisConstraintMaker: NSObject {
         return bottom
     }()
     
+    public lazy var leading: VisConstraint = {
+        var leading = VisConstraint()
+        leading.attribute = .leading
+        self.constraints.append(leading)
+        return leading
+    }()
+    
+    public lazy var trailing: VisConstraint = {
+        var trailing = VisConstraint()
+        trailing.attribute = .trailing
+        self.constraints.append(trailing)
+        return trailing
+    }()
+    
     public lazy var width: VisConstraint = {
         var width = VisConstraint()
         width.attribute = .width
@@ -231,8 +245,19 @@ public class VisConstraintMaker: NSObject {
         self.constraints.append(centerY)
         return centerY
     }()
+    
+    public lazy var lastBaseline: VisConstraint = {
+        var lastBaseline = VisConstraint()
+        lastBaseline.attribute = .lastBaseline
+        self.constraints.append(lastBaseline)
+        return lastBaseline
+    }()
 
     public lazy var center: [VisConstraint] = {
         return [self.centerX, self.centerY]
+    }()
+    
+    public lazy var edge: [VisConstraint] = {
+        return [self.top, self.left, self.bottom, self.right]
     }()
 }

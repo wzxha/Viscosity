@@ -16,21 +16,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "text..."
-        label.numberOfLines = 0;
-        self.view.addSubview(label)
-        label.vis_makeConstraints { (make) in
-            make.center.equalTo(self.view, multiplier: 1, offsets: [100.0, 2.0])
-        }
-
-//        greenView.backgroundColor = UIColor.green
-//        self.view.addSubview(greenView)
-//        greenView.vis_makeConstraints { (make) in
-//            make.left.equalTo(label.vis_right, offset: 10)
-//            make.top.equalTo(label.vis_bottom, offset: -10)
-//            make.height.equalTo(100)
-//            make.width.equalTo(label, multiplier: 1.5)
+//        label.text = "text..."
+//        label.numberOfLines = 0;
+//        self.view.addSubview(label)
+//        label.vis_makeConstraints { (make) in
+//            make.edge.equalTo(self.view)
 //        }
+
+        greenView.backgroundColor = UIColor.green
+        self.view.addSubview(greenView)
+        greenView.vis_makeConstraints { (make) in
+            make.edge.equalTo(self.view, offset: [10, 10, -10, -10])
+        }
         
     }
 
