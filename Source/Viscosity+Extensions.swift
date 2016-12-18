@@ -30,21 +30,21 @@ import UIKit
 
 public extension UIView {
     
-    func vis_makeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_makeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self)
         maker.type = .normal
         block(maker)
         maker.install()
     }
     
-    func vis_remakeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_remakeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self)
         maker.type = .replace
         block(maker)
         maker.install()
     }
     
-    func vis_updateConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_updateConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self)
         maker.type = .update
         block(maker)
@@ -117,6 +117,69 @@ public extension UIView {
         }
     }
     
+    @available(iOS 8.0, *)
+    public var vis_firstBaseline: VisConstraint {
+        get {
+            return self.constraint(attribute: .firstBaseline)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_leftMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .leftMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_rightMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .rightMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_topMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .topMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_bottomMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .bottomMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_leadingMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .leadingMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_trailingMargin: VisConstraint {
+        get {
+            return self.constraint(attribute: .trailingMargin)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_centerXWithinMargins: VisConstraint {
+        get {
+            return self.constraint(attribute: .centerXWithinMargins)
+        }
+    }
+    
+    @available(iOS 8.0, *)
+    public var vis_centerYWithinMargins: VisConstraint {
+        get {
+            return self.constraint(attribute: .centerYWithinMargins)
+        }
+    }
+    
     public var vis_center: [VisConstraint] {
         get {
             return [self.constraint(attribute: .centerX),
@@ -124,7 +187,7 @@ public extension UIView {
         }
     }
     
-    public var vis_edge: [VisConstraint] {
+    public var vis_edges: [VisConstraint] {
         get {
             return [self.constraint(attribute: .top),
                     self.constraint(attribute: .left),
@@ -134,9 +197,81 @@ public extension UIView {
     }
     
     private func constraint(attribute: NSLayoutAttribute) -> VisConstraint {
-        let constraint = VisConstraint()
-        constraint.toItem    = self
-        constraint.attribute = attribute
+        let constraint = VisConstraint(attribute: attribute)
+        constraint.toItem = self
         return constraint
+    }
+}
+
+
+public extension Array where Element: VisConstraint {
+    @discardableResult
+    public func equalTo(_ toItem: AnyObject) -> Array {
+        for constraint in self {
+            constraint.equalTo(toItem)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func greaterThanOrEqualTo(_ toItem: AnyObject) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(toItem)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ toItem: AnyObject) -> Array {
+        for constraint in self {
+            constraint.lessThanOrEqualTo(toItem)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func multiplier(_ multiplier: CGFloat) -> Array {
+        for constraint in self {
+            constraint.multiplier(multiplier)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func point(_ point: CGPoint) -> Array {
+        for (index, offset) in
+            [point.x, point.y].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].offset(offset)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func edge(_ edge: UIEdgeInsets) -> Array {
+        for (index, offset) in
+            [edge.top, edge.left, edge.bottom, edge.right].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].offset(offset)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func offsets(_ offsets: [CGFloat]) -> Array {
+        for (index, constraint) in self.enumerated() {
+            var offset: CGFloat = 0
+            
+            if offsets.count > index {
+                offset = offsets[index]
+            }
+            
+            constraint.offset(offset)
+        }
+        return self
     }
 }

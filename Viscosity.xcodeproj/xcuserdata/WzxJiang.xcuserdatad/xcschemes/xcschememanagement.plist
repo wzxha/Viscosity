@@ -4,15 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Viscosity.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1E86C4951DF50D1E00F21E5E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EC3BC381E0654FB00E66D1C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

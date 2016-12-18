@@ -1,9 +1,12 @@
-# Viscosity
+# Viscosity 1.0
 ![image](https://img.shields.io/badge/Language-Swift3-blue.svg)<br/>
-Autolayout tool for iOS.
+Autolayout framework for iOS.
 
-# Update Log
-- Add Constraint 'Center' in 2016.12.15
+# Able to do
+
+- Support mode: normal, update and remove.
+- Support All `NSLayoutAttribute`
+- Support `center` and `edges`
 
 # Example
 
@@ -11,10 +14,11 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make.left.equalTo(self.view.vis_right, offset: -300)
-   make.right.greaterThanOrEqualTo(self.view, multiplier: 2, offset: 0)
-   make.height.lessThanOrEqualTo(30)
-   make.bottom.equalTo(self.view, offset: -30)
+   make.left.equalTo(self.view.vis_right).offset( -300)
+   make.right.greaterThanOrEqualTo(self.view). multiplier(2).offset(10)
+   make.bottom.equalTo(self.view).offset(-10)
+   make.height.lessThanOrEqualTo(10)
+   make.height.lessThanOrEqualTo(100).priority(10)
  }
 ```
 
@@ -22,7 +26,7 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_updateConstraints { (make) in
-   make.left.equalTo(self.view.vis_right, offset: -300)
+   make.left.equalTo(self.view.vis_right).offset(-100)
  }
 ```
 
@@ -30,8 +34,8 @@ Autolayout tool for iOS.
 
 ```swift
  view.vis_remakeConstraints { (make) in
-   make.right.equalTo(self.view, offset: -300)
-   make.bottom.equalTo(self.view, offset: -30)
+   make.right.equalTo(self.view).offset(-300)
+   make.bottom.equalTo(self.view).offset(30)
  }
 ```
 # Todo

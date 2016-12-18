@@ -31,200 +31,88 @@ import UIKit
 public class VisConstraint: NSObject {
     
     //MARK: - var
-    var toItem:     Any!
-    var offset:     CGFloat     = 0
-    var multiplier: CGFloat     = 1
-    var relation:   NSLayoutRelation  = .equal
-    var attribute:  NSLayoutAttribute = .notAnAttribute
+    public var toItem:      AnyObject?
+    internal var constant:    CGFloat = 0
+    internal var multiplier:  CGFloat = 1
+    internal var isActive:    Bool    = true
+    internal var priority:    UILayoutPriority  = UILayoutPriorityRequired
+    internal var relation:    NSLayoutRelation  = .equal
+    internal var attribute:   NSLayoutAttribute = .notAnAttribute
+    internal var toAttribute: NSLayoutAttribute = .notAnAttribute
     
-    //MARK: - relation
-    public func equalTo <T> (_ toItem: T) -> Void {
-        self.equalTo(toItem, offset: 0)
+    init(attribute: NSLayoutAttribute) {
+        self.attribute = attribute
     }
     
-    public func greaterThanOrEqualTo <T> (_ toItem: T) -> Void {
-        self.greaterThanOrEqualTo(toItem, offset: 0)
+    @discardableResult
+    public func equalTo(_ toItem: AnyObject) -> VisConstraint {
+        self.set(toItem: toItem)
+        relation = .equal
+        return self
     }
     
-    public func lessThanOrEqualTo <T> (_ toItem: T) -> Void {
-        self.lessThanOrEqualTo(toItem, offset: 0)
-    }
-
-    //MARK: - relation offset
-    public func equalTo <T> (_ toItem: T, offset: CGFloat) -> Void {
-        self.equalTo(toItem,
-                     multiplier: 1,
-                     offset: offset)
+    @discardableResult
+    public func greaterThanOrEqualTo(_ toItem: AnyObject) -> VisConstraint {
+        self.set(toItem: toItem)
+        relation = .greaterThanOrEqual
+        return self
     }
     
-    public func greaterThanOrEqualTo <T> (_ toItem: T, offset: CGFloat) -> Void {
-        self.greaterThanOrEqualTo(toItem,
-                                  multiplier: 1,
-                                  offset: offset)
-    }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, offset: CGFloat) -> Void {
-        self.lessThanOrEqualTo(toItem,
-                               multiplier: 1,
-                               offset: offset)
-    }
-    
-    //MARK: - relation multiplier
-    public func equalTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.equalTo(toItem,
-                     multiplier: multiplier,
-                     offset: 0)
-    }
-    
-    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.greaterThanOrEqualTo(toItem,
-                                  multiplier: multiplier,
-                                  offset: 0)
-    }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.lessThanOrEqualTo(toItem,
-                               multiplier: multiplier,
-                               offset: 0)
+    @discardableResult
+    public func lessThanOrEqualTo(_ toItem: AnyObject) -> VisConstraint {
+        self.set(toItem: toItem)
+        relation = .lessThanOrEqual
+        return self
     }
 
-    
-    //MARK: - relation offset multiplier
-    public func equalTo <T> (_ toItem: T, multiplier: CGFloat, offset: CGFloat) -> Void {
-        self.set(toItem: toItem,
-                 relation: .equal,
-                 multiplier: multiplier,
-                 offset: offset)
+    @discardableResult
+    public func offset(_ offset: CGFloat) -> VisConstraint {
+        self.constant = offset
+        return self
     }
     
-    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offset: CGFloat) -> Void {
-        self.set(toItem: toItem,
-                 relation: .greaterThanOrEqual,
-                 multiplier: multiplier,
-                 offset: offset)
-    }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offset: CGFloat) -> Void {
-        self.set(toItem: toItem,
-                 relation: .lessThanOrEqual,
-                 multiplier: multiplier,
-                 offset: offset)
-    }
-    
-    private func set <T> (toItem: T, relation: NSLayoutRelation, multiplier: CGFloat, offset: CGFloat) -> Void {
-        
-        if toItem is Float,
-           toItem is Int,
-           toItem is CGFloat {
-            self.toItem = toItem as! NSNumber
-        } else {
-            self.toItem = toItem
-        }
-        
-        self.relation   = relation
+    @discardableResult
+    public func multiplier(_ multiplier: CGFloat) -> VisConstraint {
         self.multiplier = multiplier
-        self.offset     = offset
-    }
-}
-
-public extension Array where Element: VisConstraint {
-    
-    //MARK: - relation
-    public func equalTo <T> (_ toItem: T) -> Void {
-        self.equalTo(toItem, offset: nil)
+        return self
     }
     
-    public func greaterThanOrEqualTo <T> (_ toItem: T) -> Void {
-        self.greaterThanOrEqualTo(toItem, offsets: nil)
+    @discardableResult
+    public func priority(_ priority: UILayoutPriority) -> VisConstraint {
+        self.priority = priority
+        return self
     }
     
-    public func lessThanOrEqualTo <T> (_ toItem: T) -> Void {
-        self.lessThanOrEqualTo(toItem, offsets: nil)
+    @discardableResult
+    public func isActive(_ isActive: Bool) -> VisConstraint {
+        self.isActive = isActive
+        return self
     }
     
-    //MARK: - relation offset
-    public func equalTo <T> (_ toItem: T, offset: [CGFloat]?) -> Void {
-        self.equalTo(toItem,
-                     multiplier: 1,
-                     offsets: offset)
-    }
-    
-    public func greaterThanOrEqualTo <T> (_ toItem: T, offsets: [CGFloat]?) -> Void {
-        self.greaterThanOrEqualTo(toItem,
-                                  multiplier: 1,
-                                  offsets: offsets)
-    }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, offsets: [CGFloat]?) -> Void {
-        self.lessThanOrEqualTo(toItem,
-                               multiplier: 1,
-                               offsets: offsets)
-    }
-    
-    //MARK: - relation multiplier
-    public func equalTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.equalTo(toItem,
-                     multiplier: multiplier,
-                     offsets: nil)
-    }
-    
-    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.greaterThanOrEqualTo(toItem,
-                                  multiplier: multiplier,
-                                  offsets: nil)
-    }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat) -> Void {
-        self.lessThanOrEqualTo(toItem,
-                               multiplier: multiplier,
-                               offsets: nil)
-    }
-    
-    
-    //MARK: - relation offset multiplier
-    public func equalTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
-        for (index, constraint) in self.enumerated() {
-            var offset: CGFloat = 0
-            
-            if offsets != nil {
-                let offsets = offsets!
-                if  offsets.count > index {
-                    offset = offsets[index]
-                }
-            }
-            
-            constraint.equalTo(toItem, multiplier: multiplier, offset: offset)
+    private func set(toItem: AnyObject) -> Void {
+        if toItem is UIView {
+            self.toItem = toItem as! UIView
+            toAttribute = attribute
+        } else if toItem is VisConstraint {
+            let vis_constraint = toItem as! VisConstraint
+            self.toItem = vis_constraint.toItem
+            toAttribute = vis_constraint.attribute
+        } else {
+            self.setNumber(toItem: toItem)
         }
     }
     
-    public func greaterThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
-        for (index, constraint) in self.enumerated() {
-            var offset: CGFloat = 0
-            
-            if offsets != nil {
-                let offsets = offsets!
-                if  offsets.count > index {
-                    offset = offsets[index]
-                }
-            }
-            
-            constraint.greaterThanOrEqualTo(toItem, multiplier: multiplier, offset: offset)
+    private func setNumber(toItem: AnyObject) -> Void {
+        if toItem is Int {
+            self.constant = CGFloat(toItem as! Int)
+        } else if toItem is Float {
+            self.constant = CGFloat(toItem as! Float)
+        } else if toItem is NSNumber {
+            self.constant = CGFloat(toItem as! NSNumber)
+        } else {
+            self.constant = toItem as! CGFloat
         }
+        
+        self.toItem = nil
     }
-    
-    public func lessThanOrEqualTo <T> (_ toItem: T, multiplier: CGFloat, offsets: [CGFloat]?) -> Void {
-        for (index, constraint) in self.enumerated() {
-            var offset: CGFloat = 0
-            
-            if offsets != nil {
-                let offsets = offsets!
-                if  offsets.count > index {
-                    offset = offsets[index]
-                }
-            }
-            
-            constraint.lessThanOrEqualTo(toItem, multiplier: multiplier, offset: offset)
-        }
-    }
-
 }
