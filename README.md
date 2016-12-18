@@ -39,8 +39,8 @@ Autolayout framework for iOS.
  }
 ```
 
-# If you have any suggestions
-Please email to `wzxjiang@foxmail.com`<br/>
+# Contact me
+Email: `wzxjiang@foxmail.com`
 
 # License
 
