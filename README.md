@@ -4,6 +4,7 @@ Autolayout tool for iOS.
 
 # Update Log
 - Add Constraint 'Center' in 2016.12.15
+- Add Constraints edge、leading、trailing、lastBaseLine in 2016.12.18
 
 # Example
 
