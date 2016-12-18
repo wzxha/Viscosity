@@ -38,9 +38,6 @@ Autolayout framework for iOS.
    make.bottom.equalTo(self.view).offset(30)
  }
 ```
-# Todo
-- Add more attributes like center
-- ...
 
 # If you have any suggestions
 Please email to `wzxjiang@foxmail.com`<br/>
