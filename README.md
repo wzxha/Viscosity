@@ -2,11 +2,17 @@
 ![image](https://img.shields.io/badge/Language-Swift3-blue.svg)<br/>
 Autolayout framework for iOS.
 
+<<<<<<< HEAD
 # Able to do
 
 - Support mode: normal, update and remove.
 - Support All `NSLayoutAttribute`
 - Support `center` and `edges`
+=======
+# Update Log
+- Add Constraint 'Center' in 2016.12.15
+- Add Constraints edge、leading、trailing、lastBaseLine in 2016.12.18
+>>>>>>> ee611cbffdd13a2d718f2349e0b0b36f950d5f26
 
 # Example
 
