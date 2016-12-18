@@ -2,17 +2,11 @@
 ![image](https://img.shields.io/badge/Language-Swift3-blue.svg)<br/>
 Autolayout framework for iOS.
 
-<<<<<<< HEAD
 # Able to do
 
 - Support mode: normal, update and remove.
 - Support All `NSLayoutAttribute`
 - Support `center` and `edges`
-=======
-# Update Log
-- Add Constraint 'Center' in 2016.12.15
-- Add Constraints edge、leading、trailing、lastBaseLine in 2016.12.18
->>>>>>> ee611cbffdd13a2d718f2349e0b0b36f950d5f26
 
 # Example
 
@@ -20,7 +14,7 @@ Autolayout framework for iOS.
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make.left.equalTo(self.view.vis_right).offset( -300)
+   make.left.equalTo(self.view.vis_right).offset(-300)
    make.right.greaterThanOrEqualTo(self.view). multiplier(2).offset(10)
    make.bottom.equalTo(self.view).offset(-10)
    make.height.lessThanOrEqualTo(10)
@@ -71,6 +65,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
