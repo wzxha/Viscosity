@@ -57,7 +57,7 @@ public class VisConstraintMaker: NSObject {
         self.type = type
     }
     
-    func install() -> Void {
+    internal func install() -> Void {
         if type == .replace {
             self.removeAllConstraints()
         }
