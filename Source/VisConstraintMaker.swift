@@ -46,9 +46,7 @@ public class VisConstraintMaker: NSObject {
         
         assert(view.superview != nil, "[Viscosity]: \(view) superview == nil")
         
-        if view.translatesAutoresizingMaskIntoConstraints {
-            view.translatesAutoresizingMaskIntoConstraints = false
-        }
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         self.view = view
     
@@ -58,31 +56,35 @@ public class VisConstraintMaker: NSObject {
     }
     
     internal func install() -> Void {
-        if type == .replace {
+        switch type {
+        case .replace:
             self.removeAllConstraints()
-        }
-        
-        if type == .update {
+            
+        case .update:
             for vis_constraint in constraints {
                 let similars = self.layoutConstraintSimilarTo(vis_constraint)
                 
-                if similars.similarConstraint != nil {
-                    similars.similarConstraint!.constant = vis_constraint.constant
-                } else {
-                    if similars.roughSimilarConstraint != nil {
-                        self.superView.removeConstraint(similars.roughSimilarConstraint!)
+                guard let _ = similars.perfect else {
+                    
+                    if let rough = similars.rough {
+                        self.superView.removeConstraint(rough)
                     }
                     self.addConstraint(constraint: vis_constraint)
+                    
+                    return
                 }
+                
+                similars.perfect!.constant = vis_constraint.constant
             }
-        } else {
+            
+        case .normal:
             for vis_constraint in constraints {
                 self.addConstraint(constraint: vis_constraint)
             }
         }
     }
     
-    //MARK: - Add
+    // MARK: - Add
     private func addConstraint(constraint: VisConstraint) -> Void {
         let layoutConstraint: NSLayoutConstraint
             = NSLayoutConstraint(item:       view,
@@ -99,7 +101,7 @@ public class VisConstraintMaker: NSObject {
         self.superView.addConstraint(layoutConstraint)
     }
     
-    //MARK: - Remove
+    // MARK: - Remove
     private func removeAllConstraints() -> Void {
         var constraints: [NSLayoutConstraint] = []
         
@@ -116,9 +118,9 @@ public class VisConstraintMaker: NSObject {
         self.superView.removeConstraints(constraints)
     }
     
-    private func layoutConstraintSimilarTo(_ vis_constraint: VisConstraint) -> (roughSimilarConstraint: NSLayoutConstraint?, similarConstraint: NSLayoutConstraint?) {
-        var similarConstraint      :NSLayoutConstraint?
-        var roughSimilarConstraint :NSLayoutConstraint?
+    private func layoutConstraintSimilarTo(_ vis_constraint: VisConstraint) -> (rough: NSLayoutConstraint?, perfect: NSLayoutConstraint?) {
+        var roughSimilarConstraint: NSLayoutConstraint?
+        var perfectSimilarConstraint: NSLayoutConstraint?
         
         for constraint in self.superView.constraints {
             guard constraint.firstItem is UIView else {
@@ -126,7 +128,7 @@ public class VisConstraintMaker: NSObject {
             }
             
             guard constraint.firstItem as! UIView == view,
-                  constraint.firstAttribute  == vis_constraint.attribute else {
+                  constraint.firstAttribute == vis_constraint.attribute else {
                   continue
             }
             
@@ -140,13 +142,13 @@ public class VisConstraintMaker: NSObject {
                   continue
             }
             
-            similarConstraint = constraint
+            perfectSimilarConstraint = constraint
         }
-        return (roughSimilarConstraint, similarConstraint)
+        return (roughSimilarConstraint, perfectSimilarConstraint)
     }
 
     
-    //MARK: - constraints
+    // MARK: - constraints
     public lazy var left: VisConstraint = {
         var left = VisConstraint(attribute: .left)
         self.constraints.append(left)

@@ -30,7 +30,6 @@ import UIKit
 
 public class VisConstraint: NSObject {
     
-    //MARK: - var
     public var toItem:      AnyObject?
     internal var constant:    CGFloat = 0
     internal var multiplier:  CGFloat = 1
@@ -44,26 +43,81 @@ public class VisConstraint: NSObject {
         self.attribute = attribute
     }
     
+    // MARK: - equal
+    
     @discardableResult
-    public func equalTo(_ toItem: AnyObject) -> VisConstraint {
-        self.set(toItem: toItem)
+    public  func equalTo(_ view: UIView) -> VisConstraint {
+        self.set(view: view)
         relation = .equal
         return self
     }
     
+    @nonobjc
     @discardableResult
-    public func greaterThanOrEqualTo(_ toItem: AnyObject) -> VisConstraint {
-        self.set(toItem: toItem)
+    public func equalTo(_ number: CGFloat) -> VisConstraint {
+        self.set(number: number)
+        relation = .equal
+        return self
+    }
+    
+    @nonobjc
+    @discardableResult
+    public func equalTo(_ constraint: VisConstraint) -> VisConstraint {
+        self.set(constraint: constraint)
+        relation = .equal
+        return self
+    }
+    
+    // MARK: - greater than or equal
+    
+    @discardableResult
+    public func greaterThanOrEqualTo(_ view: UIView) -> VisConstraint {
+        self.set(view: view)
         relation = .greaterThanOrEqual
         return self
     }
     
+    @nonobjc
     @discardableResult
-    public func lessThanOrEqualTo(_ toItem: AnyObject) -> VisConstraint {
-        self.set(toItem: toItem)
+    public func greaterThanOrEqualTo(_ number: CGFloat) -> VisConstraint {
+        self.set(number: number)
+        relation = .greaterThanOrEqual
+        return self
+    }
+    
+    @nonobjc
+    @discardableResult
+    public func greaterThanOrEqualTo(_ constraint: VisConstraint) -> VisConstraint {
+        self.set(constraint: constraint)
+        relation = .greaterThanOrEqual
+        return self
+    }
+    
+    // MARK: - less than or equal
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ view: UIView) -> VisConstraint {
+        self.set(view: view)
         relation = .lessThanOrEqual
         return self
     }
+    
+    @nonobjc
+    @discardableResult
+    public func lessThanOrEqualTo(_ number: CGFloat) -> VisConstraint {
+        self.set(number: number)
+        relation = .equal
+        return self
+    }
+    
+    @nonobjc
+    @discardableResult
+    public func lessThanOrEqualTo(_ constraint: VisConstraint) -> VisConstraint {
+        self.set(constraint: constraint)
+        relation = .equal
+        return self
+    }
+
 
     @discardableResult
     public func offset(_ offset: CGFloat) -> VisConstraint {
@@ -89,30 +143,19 @@ public class VisConstraint: NSObject {
         return self
     }
     
-    private func set(toItem: AnyObject) -> Void {
-        if toItem is UIView {
-            self.toItem = toItem as! UIView
-            toAttribute = attribute
-        } else if toItem is VisConstraint {
-            let vis_constraint = toItem as! VisConstraint
-            self.toItem = vis_constraint.toItem
-            toAttribute = vis_constraint.attribute
-        } else {
-            self.setNumber(toItem: toItem)
-        }
+    private func set(view: UIView) -> Void {
+        toItem = view
+        toAttribute = attribute
     }
     
-    private func setNumber(toItem: AnyObject) -> Void {
-        if toItem is Int {
-            self.constant = CGFloat(toItem as! Int)
-        } else if toItem is Float {
-            self.constant = CGFloat(toItem as! Float)
-        } else if toItem is NSNumber {
-            self.constant = CGFloat(toItem as! NSNumber)
-        } else {
-            self.constant = toItem as! CGFloat
-        }
-        
-        self.toItem = nil
+    private func set(number: CGFloat) -> Void {
+        constant = number
+        toItem = nil
     }
+    
+    private func set(constraint: VisConstraint) -> Void {
+        toItem = constraint.toItem
+        toAttribute = constraint.attribute
+    }
+
 }

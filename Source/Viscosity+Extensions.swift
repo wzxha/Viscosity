@@ -30,21 +30,21 @@ import UIKit
 
 public extension UIView {
     
-    public func vis_makeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_makeConstraints(_ closure: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self, type: .normal)
-        block(maker)
+        closure(maker)
         maker.install()
     }
     
-    public func vis_remakeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_remakeConstraints(_ closure: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self, type: .replace)
-        block(maker)
+        closure(maker)
         maker.install()
     }
     
-    public func vis_updateConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
+    public func vis_updateConstraints(_ closure: (_ maker: VisConstraintMaker) -> Void) -> Void {
         let maker = VisConstraintMaker(view: self, type: .update)
-        block(maker)
+        closure(maker)
         maker.install()
     }
     
@@ -200,28 +200,75 @@ public extension UIView {
     }
 }
 
-
 public extension Array where Element: VisConstraint {
     @discardableResult
-    public func equalTo(_ toItem: AnyObject) -> Array {
+    public func equalTo(_ view: UIView) -> Array {
         for constraint in self {
-            constraint.equalTo(toItem)
+            constraint.equalTo(view)
         }
         return self
     }
     
     @discardableResult
-    public func greaterThanOrEqualTo(_ toItem: AnyObject) -> Array {
+    public func equalTo(_ number: CGFloat) -> Array {
         for constraint in self {
-            constraint.greaterThanOrEqualTo(toItem)
+            constraint.equalTo(number)
         }
         return self
     }
     
     @discardableResult
-    public func lessThanOrEqualTo(_ toItem: AnyObject) -> Array {
+    public func equalTo(_ constraint: VisConstraint) -> Array {
         for constraint in self {
-            constraint.lessThanOrEqualTo(toItem)
+            constraint.equalTo(constraint)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func greaterThanOrEqualTo(_ view: UIView) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(view)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func greaterThanOrEqualTo(_ number: CGFloat) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(number)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func greaterThanOrEqualTo(_ constraint: VisConstraint) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(constraint)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ view: UIView) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(view)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ number: CGFloat) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(number)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ constraint: VisConstraint) -> Array {
+        for constraint in self {
+            constraint.greaterThanOrEqualTo(constraint)
         }
         return self
     }
