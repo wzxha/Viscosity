@@ -31,22 +31,19 @@ import UIKit
 public extension UIView {
     
     public func vis_makeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
-        let maker = VisConstraintMaker(view: self)
-        maker.type = .normal
+        let maker = VisConstraintMaker(view: self, type: .normal)
         block(maker)
         maker.install()
     }
     
     public func vis_remakeConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
-        let maker = VisConstraintMaker(view: self)
-        maker.type = .replace
+        let maker = VisConstraintMaker(view: self, type: .replace)
         block(maker)
         maker.install()
     }
     
     public func vis_updateConstraints(_ block: (_ maker: VisConstraintMaker) -> Void) -> Void {
-        let maker = VisConstraintMaker(view: self)
-        maker.type = .update
+        let maker = VisConstraintMaker(view: self, type: .update)
         block(maker)
         maker.install()
     }

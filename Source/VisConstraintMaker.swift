@@ -36,12 +36,12 @@ public class VisConstraintMaker: NSObject {
         case update
     }
     
-    var constraints: [VisConstraint] = []
-    var view: UIView!
-    var superView: UIView!
-    var type: VisConstraintMakerType = .normal
+    private var constraints: [VisConstraint] = []
+    private var view: UIView!
+    private var superView: UIView!
+    private var type: VisConstraintMakerType = .normal
     
-    init(view: UIView) {
+    init(view: UIView, type: VisConstraintMakerType) {
         super.init()
         
         assert(view.superview != nil, "[Viscosity]: \(view) superview == nil")
@@ -53,6 +53,8 @@ public class VisConstraintMaker: NSObject {
         self.view = view
     
         self.superView = view.superview!
+        
+        self.type = type
     }
     
     func install() -> Void {
