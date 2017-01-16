@@ -11,12 +11,12 @@
 		1E86C4B01DF50DE200F21E5E /* VisConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86C4AB1DF50DE200F21E5E /* VisConstraintMaker.swift */; };
 		1E86C4B11DF50DE200F21E5E /* Viscosity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86C4AC1DF50DE200F21E5E /* Viscosity+Extensions.swift */; };
 		1E86C4B21DF50DE200F21E5E /* Viscosity.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E86C4AD1DF50DE200F21E5E /* Viscosity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EC3BC3C1E0654FB00E66D1C /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3BC3B1E0654FB00E66D1C /* Tests.swift */; };
-		1EC3BC3E1E0654FB00E66D1C /* Viscosity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E86C4961DF50D1E00F21E5E /* Viscosity.framework */; };
+		1EBEBC661E2C74D4009E3333 /* ViscosityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBEBC651E2C74D4009E3333 /* ViscosityTests.swift */; };
+		1EBEBC681E2C74D4009E3333 /* Viscosity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E86C4961DF50D1E00F21E5E /* Viscosity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1EC3BC3F1E0654FB00E66D1C /* PBXContainerItemProxy */ = {
+		1EBEBC691E2C74D4009E3333 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E86C48D1DF50D1E00F21E5E /* Project object */;
 			proxyType = 1;
@@ -32,9 +32,9 @@
 		1E86C4AB1DF50DE200F21E5E /* VisConstraintMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisConstraintMaker.swift; sourceTree = "<group>"; };
 		1E86C4AC1DF50DE200F21E5E /* Viscosity+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Viscosity+Extensions.swift"; sourceTree = "<group>"; };
 		1E86C4AD1DF50DE200F21E5E /* Viscosity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viscosity.h; sourceTree = "<group>"; };
-		1EC3BC391E0654FB00E66D1C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EC3BC3B1E0654FB00E66D1C /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		1EC3BC3D1E0654FB00E66D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EBEBC631E2C74D4009E3333 /* ViscosityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViscosityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EBEBC651E2C74D4009E3333 /* ViscosityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViscosityTests.swift; sourceTree = "<group>"; };
+		1EBEBC671E2C74D4009E3333 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +45,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1EC3BC361E0654FB00E66D1C /* Frameworks */ = {
+		1EBEBC601E2C74D4009E3333 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC3BC3E1E0654FB00E66D1C /* Viscosity.framework in Frameworks */,
+				1EBEBC681E2C74D4009E3333 /* Viscosity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				1E86C4981DF50D1E00F21E5E /* Viscosity */,
-				1EC3BC3A1E0654FB00E66D1C /* Tests */,
+				1EBEBC641E2C74D4009E3333 /* ViscosityTests */,
 				1E86C4971DF50D1E00F21E5E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				1E86C4961DF50D1E00F21E5E /* Viscosity.framework */,
-				1EC3BC391E0654FB00E66D1C /* Tests.xctest */,
+				1EBEBC631E2C74D4009E3333 /* ViscosityTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,13 +94,13 @@
 			path = Source;
 			sourceTree = SOURCE_ROOT;
 		};
-		1EC3BC3A1E0654FB00E66D1C /* Tests */ = {
+		1EBEBC641E2C74D4009E3333 /* ViscosityTests */ = {
 			isa = PBXGroup;
 			children = (
-				1EC3BC3B1E0654FB00E66D1C /* Tests.swift */,
-				1EC3BC3D1E0654FB00E66D1C /* Info.plist */,
+				1EBEBC651E2C74D4009E3333 /* ViscosityTests.swift */,
+				1EBEBC671E2C74D4009E3333 /* Info.plist */,
 			);
-			path = Tests;
+			path = ViscosityTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,22 +135,22 @@
 			productReference = 1E86C4961DF50D1E00F21E5E /* Viscosity.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1EC3BC381E0654FB00E66D1C /* Tests */ = {
+		1EBEBC621E2C74D4009E3333 /* ViscosityTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EC3BC431E0654FB00E66D1C /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 1EBEBC6B1E2C74D4009E3333 /* Build configuration list for PBXNativeTarget "ViscosityTests" */;
 			buildPhases = (
-				1EC3BC351E0654FB00E66D1C /* Sources */,
-				1EC3BC361E0654FB00E66D1C /* Frameworks */,
-				1EC3BC371E0654FB00E66D1C /* Resources */,
+				1EBEBC5F1E2C74D4009E3333 /* Sources */,
+				1EBEBC601E2C74D4009E3333 /* Frameworks */,
+				1EBEBC611E2C74D4009E3333 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1EC3BC401E0654FB00E66D1C /* PBXTargetDependency */,
+				1EBEBC6A1E2C74D4009E3333 /* PBXTargetDependency */,
 			);
-			name = Tests;
-			productName = Tests;
-			productReference = 1EC3BC391E0654FB00E66D1C /* Tests.xctest */;
+			name = ViscosityTests;
+			productName = ViscosityTests;
+			productReference = 1EBEBC631E2C74D4009E3333 /* ViscosityTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +159,7 @@
 		1E86C48D1DF50D1E00F21E5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = WzxJiang;
 				TargetAttributes = {
@@ -168,8 +168,9 @@
 						DevelopmentTeam = 475L2MZD72;
 						ProvisioningStyle = Automatic;
 					};
-					1EC3BC381E0654FB00E66D1C = {
-						CreatedOnToolsVersion = 8.1;
+					1EBEBC621E2C74D4009E3333 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 475L2MZD72;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -187,7 +188,7 @@
 			projectRoot = "";
 			targets = (
 				1E86C4951DF50D1E00F21E5E /* Viscosity */,
-				1EC3BC381E0654FB00E66D1C /* Tests */,
+				1EBEBC621E2C74D4009E3333 /* ViscosityTests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,7 +201,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1EC3BC371E0654FB00E66D1C /* Resources */ = {
+		1EBEBC611E2C74D4009E3333 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,21 +221,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1EC3BC351E0654FB00E66D1C /* Sources */ = {
+		1EBEBC5F1E2C74D4009E3333 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC3BC3C1E0654FB00E66D1C /* Tests.swift in Sources */,
+				1EBEBC661E2C74D4009E3333 /* ViscosityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1EC3BC401E0654FB00E66D1C /* PBXTargetDependency */ = {
+		1EBEBC6A1E2C74D4009E3333 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1E86C4951DF50D1E00F21E5E /* Viscosity */;
-			targetProxy = 1EC3BC3F1E0654FB00E66D1C /* PBXContainerItemProxy */;
+			targetProxy = 1EBEBC691E2C74D4009E3333 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -380,25 +381,27 @@
 			};
 			name = Release;
 		};
-		1EC3BC411E0654FB00E66D1C /* Debug */ = {
+		1EBEBC6C1E2C74D4009E3333 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				DEVELOPMENT_TEAM = 475L2MZD72;
+				INFOPLIST_FILE = ViscosityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = NULL.Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wzxjiang.ViscosityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		1EC3BC421E0654FB00E66D1C /* Release */ = {
+		1EBEBC6D1E2C74D4009E3333 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				DEVELOPMENT_TEAM = 475L2MZD72;
+				INFOPLIST_FILE = ViscosityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = NULL.Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wzxjiang.ViscosityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -425,11 +428,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EC3BC431E0654FB00E66D1C /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		1EBEBC6B1E2C74D4009E3333 /* Build configuration list for PBXNativeTarget "ViscosityTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EC3BC411E0654FB00E66D1C /* Debug */,
-				1EC3BC421E0654FB00E66D1C /* Release */,
+				1EBEBC6C1E2C74D4009E3333 /* Debug */,
+				1EBEBC6D1E2C74D4009E3333 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

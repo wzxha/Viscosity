@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1EC3BC381E0654FB00E66D1C"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
+               BlueprintIdentifier = "1EBEBC621E2C74D4009E3333"
+               BuildableName = "ViscosityTests.xctest"
+               BlueprintName = "ViscosityTests"
                ReferencedContainer = "container:Viscosity.xcodeproj">
             </BuildableReference>
          </TestableReference>
