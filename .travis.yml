@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode8.2
-xcode_project: Viscosity.xcworkspace
-xcode_scheme: Tests
 
+script:
+  xctool test -workspace Viscosity.xcworkspace -scheme Tests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
