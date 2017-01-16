@@ -1,6 +1,5 @@
 language: objective-c
 osx_image: xcode8
 
-env:
-  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
-  
+script:  
+  - xcodebuild -workspace 'Viscosity.xcworkspace' -scheme 'Tests' -configuration Debug -sdk iphonesimulator clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO | xcpretty -c
