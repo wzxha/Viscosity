@@ -3,5 +3,5 @@ osx_image: xcode8.2
 
 script:
   - set -o pipefail
-  - xcodebuild -project 'Viscosity.xcodeproj' -target 'Tests' -configuration Debug -sdk iphonesimulator clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xcodebuild -project 'Viscosity.xcodeproj' -target 'ViscosityTests' -configuration Debug -sdk iphonesimulator clean build ARCHS=i386 VALID_ARCHS=i386 ONLY_ACTIVE_ARCH=NO | xcpretty -c
 
