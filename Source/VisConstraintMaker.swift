@@ -57,9 +57,6 @@ public class VisConstraintMaker: NSObject {
     
     internal func install() -> Void {
         switch type {
-        case .replace:
-            self.removeAllConstraints()
-            
         case .update:
             for vis_constraint in constraints {
                 let similars = self.layoutConstraintSimilarTo(vis_constraint)
@@ -69,14 +66,16 @@ public class VisConstraintMaker: NSObject {
                     if let rough = similars.rough {
                         self.superView.removeConstraint(rough)
                     }
-                    self.addConstraint(constraint: vis_constraint)
                     
-                    return
+                    self.addConstraint(constraint: vis_constraint)
+                    continue
                 }
                 
                 similars.perfect!.constant = vis_constraint.constant
             }
-            
+        case .replace:
+            self.removeAllConstraints()
+            fallthrough
         case .normal:
             for vis_constraint in constraints {
                 self.addConstraint(constraint: vis_constraint)

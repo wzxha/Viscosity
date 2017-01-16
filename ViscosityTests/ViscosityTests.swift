@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Viscosity
 
 class ViscosityTests: XCTestCase {
         
@@ -50,7 +51,7 @@ class ViscosityTests: XCTestCase {
         
         v1.vis_makeConstraints { (make) in
             make.top.equalTo(self.container.vis_top).offset(50)
-            make.left.equalTo(self.container.vis_top).offset(50)
+            make.left.equalTo(self.container.vis_left).offset(50)
         }
         
         v1.vis_updateConstraints { (make) in
