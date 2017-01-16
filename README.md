@@ -1,6 +1,6 @@
 # Viscosity 1.0
 ![swift version](https://img.shields.io/badge/Language-Swift3-blue.svg)
-![travis-ci](https://travis-ci.org/Wzxhaha/Viscosity.svg?branch=master)
+[![travis-ci](https://travis-ci.org/Wzxhaha/Viscosity.svg?branch=master)](https://travis-ci.org/Wzxhaha/Viscosity)
 <br/>
 Autolayout framework for iOS.
 
