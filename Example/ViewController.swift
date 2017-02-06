@@ -9,42 +9,63 @@
 import UIKit
 import Viscosity
 
-class ViewController: UIViewController {
-
-    let label = UILabel()
-    let greenView = UIView()
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var tableView: UITableView!
+    
+    let datas = [["title": "Basic",
+                  "class": "VisExampleBasicView"],
+                 
+                 ["title": "Update Constraints",
+                  "class": "VisExampleUpdateView"],
+                 
+                 ["title": "Remake Constraints",
+                  "class": "VisExampleRemakeView"],
+                 
+                 ["title": "Aspect Fit",
+                  "class": "VisExampleSidesView"],
+                 
+                 ["title": "Composite Edges",
+                  "class": "VisExampleAspectFitView"],
+                 
+                 ["title": "Basic Animated",
+                  "class": "VisExampleAnimatedView"],
+                 
+                 ["title": "UIScrollView",
+                  "class": "VisExampleScrollView"]]
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        greenView.backgroundColor = UIColor.green
-        self.view.addSubview(greenView)
-        greenView.vis_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(100)
-            make.left.equalTo(self.view).offset(100)
-            make.width.equalTo(200)
-            make.height.equalTo(100).priority(0)
-            make.height.equalTo(200).priority(1000)
+        self.createUI()
+    }
+    
+    func createUI() -> Void {
+        tableView = UITableView(frame: self.view.bounds, style: .plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "ExampleCell")
+        self.view.addSubview(tableView)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let clsName = datas[indexPath.row]["class"] else {
+            return
         }
         
-        label.text = "text..."
-        label.numberOfLines = 0;
-        self.view.addSubview(label)
-        label.vis_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(10)
-            make.left.equalTo(greenView.vis_right).offset(10)
-        }
-
+        let cls: AnyClass = NSClassFromString("Example." + clsName)!
+        
+        self.navigationController?.pushViewController(VisExampleViewController.init(title: datas[indexPath.row]["title"]!, cls: cls), animated: true)
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        label.vis_updateConstraints { (make) in
-            make.height.equalTo(greenView)
-        }
-//        label.vis_remakeConstraints { (make) in
-//            make.right.equalTo(self.view, offset: -300)
-//            make.bottom.equalTo(self.view, offset: -30)
-//        }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.textLabel?.text = datas[indexPath.row]["title"]
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "ExampleCell")!
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datas.count
     }
     
     override func didReceiveMemoryWarning() {

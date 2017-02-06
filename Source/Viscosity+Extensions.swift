@@ -193,6 +193,13 @@ public extension UIView {
         }
     }
     
+    public var vis_size: [VisConstraint] {
+        get {
+            return [self.constraint(attribute: .width),
+                    self.constraint(attribute: .height)]
+        }
+    }
+    
     private func constraint(attribute: NSLayoutAttribute) -> VisConstraint {
         let constraint = VisConstraint(attribute: attribute)
         constraint.toItem = self
@@ -226,6 +233,13 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
+    public func equalTo(_ size: CGSize) -> Array {
+        self[0].equalTo(size.width)
+        self[1].equalTo(size.height)
+        return self
+    }
+    
+    @discardableResult
     public func greaterThanOrEqualTo(_ view: UIView) -> Array {
         for constraint in self {
             constraint.greaterThanOrEqualTo(view)
@@ -250,9 +264,16 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
+    public func greaterThanOrEqualTo(_ size: CGSize) -> Array {
+        self[0].greaterThanOrEqualTo(size.width)
+        self[1].greaterThanOrEqualTo(size.height)
+        return self
+    }
+    
+    @discardableResult
     public func lessThanOrEqualTo(_ view: UIView) -> Array {
         for constraint in self {
-            constraint.greaterThanOrEqualTo(view)
+            constraint.lessThanOrEqualTo(view)
         }
         return self
     }
@@ -260,7 +281,7 @@ public extension Array where Element: VisConstraint {
     @discardableResult
     public func lessThanOrEqualTo(_ number: CGFloat) -> Array {
         for constraint in self {
-            constraint.greaterThanOrEqualTo(number)
+            constraint.lessThanOrEqualTo(number)
         }
         return self
     }
@@ -268,8 +289,15 @@ public extension Array where Element: VisConstraint {
     @discardableResult
     public func lessThanOrEqualTo(_ constraint: VisConstraint) -> Array {
         for constraint in self {
-            constraint.greaterThanOrEqualTo(constraint)
+            constraint.lessThanOrEqualTo(constraint)
         }
+        return self
+    }
+    
+    @discardableResult
+    public func lessThanOrEqualTo(_ size: CGSize) -> Array {
+        self[0].lessThanOrEqualTo(size.width)
+        self[1].lessThanOrEqualTo(size.height)
         return self
     }
     
@@ -294,9 +322,9 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func edge(_ edge: UIEdgeInsets) -> Array {
+    public func insets(_ insets: UIEdgeInsets) -> Array {
         for (index, offset) in
-            [edge.top, edge.left, edge.bottom, edge.right].enumerated() {
+            [insets.top, insets.left, -insets.bottom, -insets.right].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -315,6 +343,22 @@ public extension Array where Element: VisConstraint {
             }
             
             constraint.offset(offset)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func priority(_ priority: UILayoutPriority) -> Array {
+        for constraint in self {
+            constraint.priority = priority
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func isActive(_ isActive: Bool) -> Array {
+        for constraint in self {
+            constraint.isActive = isActive
         }
         return self
     }

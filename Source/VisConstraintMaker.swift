@@ -35,7 +35,7 @@ public class VisConstraintMaker: NSObject {
         case replace
         case update
     }
-    
+
     private var constraints: [VisConstraint] = []
     private var view: UIView!
     private var superView: UIView!
@@ -127,161 +127,162 @@ public class VisConstraintMaker: NSObject {
             }
             
             guard constraint.firstItem as! UIView == view,
-                  constraint.firstAttribute == vis_constraint.attribute else {
-                  continue
+                  constraint.firstAttribute == vis_constraint.attribute,
+                  constraint.relation == vis_constraint.relation else {
+                continue
             }
             
             roughSimilarConstraint = constraint
             
-            guard constraint.secondItem?.isEqual(vis_constraint.toItem) == true,
-                  constraint.secondAttribute == vis_constraint.toAttribute,
-                  constraint.relation        == vis_constraint.relation,
-                  constraint.multiplier      == vis_constraint.multiplier,
-                  constraint.priority        == vis_constraint.priority else {
-                  continue
+            if roughSimilarConstraint == constraint,
+               constraint.multiplier  == vis_constraint.multiplier,
+               constraint.priority    == vis_constraint.priority {
+               perfectSimilarConstraint = constraint
             }
-            
-            perfectSimilarConstraint = constraint
         }
         return (roughSimilarConstraint, perfectSimilarConstraint)
     }
 
     
     // MARK: - constraints
-    public lazy var left: VisConstraint = {
-        var left = VisConstraint(attribute: .left)
+    public var left: VisConstraint {
+        let left = VisConstraint(attribute: .left)
         self.constraints.append(left)
         return left
-    }()
+    }
     
-    public lazy var right: VisConstraint = {
-        var right = VisConstraint(attribute: .right)
+    public var right: VisConstraint {
+        let right = VisConstraint(attribute: .right)
         self.constraints.append(right)
         return right
-    }()
+    }
     
-    public lazy var top: VisConstraint = {
-        var top = VisConstraint(attribute: .top)
+    public var top: VisConstraint {
+        let top = VisConstraint(attribute: .top)
         self.constraints.append(top)
         return top
-    }()
+    }
     
-    public lazy var bottom: VisConstraint = {
-        var bottom = VisConstraint(attribute: .bottom)
+    public var bottom: VisConstraint {
+        let bottom = VisConstraint(attribute: .bottom)
         self.constraints.append(bottom)
         return bottom
-    }()
+    }
     
-    public lazy var leading: VisConstraint = {
-        var leading = VisConstraint(attribute: .leading)
+    public var leading: VisConstraint {
+        let leading = VisConstraint(attribute: .leading)
         self.constraints.append(leading)
         return leading
-    }()
+    }
     
-    public lazy var trailing: VisConstraint = {
-        var trailing = VisConstraint(attribute: .trailing)
+    public var trailing: VisConstraint {
+        let trailing = VisConstraint(attribute: .trailing)
         self.constraints.append(trailing)
         return trailing
-    }()
+    }
     
-    public lazy var width: VisConstraint = {
-        var width = VisConstraint(attribute: .width)
+    public var width: VisConstraint {
+        let width = VisConstraint(attribute: .width)
         self.constraints.append(width)
         return width
-    }()
+    }
     
-    public lazy var height: VisConstraint = {
+    public var height: VisConstraint {
         let height = VisConstraint(attribute: .height)
         self.constraints.append(height)
         return height
-    }()
+    }
     
-    public lazy var centerX: VisConstraint = {
+    public var centerX: VisConstraint {
         let centerX = VisConstraint(attribute: .centerX)
         self.constraints.append(centerX)
         return centerX
-    }()
+    }
     
-    public lazy var centerY: VisConstraint = {
+    public var centerY: VisConstraint {
         let centerY = VisConstraint(attribute: .centerY)
         self.constraints.append(centerY)
         return centerY
-    }()
+    }
     
-    public lazy var lastBaseline: VisConstraint = {
-        var lastBaseline = VisConstraint(attribute: .lastBaseline)
+    public var lastBaseline: VisConstraint {
+        let lastBaseline = VisConstraint(attribute: .lastBaseline)
         self.constraints.append(lastBaseline)
         return lastBaseline
-    }()
+    }
     
     @available(iOS 8.0, *)
-    public lazy var firstBaseline: VisConstraint = {
-        var firstBaseline = VisConstraint(attribute: .firstBaseline)
+    public var firstBaseline: VisConstraint {
+        let firstBaseline = VisConstraint(attribute: .firstBaseline)
         self.constraints.append(firstBaseline)
         return firstBaseline
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var leftMargin: VisConstraint = {
-        var leftMargin = VisConstraint(attribute: .leftMargin)
+    public var leftMargin: VisConstraint {
+        let leftMargin = VisConstraint(attribute: .leftMargin)
         self.constraints.append(leftMargin)
         return leftMargin
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var rightMargin: VisConstraint = {
-        var rightMargin = VisConstraint(attribute: .rightMargin)
+    public var rightMargin: VisConstraint {
+        let rightMargin = VisConstraint(attribute: .rightMargin)
         self.constraints.append(rightMargin)
         return rightMargin
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var topMargin: VisConstraint = {
-        var topMargin = VisConstraint(attribute: .topMargin)
+    public var topMargin: VisConstraint {
+        let topMargin = VisConstraint(attribute: .topMargin)
         self.constraints.append(topMargin)
         return topMargin
-    }()
+    }
     
     @available(iOS 8.0, *)
-    public lazy var bottomMargin: VisConstraint = {
-        var bottomMargin = VisConstraint(attribute: .bottomMargin)
+    public var bottomMargin: VisConstraint {
+        let bottomMargin = VisConstraint(attribute: .bottomMargin)
         self.constraints.append(bottomMargin)
         return bottomMargin
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var leadingMargin: VisConstraint = {
-        var leadingMargin = VisConstraint(attribute: .leadingMargin)
+    public var leadingMargin: VisConstraint {
+        let leadingMargin = VisConstraint(attribute: .leadingMargin)
         self.constraints.append(leadingMargin)
         return leadingMargin
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var trailingMargin: VisConstraint = {
-        var trailingMargin = VisConstraint(attribute: .trailingMargin)
+    public var trailingMargin: VisConstraint {
+        let trailingMargin = VisConstraint(attribute: .trailingMargin)
         self.constraints.append(trailingMargin)
         return trailingMargin
-    }()
+    }
     
     @available(iOS 8.0, *)
-    public lazy var centerXWithinMargins: VisConstraint = {
-        var centerXWithinMargins = VisConstraint(attribute: .centerXWithinMargins)
+    public var centerXWithinMargins: VisConstraint {
+        let centerXWithinMargins = VisConstraint(attribute: .centerXWithinMargins)
         self.constraints.append(centerXWithinMargins)
         return centerXWithinMargins
-    }()
+    }
         
     @available(iOS 8.0, *)
-    public lazy var centerYWithinMargins: VisConstraint = {
-        var centerYWithinMargins = VisConstraint(attribute: .centerYWithinMargins)
+    public var centerYWithinMargins: VisConstraint {
+        let centerYWithinMargins = VisConstraint(attribute: .centerYWithinMargins)
         self.constraints.append(centerYWithinMargins)
         return centerYWithinMargins
-    }()
+    }
     
-    public lazy var center: [VisConstraint] = {
+    public var center: [VisConstraint] {
         return [self.centerX, self.centerY]
-    }()
+    }
     
-    public lazy var edges: [VisConstraint] = {
+    public var edges: [VisConstraint] {
         return [self.top, self.left, self.bottom, self.right]
-    }()
+    }
+    
+    public var size: [VisConstraint] {
+        return [self.width, self.height]
+    }
 }
