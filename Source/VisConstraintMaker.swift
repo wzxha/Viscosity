@@ -102,19 +102,17 @@ public class VisConstraintMaker: NSObject {
     
     // MARK: - Remove
     private func removeAllConstraints() -> Void {
-        var constraints: [NSLayoutConstraint] = []
+        let constraints = self.superView.constraints
         
-        for constraint in self.superView.constraints {
+        for constraint in constraints {
             guard constraint.firstItem is UIView else {
                 continue
             }
             
             if constraint.firstItem as! UIView == view {
-                constraints.append(constraint)
+                self.superView.removeConstraint(constraint)
             }
         }
-    
-        self.superView.removeConstraints(constraints)
     }
     
     private func layoutConstraintSimilarTo(_ vis_constraint: VisConstraint) -> (rough: NSLayoutConstraint?, perfect: NSLayoutConstraint?) {
@@ -146,132 +144,92 @@ public class VisConstraintMaker: NSObject {
     
     // MARK: - constraints
     public var left: VisConstraint {
-        let left = VisConstraint(attribute: .left)
-        self.constraints.append(left)
-        return left
+        return self.visConstraint(attribute: .left)
     }
     
     public var right: VisConstraint {
-        let right = VisConstraint(attribute: .right)
-        self.constraints.append(right)
-        return right
+        return self.visConstraint(attribute: .right)
     }
     
     public var top: VisConstraint {
-        let top = VisConstraint(attribute: .top)
-        self.constraints.append(top)
-        return top
+        return self.visConstraint(attribute: .top)
     }
     
     public var bottom: VisConstraint {
-        let bottom = VisConstraint(attribute: .bottom)
-        self.constraints.append(bottom)
-        return bottom
+        return self.visConstraint(attribute: .bottom)
     }
     
     public var leading: VisConstraint {
-        let leading = VisConstraint(attribute: .leading)
-        self.constraints.append(leading)
-        return leading
+        return self.visConstraint(attribute: .leading)
     }
     
     public var trailing: VisConstraint {
-        let trailing = VisConstraint(attribute: .trailing)
-        self.constraints.append(trailing)
-        return trailing
+        return self.visConstraint(attribute: .trailing)
     }
     
     public var width: VisConstraint {
-        let width = VisConstraint(attribute: .width)
-        self.constraints.append(width)
-        return width
+        return self.visConstraint(attribute: .width)
     }
     
     public var height: VisConstraint {
-        let height = VisConstraint(attribute: .height)
-        self.constraints.append(height)
-        return height
+        return self.visConstraint(attribute: .height)
     }
     
     public var centerX: VisConstraint {
-        let centerX = VisConstraint(attribute: .centerX)
-        self.constraints.append(centerX)
-        return centerX
+        return self.visConstraint(attribute: .centerX)
     }
     
     public var centerY: VisConstraint {
-        let centerY = VisConstraint(attribute: .centerY)
-        self.constraints.append(centerY)
-        return centerY
+        return self.visConstraint(attribute: .centerY)
     }
     
     public var lastBaseline: VisConstraint {
-        let lastBaseline = VisConstraint(attribute: .lastBaseline)
-        self.constraints.append(lastBaseline)
-        return lastBaseline
+        return self.visConstraint(attribute: .lastBaseline)
     }
     
     @available(iOS 8.0, *)
     public var firstBaseline: VisConstraint {
-        let firstBaseline = VisConstraint(attribute: .firstBaseline)
-        self.constraints.append(firstBaseline)
-        return firstBaseline
+        return self.visConstraint(attribute: .firstBaseline)
     }
-        
+    
     @available(iOS 8.0, *)
     public var leftMargin: VisConstraint {
-        let leftMargin = VisConstraint(attribute: .leftMargin)
-        self.constraints.append(leftMargin)
-        return leftMargin
+        return self.visConstraint(attribute: .leftMargin)
     }
-        
+    
     @available(iOS 8.0, *)
     public var rightMargin: VisConstraint {
-        let rightMargin = VisConstraint(attribute: .rightMargin)
-        self.constraints.append(rightMargin)
-        return rightMargin
+        return self.visConstraint(attribute: .rightMargin)
     }
-        
+    
     @available(iOS 8.0, *)
     public var topMargin: VisConstraint {
-        let topMargin = VisConstraint(attribute: .topMargin)
-        self.constraints.append(topMargin)
-        return topMargin
+        return self.visConstraint(attribute: .topMargin)
     }
     
     @available(iOS 8.0, *)
     public var bottomMargin: VisConstraint {
-        let bottomMargin = VisConstraint(attribute: .bottomMargin)
-        self.constraints.append(bottomMargin)
-        return bottomMargin
+        return self.visConstraint(attribute: .bottomMargin)
     }
-        
+    
     @available(iOS 8.0, *)
     public var leadingMargin: VisConstraint {
-        let leadingMargin = VisConstraint(attribute: .leadingMargin)
-        self.constraints.append(leadingMargin)
-        return leadingMargin
+        return self.visConstraint(attribute: .leadingMargin)
     }
-        
+    
     @available(iOS 8.0, *)
     public var trailingMargin: VisConstraint {
-        let trailingMargin = VisConstraint(attribute: .trailingMargin)
-        self.constraints.append(trailingMargin)
-        return trailingMargin
+        return self.visConstraint(attribute: .trailingMargin)
     }
     
     @available(iOS 8.0, *)
     public var centerXWithinMargins: VisConstraint {
-        let centerXWithinMargins = VisConstraint(attribute: .centerXWithinMargins)
-        self.constraints.append(centerXWithinMargins)
-        return centerXWithinMargins
+        return self.visConstraint(attribute: .centerXWithinMargins)
     }
-        
+    
     @available(iOS 8.0, *)
     public var centerYWithinMargins: VisConstraint {
-        let centerYWithinMargins = VisConstraint(attribute: .centerYWithinMargins)
-        self.constraints.append(centerYWithinMargins)
-        return centerYWithinMargins
+        return self.visConstraint(attribute: .centerYWithinMargins)
     }
     
     public var center: [VisConstraint] {
@@ -285,4 +243,11 @@ public class VisConstraintMaker: NSObject {
     public var size: [VisConstraint] {
         return [self.width, self.height]
     }
+    
+    private func visConstraint(attribute: NSLayoutAttribute) -> VisConstraint {
+        let constraint = VisConstraint(attribute: attribute)
+        self.constraints.append(constraint)
+        return constraint
+    }
 }
+

@@ -26,8 +26,8 @@ class VisExampleScrollView: UIView {
         let contentView = UIView()
         scrollView.addSubview(contentView)
         contentView.vis_makeConstraints { (make) in
-            make.edges.equalTo(scrollView);
-            make.width.equalTo(scrollView);
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(scrollView)
         }
         
         var lastView: UIView? = nil

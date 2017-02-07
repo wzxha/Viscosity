@@ -208,6 +208,8 @@ public extension UIView {
 }
 
 public extension Array where Element: VisConstraint {
+    
+    // MARK: - equal
     @discardableResult
     public func equalTo(_ view: UIView) -> Array {
         for constraint in self {
@@ -234,11 +236,29 @@ public extension Array where Element: VisConstraint {
     
     @discardableResult
     public func equalTo(_ size: CGSize) -> Array {
-        self[0].equalTo(size.width)
-        self[1].equalTo(size.height)
+        for (index, offset) in
+            [size.width, size.height].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].equalTo(offset)
+        }
         return self
     }
     
+    @discardableResult
+    public func equalTo(_ point: CGPoint) -> Array {
+        for (index, offset) in
+            [point.x, point.y].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].equalTo(offset)
+        }
+        return self
+    }
+    
+    // MARK: - greater than or equal
     @discardableResult
     public func greaterThanOrEqualTo(_ view: UIView) -> Array {
         for constraint in self {
@@ -265,11 +285,29 @@ public extension Array where Element: VisConstraint {
     
     @discardableResult
     public func greaterThanOrEqualTo(_ size: CGSize) -> Array {
-        self[0].greaterThanOrEqualTo(size.width)
-        self[1].greaterThanOrEqualTo(size.height)
+        for (index, offset) in
+            [size.width, size.height].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].greaterThanOrEqualTo(offset)
+        }
         return self
     }
     
+    @discardableResult
+    public func greaterThanOrEqualTo(_ point: CGPoint) -> Array {
+        for (index, offset) in
+            [point.x, point.y].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].greaterThanOrEqualTo(offset)
+        }
+        return self
+    }
+    
+    // MARK: - less than or equal
     @discardableResult
     public func lessThanOrEqualTo(_ view: UIView) -> Array {
         for constraint in self {
@@ -296,53 +334,33 @@ public extension Array where Element: VisConstraint {
     
     @discardableResult
     public func lessThanOrEqualTo(_ size: CGSize) -> Array {
-        self[0].lessThanOrEqualTo(size.width)
-        self[1].lessThanOrEqualTo(size.height)
-        return self
-    }
-    
-    @discardableResult
-    public func multiplier(_ multiplier: CGFloat) -> Array {
-        for constraint in self {
-            constraint.multiplier(multiplier)
+        for (index, offset) in
+            [size.width, size.height].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].lessThanOrEqualTo(offset)
         }
         return self
     }
     
     @discardableResult
-    public func point(_ point: CGPoint) -> Array {
+    public func lessThanOrEqualTo(_ point: CGPoint) -> Array {
         for (index, offset) in
             [point.x, point.y].enumerated() {
             guard self.count > index else {
                 break
             }
-            self[index].offset(offset)
+            self[index].lessThanOrEqualTo(offset)
         }
         return self
     }
     
+    // MARK: - other
     @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> Array {
-        for (index, offset) in
-            [insets.top, insets.left, -insets.bottom, -insets.right].enumerated() {
-            guard self.count > index else {
-                break
-            }
-            self[index].offset(offset)
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func offsets(_ offsets: [CGFloat]) -> Array {
-        for (index, constraint) in self.enumerated() {
-            var offset: CGFloat = 0
-            
-            if offsets.count > index {
-                offset = offsets[index]
-            }
-            
-            constraint.offset(offset)
+    public func multiplier(_ multiplier: CGFloat) -> Array {
+        for constraint in self {
+            constraint.multiplier(multiplier)
         }
         return self
     }
@@ -359,6 +377,66 @@ public extension Array where Element: VisConstraint {
     public func isActive(_ isActive: Bool) -> Array {
         for constraint in self {
             constraint.isActive = isActive
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func insets(_ insets: UIEdgeInsets) -> Array {
+        for (index, offset) in
+            [insets.top, insets.left, -insets.bottom, -insets.right].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].offset(offset)
+        }
+        return self
+    }
+    
+    
+    // MARK: - offset: [CGFloat], CGFloat, CGPoint, CGSize
+    @discardableResult
+    public func offset(_ offsets: [CGFloat]) -> Array {
+        for (index, constraint) in self.enumerated() {
+            var offset: CGFloat = 0
+            
+            if offsets.count > index {
+                offset = offsets[index]
+            }
+            
+            constraint.offset(offset)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func offset(_ offset: CGFloat) -> Array {
+        for (index, constraint) in self.enumerated() {
+            constraint.offset(offset)
+        }
+        return self
+    }
+
+    @discardableResult
+    public func offset(_ point: CGPoint) -> Array {
+        for (index, offset) in
+            [point.x, point.y].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].offset(offset)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func offset(_ size: CGSize) -> Array {
+        for (index, offset) in
+            [size.width, size.height].enumerated() {
+            guard self.count > index else {
+                break
+            }
+            self[index].offset(offset)
         }
         return self
     }
