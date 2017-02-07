@@ -30,12 +30,15 @@ $ gem install cocoapods
 To integrate Viscosity into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
 target '<Your Target Name>' do
-    pod 'Viscosity', '~> 1.1'
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Viscosity', '~> 1.1'
+  # Pods for Test
+
 end
 ```
 
