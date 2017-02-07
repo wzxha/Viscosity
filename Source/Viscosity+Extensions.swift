@@ -411,7 +411,7 @@ public extension Array where Element: VisConstraint {
     
     @discardableResult
     public func offset(_ offset: CGFloat) -> Array {
-        for (index, constraint) in self.enumerated() {
+        for constraint in self {
             constraint.offset(offset)
         }
         return self
