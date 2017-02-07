@@ -1,6 +1,8 @@
 # Viscosity 1.0
 ![swift version](https://img.shields.io/badge/Language-Swift3-blue.svg)
 [![travis-ci](https://travis-ci.org/Wzxhaha/Viscosity.svg?branch=master)](https://travis-ci.org/Wzxhaha/Viscosity)
+[![Platform](https://img.shields.io/cocoapods/p/Viscosity.svg?style=flat)](https://github.com/Wzxhaha/Viscosity)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Viscosity.svg)](https://cocoapods.org/pods/Viscosity)
 <br/>
 Autolayout framework for iOS, simple and powerful.
 
@@ -14,6 +16,35 @@ Autolayout framework for iOS, simple and powerful.
 - Support All `NSLayoutAttribute`
 - Support `center` and `edges`
 - And a lot of powerful usage, You can look at the `examples` in the file
+
+# Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate Viscosity into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'Viscosity', '~> 1.1'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
 
 # Usage
 
