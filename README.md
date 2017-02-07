@@ -2,7 +2,7 @@
 ![swift version](https://img.shields.io/badge/Language-Swift3-blue.svg)
 [![travis-ci](https://travis-ci.org/Wzxhaha/Viscosity.svg?branch=master)](https://travis-ci.org/Wzxhaha/Viscosity)
 <br/>
-Autolayout framework for iOS.
+Autolayout framework for iOS, simple and powerful.
 
 # Requirements
 - iOS 8.0+ 
@@ -13,7 +13,7 @@ Autolayout framework for iOS.
 - Support mode: normal, update and remake.
 - Support All `NSLayoutAttribute`
 - Support `center` and `edges`
-- And a lot of powerful usage, you can see `Example` for Files.
+- And a lot of powerful usage, You can look at the `examples` in the file
 
 # Usage
 
