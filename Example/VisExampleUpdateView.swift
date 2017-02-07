@@ -21,8 +21,8 @@ class VisExampleUpdateView: UIView {
     func createUI() -> Void {
         growingButton = UIButton(type: .system)
         growingButton.setTitle("Grow Me!", for: .normal)
-        growingButton.layer.borderColor = UIColor.green.cgColor;
-        growingButton.layer.borderWidth = 3;
+        growingButton.layer.borderColor = UIColor.green.cgColor
+        growingButton.layer.borderWidth = 3
         growingButton.addTarget(self, action: #selector(didTapGrowButton(sender:)), for: .touchUpInside)
         self.addSubview(growingButton)
     }
@@ -38,12 +38,12 @@ class VisExampleUpdateView: UIView {
     }
     
     func didTapGrowButton(sender: UIButton) -> Void {
-        buttonSize *= 1.3
+        buttonSize *= 1.5
         
         self.setNeedsUpdateConstraints()
         self.updateConstraintsIfNeeded()
         
-        UIView.animate(withDuration: 0.3) { 
+        UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
         }
     }

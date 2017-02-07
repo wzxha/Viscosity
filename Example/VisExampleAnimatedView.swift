@@ -72,7 +72,7 @@ class VisExampleAnimatedView: UIView {
         }
         
         let padding = invertedInsets ? 100 : self.padding;
-        let paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding);
+        let paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding)
         
         redView.vis_updateConstraints { (make) in
             make.edges.equalTo(self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
