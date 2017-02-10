@@ -45,64 +45,64 @@ public class VisConstraint: NSObject {
     
     // MARK: - equal
     @discardableResult
-    public func equalTo(_ view: UIView) -> VisConstraint {
-        self.set(view: view, relation: .equal)
+    public func equalTo(_ item: UIView) -> VisConstraint {
+        self.set(view: item, relation: .equal)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func equalTo(_ number: CGFloat) -> VisConstraint {
-        self.set(number: number, relation: .equal)
+    public func equalTo(_ item: CGFloat) -> VisConstraint {
+        self.set(number: item, relation: .equal)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func equalTo(_ constraint: VisConstraint) -> VisConstraint {
-        self.set(constraint: constraint, relation: .equal)
+    public func equalTo(_ item: VisConstraint) -> VisConstraint {
+        self.set(constraint: item, relation: .equal)
         return self
     }
     
     // MARK: - greater than or equal
     @discardableResult
-    public func greaterThanOrEqualTo(_ view: UIView) -> VisConstraint {
-        self.set(view: view, relation: .greaterThanOrEqual)
+    public func greaterThanOrEqualTo(_ item: UIView) -> VisConstraint {
+        self.set(view: item, relation: .greaterThanOrEqual)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func greaterThanOrEqualTo(_ number: CGFloat) -> VisConstraint {
-        self.set(number: number, relation: .greaterThanOrEqual)
+    public func greaterThanOrEqualTo(_ item: CGFloat) -> VisConstraint {
+        self.set(number: item, relation: .greaterThanOrEqual)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func greaterThanOrEqualTo(_ constraint: VisConstraint) -> VisConstraint {
-        self.set(constraint: constraint, relation: .greaterThanOrEqual)
+    public func greaterThanOrEqualTo(_ item: VisConstraint) -> VisConstraint {
+        self.set(constraint: item, relation: .greaterThanOrEqual)
         return self
     }
     
     // MARK: - less than or equal
     @discardableResult
-    public func lessThanOrEqualTo(_ view: UIView) -> VisConstraint {
-        self.set(view: view, relation: .lessThanOrEqual)
+    public func lessThanOrEqualTo(_ item: UIView) -> VisConstraint {
+        self.set(view: item, relation: .lessThanOrEqual)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func lessThanOrEqualTo(_ number: CGFloat) -> VisConstraint {
-        self.set(number: number, relation: .lessThanOrEqual)
+    public func lessThanOrEqualTo(_ item: CGFloat) -> VisConstraint {
+        self.set(number: item, relation: .lessThanOrEqual)
         return self
     }
     
     @nonobjc
     @discardableResult
-    public func lessThanOrEqualTo(_ constraint: VisConstraint) -> VisConstraint {
-        self.set(constraint: constraint, relation: .lessThanOrEqual)
+    public func lessThanOrEqualTo(_ item: VisConstraint) -> VisConstraint {
+        self.set(constraint: item, relation: .lessThanOrEqual)
         return self
     }
 
