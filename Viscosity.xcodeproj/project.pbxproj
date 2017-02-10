@@ -435,6 +435,7 @@
 				1EBEBC6D1E2C74D4009E3333 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

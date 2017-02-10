@@ -4,10 +4,10 @@
 [![Platform](https://img.shields.io/cocoapods/p/Viscosity.svg?style=flat)](https://github.com/Wzxhaha/Viscosity)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Viscosity.svg)](https://cocoapods.org/pods/Viscosity)
 <br/>
-Autolayout framework for iOS, simple and powerful.
+Autolayout DSL for iOS, simple and powerful.
 
 ## Requirements
-- iOS 8.0+ 
+- iOS 8.0+
 - Xcode 8.0+
 - Swift 3.0+
 
@@ -16,6 +16,39 @@ Autolayout framework for iOS, simple and powerful.
 - Support All `NSLayoutAttribute`
 - Support `center` and `edges`
 - And a lot of powerful usage, You can look at the `examples` in the file
+
+## Usage
+
+### Normal
+
+```swift
+ view.vis_makeConstraints { (make) in
+   make.left.equalTo(view.vis_right).offset(100).multiplier(2).priority(10)
+   make.size.lessThanOrEqualTo(100).priority(10)
+ }
+```
+
+```swift
+ view.vis_makeConstraints { (make) in
+   make[.left, .right, .top].equalTo(view)
+   make.height.equalTo(100)
+ }
+```
+
+### Update
+
+```swift
+ view.vis_updateConstraints { (make) in
+   make.left.equalTo(view).offset(100)
+ }
+```
+
+### Remake
+```swift
+ view.vis_remakeConstraints { (make) in
+   make.left.equalTo(view).offset(100)
+ }
+```
 
 ## Installation
 
@@ -45,37 +78,6 @@ Then, run the following command:
 
 ```bash
 $ pod install
-```
-
-
-## Usage
-
-### Normal
-
-```swift
- view.vis_makeConstraints { (make) in
-   make.left.equalTo(self.view.vis_right).offset(-300)
-   make.right.greaterThanOrEqualTo(self.view). multiplier(2).offset(10)
-   make.bottom.equalTo(self.view).offset(-10)
-   make.height.lessThanOrEqualTo(10)
-   make.height.lessThanOrEqualTo(100).priority(10)
- }
-```
-
-### Update
-
-```swift
- view.vis_updateConstraints { (make) in
-   make.left.equalTo(self.view.vis_right).offset(-100)
- }
-```
-
-### Remake
-```swift
- view.vis_remakeConstraints { (make) in
-   make.right.equalTo(self.view).offset(-300)
-   make.bottom.equalTo(self.view).offset(30)
- }
 ```
 
 ## Contact me
