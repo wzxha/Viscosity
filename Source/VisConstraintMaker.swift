@@ -46,39 +46,39 @@ public class VisConstraintMaker: NSObject {
         assert(view.superview != nil, "[Viscosity]: \(view) superview == nil")
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view = view
-        self.superView = view.superview!
         self.type = type
+        self.view = view
+        superView = view.superview!
     }
     
     internal func install() -> Void {
         switch type {
         case .update:
-            for vis_constraint in constraints {
-                let similars = self.layoutConstraintSimilarTo(vis_constraint)
+            for constraint in constraints {
+                let similars = layoutConstraintSimilarTo(constraint)
                 
                 guard let _ = similars.perfect else {
                     if let rough = similars.rough {
-                        self.superView.removeConstraint(rough)
+                        superView.removeConstraint(rough)
                     }
-                    self.addConstraint(constraint: vis_constraint)
+                    addConstraint(constraint)
                     continue
                 }
                 
-                similars.perfect!.constant = vis_constraint.constant
+                similars.perfect!.constant = constraint.constant
             }
         case .replace:
-            self.removeAllConstraints()
+            removeAllConstraints()
             fallthrough
         case .normal:
-            for vis_constraint in constraints {
-                self.addConstraint(constraint: vis_constraint)
+            for constraint in constraints {
+                addConstraint(constraint)
             }
         }
     }
     
     // MARK: - Add
-    private func addConstraint(constraint: VisConstraint) -> Void {
+    private func addConstraint(_ constraint: VisConstraint) -> Void {
         let layoutConstraint: NSLayoutConstraint
             = NSLayoutConstraint(item:       view,
                                  attribute:  constraint.attribute,
@@ -91,12 +91,12 @@ public class VisConstraintMaker: NSObject {
         layoutConstraint.priority = constraint.priority
         layoutConstraint.isActive = constraint.isActive
         
-        self.superView.addConstraint(layoutConstraint)
+        superView.addConstraint(layoutConstraint)
     }
     
     // MARK: - Remove
     private func removeAllConstraints() -> Void {
-        let constraints = self.superView.constraints
+        let constraints = superView.constraints
         
         for constraint in constraints {
             guard constraint.firstItem is UIView else {
@@ -104,7 +104,7 @@ public class VisConstraintMaker: NSObject {
             }
             
             if constraint.firstItem as! UIView == view {
-                self.superView.removeConstraint(constraint)
+                superView.removeConstraint(constraint)
             }
         }
     }
@@ -113,7 +113,7 @@ public class VisConstraintMaker: NSObject {
         var roughSimilarConstraint: NSLayoutConstraint?
         var perfectSimilarConstraint: NSLayoutConstraint?
         
-        for constraint in self.superView.constraints {
+        for constraint in superView.constraints {
             guard constraint.firstItem is UIView else {
                 continue
             }
@@ -137,109 +137,109 @@ public class VisConstraintMaker: NSObject {
     
     // MARK: - constraints
     public var left: VisConstraint {
-        return self.visConstraint(attribute: .left)
+        return constraint(attribute: .left)
     }
     
     public var right: VisConstraint {
-        return self.visConstraint(attribute: .right)
+        return constraint(attribute: .right)
     }
     
     public var top: VisConstraint {
-        return self.visConstraint(attribute: .top)
+        return constraint(attribute: .top)
     }
     
     public var bottom: VisConstraint {
-        return self.visConstraint(attribute: .bottom)
+        return constraint(attribute: .bottom)
     }
     
     public var leading: VisConstraint {
-        return self.visConstraint(attribute: .leading)
+        return constraint(attribute: .leading)
     }
     
     public var trailing: VisConstraint {
-        return self.visConstraint(attribute: .trailing)
+        return constraint(attribute: .trailing)
     }
     
     public var width: VisConstraint {
-        return self.visConstraint(attribute: .width)
+        return constraint(attribute: .width)
     }
     
     public var height: VisConstraint {
-        return self.visConstraint(attribute: .height)
+        return constraint(attribute: .height)
     }
     
     public var centerX: VisConstraint {
-        return self.visConstraint(attribute: .centerX)
+        return constraint(attribute: .centerX)
     }
     
     public var centerY: VisConstraint {
-        return self.visConstraint(attribute: .centerY)
+        return constraint(attribute: .centerY)
     }
     
     public var lastBaseline: VisConstraint {
-        return self.visConstraint(attribute: .lastBaseline)
+        return constraint(attribute: .lastBaseline)
     }
     
     @available(iOS 8.0, *)
     public var firstBaseline: VisConstraint {
-        return self.visConstraint(attribute: .firstBaseline)
+        return constraint(attribute: .firstBaseline)
     }
     
     @available(iOS 8.0, *)
     public var leftMargin: VisConstraint {
-        return self.visConstraint(attribute: .leftMargin)
+        return constraint(attribute: .leftMargin)
     }
     
     @available(iOS 8.0, *)
     public var rightMargin: VisConstraint {
-        return self.visConstraint(attribute: .rightMargin)
+        return constraint(attribute: .rightMargin)
     }
     
     @available(iOS 8.0, *)
     public var topMargin: VisConstraint {
-        return self.visConstraint(attribute: .topMargin)
+        return constraint(attribute: .topMargin)
     }
     
     @available(iOS 8.0, *)
     public var bottomMargin: VisConstraint {
-        return self.visConstraint(attribute: .bottomMargin)
+        return constraint(attribute: .bottomMargin)
     }
     
     @available(iOS 8.0, *)
     public var leadingMargin: VisConstraint {
-        return self.visConstraint(attribute: .leadingMargin)
+        return constraint(attribute: .leadingMargin)
     }
     
     @available(iOS 8.0, *)
     public var trailingMargin: VisConstraint {
-        return self.visConstraint(attribute: .trailingMargin)
+        return constraint(attribute: .trailingMargin)
     }
     
     @available(iOS 8.0, *)
     public var centerXWithinMargins: VisConstraint {
-        return self.visConstraint(attribute: .centerXWithinMargins)
+        return constraint(attribute: .centerXWithinMargins)
     }
     
     @available(iOS 8.0, *)
     public var centerYWithinMargins: VisConstraint {
-        return self.visConstraint(attribute: .centerYWithinMargins)
+        return constraint(attribute: .centerYWithinMargins)
     }
     
     public var center: [VisConstraint] {
-        return [self.centerX, self.centerY]
+        return [centerX, centerY]
     }
     
     public var edges: [VisConstraint] {
-        return [self.top, self.left, self.bottom, self.right]
+        return [top, left, bottom, right]
     }
     
     public var size: [VisConstraint] {
-        return [self.width, self.height]
+        return [width, height]
     }
     
-    private func visConstraint(attribute: NSLayoutAttribute) -> VisConstraint {
+    private func constraint(attribute: NSLayoutAttribute) -> VisConstraint {
         let constraint = VisConstraint(attribute: attribute)
-        self.constraints.append(constraint)
+        constraints.append(constraint)
         return constraint
     }
 }
@@ -250,45 +250,45 @@ public extension VisConstraintMaker {
         for type in types {
             switch type {
             case .left:
-                visConstraints.append(self.left)
+                visConstraints.append(left)
             case .right:
-                visConstraints.append(self.right)
+                visConstraints.append(right)
             case .top:
-                visConstraints.append(self.top)
+                visConstraints.append(top)
             case .bottom:
-                visConstraints.append(self.bottom)
+                visConstraints.append(bottom)
             case .leading:
-                visConstraints.append(self.leading)
+                visConstraints.append(leading)
             case .trailing:
-                visConstraints.append(self.trailing)
+                visConstraints.append(trailing)
             case .width:
-                visConstraints.append(self.width)
+                visConstraints.append(width)
             case .height:
-                visConstraints.append(self.height)
+                visConstraints.append(height)
             case .centerX:
-                visConstraints.append(self.centerX)
+                visConstraints.append(centerX)
             case .centerY:
-                visConstraints.append(self.centerY)
+                visConstraints.append(centerY)
             case .lastBaseline:
-                visConstraints.append(self.lastBaseline)
+                visConstraints.append(lastBaseline)
             case .firstBaseline:
-                visConstraints.append(self.firstBaseline)
+                visConstraints.append(firstBaseline)
             case .leftMargin:
-                visConstraints.append(self.leftMargin)
+                visConstraints.append(leftMargin)
             case .rightMargin:
-                visConstraints.append(self.rightMargin)
+                visConstraints.append(rightMargin)
             case .topMargin:
-                visConstraints.append(self.topMargin)
+                visConstraints.append(topMargin)
             case .bottomMargin:
-                visConstraints.append(self.bottomMargin)
+                visConstraints.append(bottomMargin)
             case .leadingMargin:
-                visConstraints.append(self.leadingMargin)
+                visConstraints.append(leadingMargin)
             case .trailingMargin:
-                visConstraints.append(self.trailingMargin)
+                visConstraints.append(trailingMargin)
             case .centerXWithinMargins:
-                visConstraints.append(self.centerXWithinMargins)
+                visConstraints.append(centerXWithinMargins)
             case .centerYWithinMargins:
-                visConstraints.append(self.centerYWithinMargins)
+                visConstraints.append(centerYWithinMargins)
             default: break
             }
         }

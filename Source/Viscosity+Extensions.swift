@@ -49,109 +49,104 @@ public extension UIView {
     }
     
     public var vis_left: VisConstraint {
-        return self.constraint(attribute: .left)
+        return constraint(attribute: .left)
     }
 
     public var vis_right: VisConstraint {
-        return self.constraint(attribute: .right)
+        return constraint(attribute: .right)
     }
     
     public var vis_top: VisConstraint {
-        return self.constraint(attribute: .top)
+        return constraint(attribute: .top)
     }
     
     public var vis_bottom: VisConstraint {
-        return self.constraint(attribute: .bottom)
+        return constraint(attribute: .bottom)
     }
     
     public var vis_leading: VisConstraint {
-        return self.constraint(attribute: .leading)
+        return constraint(attribute: .leading)
     }
     
     public var vis_trailing: VisConstraint {
-        return self.constraint(attribute: .trailing)
+        return constraint(attribute: .trailing)
     }
     
     public var vis_width: VisConstraint {
-        return self.constraint(attribute: .width)
+        return constraint(attribute: .width)
     }
     
     public var vis_height: VisConstraint {
-        return self.constraint(attribute: .height)
+        return constraint(attribute: .height)
     }
     
     public var vis_centerX: VisConstraint {
-        return self.constraint(attribute: .centerX)
+        return constraint(attribute: .centerX)
     }
     
     public var vis_centerY: VisConstraint {
-        return self.constraint(attribute: .centerY)
+        return constraint(attribute: .centerY)
     }
     
     public var vis_lastBaseline: VisConstraint {
-        return self.constraint(attribute: .lastBaseline)
+        return constraint(attribute: .lastBaseline)
     }
     
     @available(iOS 8.0, *)
     public var vis_firstBaseline: VisConstraint {
-        return self.constraint(attribute: .firstBaseline)
+        return constraint(attribute: .firstBaseline)
     }
     
     @available(iOS 8.0, *)
     public var vis_leftMargin: VisConstraint {
-        return self.constraint(attribute: .leftMargin)
+        return constraint(attribute: .leftMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_rightMargin: VisConstraint {
-        return self.constraint(attribute: .rightMargin)
+        return constraint(attribute: .rightMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_topMargin: VisConstraint {
-        return self.constraint(attribute: .topMargin)
+        return constraint(attribute: .topMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_bottomMargin: VisConstraint {
-        return self.constraint(attribute: .bottomMargin)
+        return constraint(attribute: .bottomMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_leadingMargin: VisConstraint {
-        return self.constraint(attribute: .leadingMargin)
+        return constraint(attribute: .leadingMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_trailingMargin: VisConstraint {
-        return self.constraint(attribute: .trailingMargin)
+        return constraint(attribute: .trailingMargin)
     }
     
     @available(iOS 8.0, *)
     public var vis_centerXWithinMargins: VisConstraint {
-        return self.constraint(attribute: .centerXWithinMargins)
+        return constraint(attribute: .centerXWithinMargins)
     }
     
     @available(iOS 8.0, *)
     public var vis_centerYWithinMargins: VisConstraint {
-        return self.constraint(attribute: .centerYWithinMargins)
+        return constraint(attribute: .centerYWithinMargins)
     }
     
     public var vis_center: [VisConstraint] {
-        return [self.constraint(attribute: .centerX),
-                self.constraint(attribute: .centerY)]
+        return [vis_centerX, vis_centerY]
     }
     
     public var vis_edges: [VisConstraint] {
-        return [self.constraint(attribute: .top),
-                self.constraint(attribute: .left),
-                self.constraint(attribute: .bottom),
-                self.constraint(attribute: .right)]
+        return [vis_top, vis_left, vis_bottom, vis_right]
     }
     
     public var vis_size: [VisConstraint] {
-        return [self.constraint(attribute: .width),
-                self.constraint(attribute: .height)]
+        return [vis_width, vis_height]
     }
     
     private func constraint(attribute: NSLayoutAttribute) -> VisConstraint {
@@ -165,7 +160,7 @@ public extension Array where Element: VisConstraint {
     
     // MARK: - equal
     @discardableResult
-    public func equalTo(_ item: UIView) -> Array {
+    public func equalTo(_ item: UIView) -> [VisConstraint] {
         for constraint in self {
             constraint.equalTo(item)
         }
@@ -173,7 +168,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func equalTo(_ item: CGFloat) -> Array {
+    public func equalTo(_ item: CGFloat) -> [VisConstraint] {
         for constraint in self {
             constraint.equalTo(item)
         }
@@ -181,7 +176,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func equalTo(_ item: VisConstraint) -> Array {
+    public func equalTo(_ item: VisConstraint) -> [VisConstraint] {
         for constraint in self {
             constraint.equalTo(item)
         }
@@ -189,9 +184,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func equalTo(_ item: CGSize) -> Array {
-        for (index, offset) in
-            [item.width, item.height].enumerated() {
+    public func equalTo(_ item: CGSize) -> [VisConstraint] {
+        for (index, offset) in [item.width, item.height].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -201,9 +195,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func equalTo(_ item: CGPoint) -> Array {
-        for (index, offset) in
-            [item.x, item.y].enumerated() {
+    public func equalTo(_ item: CGPoint) -> [VisConstraint] {
+        for (index, offset) in [item.x, item.y].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -214,7 +207,7 @@ public extension Array where Element: VisConstraint {
     
     // MARK: - greater than or equal
     @discardableResult
-    public func greaterThanOrEqualTo(_ item: UIView) -> Array {
+    public func greaterThanOrEqualTo(_ item: UIView) -> [VisConstraint] {
         for constraint in self {
             constraint.greaterThanOrEqualTo(item)
         }
@@ -222,7 +215,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func greaterThanOrEqualTo(_ item: CGFloat) -> Array {
+    public func greaterThanOrEqualTo(_ item: CGFloat) -> [VisConstraint] {
         for constraint in self {
             constraint.greaterThanOrEqualTo(item)
         }
@@ -230,7 +223,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func greaterThanOrEqualTo(_ item: VisConstraint) -> Array {
+    public func greaterThanOrEqualTo(_ item: VisConstraint) -> [VisConstraint] {
         for constraint in self {
             constraint.greaterThanOrEqualTo(item)
         }
@@ -238,9 +231,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func greaterThanOrEqualTo(_ item: CGSize) -> Array {
-        for (index, offset) in
-            [item.width, item.height].enumerated() {
+    public func greaterThanOrEqualTo(_ item: CGSize) -> [VisConstraint] {
+        for (index, offset) in [item.width, item.height].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -250,9 +242,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func greaterThanOrEqualTo(_ item: CGPoint) -> Array {
-        for (index, offset) in
-            [item.x, item.y].enumerated() {
+    public func greaterThanOrEqualTo(_ item: CGPoint) -> [VisConstraint] {
+        for (index, offset) in [item.x, item.y].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -263,7 +254,7 @@ public extension Array where Element: VisConstraint {
     
     // MARK: - less than or equal
     @discardableResult
-    public func lessThanOrEqualTo(_ item: UIView) -> Array {
+    public func lessThanOrEqualTo(_ item: UIView) -> [VisConstraint] {
         for constraint in self {
             constraint.lessThanOrEqualTo(item)
         }
@@ -271,7 +262,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func lessThanOrEqualTo(_ item: CGFloat) -> Array {
+    public func lessThanOrEqualTo(_ item: CGFloat) -> [VisConstraint] {
         for constraint in self {
             constraint.lessThanOrEqualTo(item)
         }
@@ -279,7 +270,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func lessThanOrEqualTo(_ item: VisConstraint) -> Array {
+    public func lessThanOrEqualTo(_ item: VisConstraint) -> [VisConstraint] {
         for constraint in self {
             constraint.lessThanOrEqualTo(item)
         }
@@ -287,9 +278,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func lessThanOrEqualTo(_ item: CGSize) -> Array {
-        for (index, offset) in
-            [item.width, item.height].enumerated() {
+    public func lessThanOrEqualTo(_ item: CGSize) -> [VisConstraint] {
+        for (index, offset) in [item.width, item.height].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -299,9 +289,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func lessThanOrEqualTo(_ item: CGPoint) -> Array {
-        for (index, offset) in
-            [item.x, item.y].enumerated() {
+    public func lessThanOrEqualTo(_ item: CGPoint) -> [VisConstraint] {
+        for (index, offset) in [item.x, item.y].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -312,7 +301,7 @@ public extension Array where Element: VisConstraint {
     
     // MARK: - other
     @discardableResult
-    public func multiplier(_ multiplier: CGFloat) -> Array {
+    public func multiplier(_ multiplier: CGFloat) -> [VisConstraint] {
         for constraint in self {
             constraint.multiplier(multiplier)
         }
@@ -320,7 +309,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func priority(_ priority: UILayoutPriority) -> Array {
+    public func priority(_ priority: UILayoutPriority) -> [VisConstraint] {
         for constraint in self {
             constraint.priority = priority
         }
@@ -328,7 +317,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func isActive(_ isActive: Bool) -> Array {
+    public func isActive(_ isActive: Bool) -> [VisConstraint] {
         for constraint in self {
             constraint.isActive = isActive
         }
@@ -336,7 +325,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> Array {
+    public func insets(_ insets: UIEdgeInsets) -> [VisConstraint] {
         for (index, offset) in
             [insets.top, insets.left, -insets.bottom, -insets.right].enumerated() {
             guard self.count > index else {
@@ -350,7 +339,7 @@ public extension Array where Element: VisConstraint {
     
     // MARK: - offset: [CGFloat], CGFloat, CGPoint, CGSize
     @discardableResult
-    public func offset(_ offsets: [CGFloat]) -> Array {
+    public func offset(_ offsets: [CGFloat]) -> [VisConstraint] {
         for (index, constraint) in self.enumerated() {
             var offset: CGFloat = 0
             
@@ -364,7 +353,7 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func offset(_ offset: CGFloat) -> Array {
+    public func offset(_ offset: CGFloat) -> [VisConstraint] {
         for constraint in self {
             constraint.offset(offset)
         }
@@ -372,9 +361,8 @@ public extension Array where Element: VisConstraint {
     }
 
     @discardableResult
-    public func offset(_ point: CGPoint) -> Array {
-        for (index, offset) in
-            [point.x, point.y].enumerated() {
+    public func offset(_ offset: CGPoint) -> [VisConstraint] {
+        for (index, offset) in [offset.x, offset.y].enumerated() {
             guard self.count > index else {
                 break
             }
@@ -384,9 +372,8 @@ public extension Array where Element: VisConstraint {
     }
     
     @discardableResult
-    public func offset(_ size: CGSize) -> Array {
-        for (index, offset) in
-            [size.width, size.height].enumerated() {
+    public func offset(_ offset: CGSize) -> [VisConstraint] {
+        for (index, offset) in [offset.width, offset.height].enumerated() {
             guard self.count > index else {
                 break
             }
