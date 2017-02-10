@@ -30,11 +30,10 @@ class VisExampleRemakeView: UIView {
     override func updateConstraints() {
         movingButton.vis_remakeConstraints { (make) in
             make.size.equalTo(100.0);
-            
             if (isLeft) {
-                [make.left, make.top].equalTo(self).offset(10)
+                make[.left, .top].equalTo(self).offset(10)
             } else {
-                [make.bottom, make.right].equalTo(self).offset(-10)
+                make[.bottom, .right].equalTo(self).offset(-10)
             }
         }
         
