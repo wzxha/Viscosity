@@ -28,6 +28,7 @@
 
 import UIKit
 
+// low -> high
 infix operator ~|: AssignmentPrecedence
 infix operator ~~: TernaryPrecedence
 infix operator +~: LogicalDisjunctionPrecedence
