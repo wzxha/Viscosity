@@ -14,6 +14,11 @@ Autolayout DSL for iOS <br/>
 ```swift
  view.vis_makeConstraints { (make) in
    make.left == view.vis_right *~ 2 +~ 100 ~~ UILayoutPriorityDefaultLow ~| true
+ }
+```
+
+```swift
+ view.vis_makeConstraints { (make) in
    make.size <= 100 ~~ UILayoutPriorityDefaultLow
  }
 ```
@@ -21,23 +26,19 @@ Autolayout DSL for iOS <br/>
 ```swift
  view.vis_makeConstraints { (make) in
    make[.left, .right, .top] == view
-   make.height == 100
  }
 ```
+
 
 ### Update
 
 ```swift
- view.vis_updateConstraints { (make) in
-   make.left == view +~ 100
- }
+ view.vis_updateConstraints { (make) in }
 ```
 
 ### Remake
 ```swift
- view.vis_remakeConstraints { (make) in
-   make.left.equalTo(view).offset(100)
- }
+ view.vis_remakeConstraints { (make) in }
 ```
 
 ## Operator
@@ -50,7 +51,7 @@ Autolayout DSL for iOS <br/>
 | +~ | mid | offset |
 | *~ | mid | multiplier |
 | ~~ | mid | priority |
-| ~| | mid | isActive |
+| ~\| | mid | isActive |
 
 
 ## Installation
