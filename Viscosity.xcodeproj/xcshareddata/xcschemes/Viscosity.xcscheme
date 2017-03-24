@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
+               BlueprintIdentifier = "OBJ_20"
                BuildableName = "Viscosity.framework"
                BlueprintName = "Viscosity"
                ReferencedContainer = "container:Viscosity.xcodeproj">
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_29"
+               BuildableName = "ViscosityTests.xctest"
+               BlueprintName = "ViscosityTests"
+               ReferencedContainer = "container:Viscosity.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -45,7 +55,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
+            BlueprintIdentifier = "OBJ_20"
             BuildableName = "Viscosity.framework"
             BlueprintName = "Viscosity"
             ReferencedContainer = "container:Viscosity.xcodeproj">
@@ -60,15 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E86C4951DF50D1E00F21E5E"
-            BuildableName = "Viscosity.framework"
-            BlueprintName = "Viscosity"
-            ReferencedContainer = "container:Viscosity.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
