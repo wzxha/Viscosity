@@ -28,7 +28,7 @@
 
 import UIKit
 
-public enum MakerType {
+internal enum MakerType {
     case normal
     case replace
     case update
@@ -52,30 +52,22 @@ public class Maker {
     internal func install(_ type: MakerType = .normal) {
         switch type {
         case .update:
-            for constraint in constraints {
-                let similars = constraintSimilar(to: constraint)
-                
-                guard let _ = similars.perfect else {
-                    if let rough = similars.rough {
-                        superView.removeConstraint(rough)
-                    }
-                    add(constraint: constraint)
-                    continue
-                }
-                
-                similars.perfect!.constant = constraint.constant
-            }
+            updateAllConstraints()
         case .replace:
             removeAllConstraints()
             fallthrough
         case .normal:
-            for constraint in constraints {
-                add(constraint: constraint)
-            }
+            addAllConstraints()
         }
     }
     
     // MARK: - Add
+    private func addAllConstraints() {
+        for constraint in constraints {
+            add(constraint: constraint)
+        }
+    }
+    
     private func add(constraint: Constraint) {
         let layoutConstraint: NSLayoutConstraint
             = NSLayoutConstraint(item:       view,
@@ -104,6 +96,23 @@ public class Maker {
             if view == self.view {
                 superView.removeConstraint(constraint)
             }
+        }
+    }
+    
+    // MARK: - Update
+    private func updateAllConstraints() -> Void {
+        for constraint in constraints {
+            let similars = constraintSimilar(to: constraint)
+            
+            guard let perfect = similars.perfect else {
+                if let rough = similars.rough {
+                    superView.removeConstraint(rough)
+                }
+                add(constraint: constraint)
+                continue
+            }
+            
+            perfect.constant = constraint.constant
         }
     }
     

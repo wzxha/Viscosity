@@ -21,7 +21,7 @@ class VisExampleViewController: UIViewController {
         let view = viewCls.init()
         self.view.addSubview(view)
         view.vis_makeConstraints { (make) in
-            (make.edges == self.view).insets(UIEdgeInsetsMake(64.0, 0, 0, 0))
+            make.edges == self.view +~ UIEdgeInsetsMake(64.0, 0, 0, 0)
         }
     }
     

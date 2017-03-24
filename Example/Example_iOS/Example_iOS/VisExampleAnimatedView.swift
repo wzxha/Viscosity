@@ -36,21 +36,21 @@ class VisExampleAnimatedView: UIView {
         self.addSubview(blueView)
         
         redView.vis_makeConstraints { (make) in
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            (make.bottom == blueView.vis_top).offset(-padding)
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+            make.bottom == blueView.vis_top +~ -padding
             make.size == greenView
             make.height == blueView
         }
         
         greenView.vis_makeConstraints { (make) in
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            (make.left == redView.vis_right).offset(padding)
-            (make.bottom == blueView.vis_top).offset(-padding)
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+            make.left == redView.vis_right +~ padding
+            make.bottom == blueView.vis_top +~ -padding
             make.height == blueView
         }
         
         blueView.vis_makeConstraints { (make) in
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
         }
     }
     
@@ -76,19 +76,19 @@ class VisExampleAnimatedView: UIView {
         let paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding)
         
         redView.vis_updateConstraints { (make) in
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            (make.bottom == blueView.vis_top).offset(-padding)
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+            make.bottom == blueView.vis_top +~ -padding
         }
         
         greenView.vis_updateConstraints { (make) in
-            (make.left == redView.vis_right).offset(padding)
-            (make.bottom == blueView.vis_top).offset(-padding)
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
+            make.left == redView.vis_right +~ padding
+            make.bottom == blueView.vis_top +~ -padding
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
         }
 
         
         blueView.vis_updateConstraints { (make) in
-            (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
+            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
         }
 
         

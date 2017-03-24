@@ -156,60 +156,15 @@ public extension UIView {
     }
 }
 
-public extension Array where Element: Constraint {
-    
-    @discardableResult
-    public func multiplier(_ multiplier: CGFloat) -> [Constraint] {
-        return self.map { $0.multiplier(multiplier) }
-    }
-    
-    @discardableResult
-    public func priority(_ priority: UILayoutPriority) -> [Constraint] {
-        return self.map { $0.priority(priority) }
-    }
-    
+public extension Array where Element: Constraint {    
     @discardableResult
     public func isActive(_ isActive: Bool) -> [Constraint] {
         return self.map { $0.isActive(isActive) }
     }
-    
-    @discardableResult
-    public func offset(_ offsets: [CGFloat]) -> [Constraint] {
-        for (index, constraint) in self.enumerated() {
-            var offset: CGFloat = 0
-            
-            if offsets.count > index {
-                offset = offsets[index]
-            }
-            
-            constraint.offset(offset)
-        }
-        return self
-    }
-
-    @discardableResult
-    public func offset(_ offset: CGPoint) -> [Constraint] {
-        return self.offset([offset.x, offset.y])
-    }
-    
-    @discardableResult
-    public func offset(_ offset: CGSize) -> [Constraint] {
-        return self.offset([offset.width, offset.height])
-    }
-    
-    @discardableResult
-    public func insets(_ insets: UIEdgeInsets) -> [Constraint] {
-        return self.offset([insets.top, insets.left, -insets.bottom, -insets.right])
-    }
-    
-    @discardableResult
-    public func offset(_ offset: CGFloat) -> [Constraint] {
-        return self.map { $0.offset(offset) }
-    }
 }
 
 
-// MARK: - Generic
+// MARK: - VisNumeric
 
 public protocol VisNumeric {
     var cgFloatValue: CGFloat { get }
@@ -238,6 +193,8 @@ extension CGFloat: VisNumeric {
     }
 }
 
+// MARK: - VisStruct
+
 public protocol VisStruct {
     var members: [CGFloat] { get }
 }
@@ -259,6 +216,8 @@ extension UIEdgeInsets: VisStruct {
         return [self.top, self.left, -self.bottom, -self.right]
     }
 }
+
+// MARK: - VisObject
 
 public protocol VisObject {}
 extension UIView: VisObject {}

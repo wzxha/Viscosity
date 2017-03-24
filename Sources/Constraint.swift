@@ -45,14 +45,14 @@ public class Constraint {
 
     // MARK: - other
     @discardableResult
-    public func offset(_ offset: CGFloat) -> Constraint {
-        constant = offset
+    public func offset <N: VisNumeric>(_ offset: N) -> Constraint {
+        constant = offset.cgFloatValue
         return self
     }
     
     @discardableResult
-    public func multiplier(_ multiplier: CGFloat) -> Constraint {
-        self.multiplier = multiplier
+    public func multiplier <N: VisNumeric>(_ multiplier: N) -> Constraint {
+        self.multiplier = multiplier.cgFloatValue
         return self
     }
     

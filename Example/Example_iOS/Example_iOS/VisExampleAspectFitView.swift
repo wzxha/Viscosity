@@ -36,8 +36,8 @@ class VisExampleAspectFitView: UIView {
         topView.addSubview(topInnerView)
         topInnerView.vis_makeConstraints { (make) in
             make.size <= topView
-            (make.size == topView).priority(UILayoutPriorityDefaultLow)
-            (make.width == topInnerView.vis_height).multiplier(3)
+            make.size == topView ~~ UILayoutPriorityDefaultLow
+            make.width == topInnerView.vis_height *~ 3
             make.center == topView
         }
         
@@ -45,8 +45,8 @@ class VisExampleAspectFitView: UIView {
         bottomView.addSubview(bottomInnerView)
         bottomInnerView.vis_makeConstraints { (make) in
             make.size <= bottomView
-            (make.size == bottomView).priority(UILayoutPriorityDefaultLow)
-            (make.height == bottomInnerView.vis_width).multiplier(3)
+            make.size == bottomView ~~ UILayoutPriorityDefaultLow
+            make.height == bottomInnerView.vis_width *~ 3
             make.center == bottomView
         }
     }

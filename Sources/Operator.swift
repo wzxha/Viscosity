@@ -28,12 +28,10 @@
 
 import UIKit
 
-infix operator ~~: VisPriorityPrecedence
-
-precedencegroup VisPriorityPrecedence {
-    lowerThan: ComparisonPrecedence
-    higherThan: AssignmentPrecedence
-}
+infix operator ~|: AssignmentPrecedence
+infix operator ~~: TernaryPrecedence
+infix operator +~: LogicalDisjunctionPrecedence
+infix operator *~: LogicalConjunctionPrecedence
 
 // MARK: - Constraint ==
 
@@ -77,22 +75,22 @@ precedencegroup VisPriorityPrecedence {
 // MARK: - [Constraint] ==
 
 @discardableResult public func == <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
-    return lhs.map { $0==rhs }
+    return lhs.map { $0 == rhs }
 }
 
 @discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
-    return lhs.map { $0==rhs }
+    return lhs.map { $0 == rhs }
 }
 
 @discardableResult public func == <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs==rhs.members
+    return lhs == rhs.members
 }
 
 @discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
     var index = 0
     return lhs.map { constraint in
         assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint==rhs[index]
+        constraint == rhs[index]
         index += 1
         return constraint
     }
@@ -102,22 +100,22 @@ precedencegroup VisPriorityPrecedence {
 // MARK: - [Constraint] >=
 
 @discardableResult public func >= <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
-    return lhs.map { $0>=rhs }
+    return lhs.map { $0 >= rhs }
 }
 
 @discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
-    return lhs.map { $0>=rhs }
+    return lhs.map { $0 >= rhs }
 }
 
 @discardableResult public func >= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs>=rhs.members
+    return lhs >= rhs.members
 }
 
 @discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
     var index = 0
     return lhs.map { constraint in
         assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint>=rhs[index]
+        constraint >= rhs[index]
         index += 1
         return constraint
     }
@@ -127,25 +125,105 @@ precedencegroup VisPriorityPrecedence {
 // MARK: - [Constraint] <=
 
 @discardableResult public func <= <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
-    return lhs.map { $0<=rhs }
+    return lhs.map { $0 <= rhs }
 }
 
 @discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
-    return lhs.map { $0<=rhs }
+    return lhs.map { $0 <= rhs }
 }
 
 @discardableResult public func <= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs<=rhs.members
+    return lhs <= rhs.members
 }
 
 @discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
     var index = 0
     return lhs.map { constraint in
         assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint<=rhs[index]
+        constraint <= rhs[index]
         index += 1
         return constraint
     }
 }
+
+// MARK: - + 
+
+@discardableResult public func +~ <N: VisNumeric>(lhs: Constraint, rhs: N) -> Constraint {
+    return lhs.offset(rhs)
+}
+
+@discardableResult public func +~ <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
+    return lhs.map { $0.offset(rhs) }
+}
+
+@discardableResult public func +~ <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
+    return lhs +~ rhs.members
+}
+
+@discardableResult public func +~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
+    var index = 0
+    return lhs.map { constraint in
+        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
+        constraint.offset(rhs[index])
+        index += 1
+        return constraint
+    }
+}
+
+
+// MARK: - *
+
+@discardableResult public func *~ <N: VisNumeric>(lhs: Constraint, rhs: N) -> Constraint {
+    return lhs.multiplier(rhs)
+}
+
+@discardableResult public func *~ <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
+    return lhs.map { $0.multiplier(rhs) }
+}
+
+@discardableResult public func *~ <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
+    return lhs *~ rhs.members
+}
+
+@discardableResult public func *~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
+    var index = 0
+    return lhs.map { constraint in
+        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
+        constraint.multiplier(rhs[index])
+        index += 1
+        return constraint
+    }
+}
+
+
+// MARK: - priority
+
+@discardableResult public func ~~(lhs: Constraint, rhs: UILayoutPriority) -> Constraint {
+    return lhs.priority(rhs)
+}
+
+@discardableResult public func ~~(lhs: [Constraint], rhs: UILayoutPriority) -> [Constraint] {
+    return lhs.map { $0.priority(rhs) }
+}
+
+
+// MARK: - isActive
+
+@discardableResult public func ~|(lhs: Constraint, rhs: Bool) -> Constraint {
+    return lhs.isActive(rhs)
+}
+
+@discardableResult public func ~|(lhs: [Constraint], rhs: Bool) -> [Constraint] {
+    return lhs.map { $0.isActive(rhs) }
+}
+
+
+
+
+
+
+
+
+
 
 

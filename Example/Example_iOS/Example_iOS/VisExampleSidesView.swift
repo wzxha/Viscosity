@@ -24,7 +24,7 @@ class VisExampleSidesView: UIView {
             self.addSubview(view)
             
             view.vis_makeConstraints({ (make) in
-                (make.edges == lastView).insets(UIEdgeInsetsMake(5, 10, 15, 20))
+                make.edges == lastView +~ UIEdgeInsetsMake(5, 10, 15, 20)
             })
             
             lastView = view

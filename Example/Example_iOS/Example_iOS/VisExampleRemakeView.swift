@@ -33,9 +33,9 @@ class VisExampleRemakeView: UIView {
             make.width == 100.0
             make.height == 100.0
             if (isLeft) {
-                (make[.left, .top] == self).offset(10)
+                make[.left, .top] == self +~ 10
             } else {
-                (make[.bottom, .right] == self).offset(-10)
+                make[.bottom, .right] == self +~ -10
             }
         }
         

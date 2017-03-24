@@ -32,7 +32,7 @@ class VisExampleUpdateView: UIView {
         growingButton.vis_updateConstraints { (make) in
             make.center == self
             make.size <= self
-            (make.size == buttonSize).priority(UILayoutPriorityDefaultLow)
+            make.size == buttonSize ~~ UILayoutPriorityDefaultLow
         }
         
         super.updateConstraints()

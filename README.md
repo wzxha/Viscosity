@@ -4,18 +4,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/Viscosity.svg?style=flat)](https://github.com/Wzxhaha/Viscosity)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Viscosity.svg)](https://cocoapods.org/pods/Viscosity)
 <br/>
-Autolayout DSL for iOS, simple and powerful.
-
-## Requirements
-- iOS 8.0+
-- Xcode 8.0+
-- Swift 3.0+
-
-## Able to do
-- Support mode: normal, update and remake.
-- Support All `NSLayoutAttribute`
-- Support `center` and `edges`
-- And a lot of powerful usage, You can look at the `examples` in the file
+Autolayout DSL for iOS <br/>
+**Simple** and **Powerful**.
 
 ## Usage
 
@@ -23,15 +13,15 @@ Autolayout DSL for iOS, simple and powerful.
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make.left.equalTo(view.vis_right).offset(100).multiplier(2).priority(10)
-   make.size.lessThanOrEqualTo(100).priority(10)
+   make.left == view.vis_right *~ 2 +~ 100 ~~ UILayoutPriorityDefaultLow ~| true
+   make.size <= 100 ~~ UILayoutPriorityDefaultLow
  }
 ```
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make[.left, .right, .top].equalTo(view)
-   make.height.equalTo(100)
+   make[.left, .right, .top] == view
+   make.height == 100
  }
 ```
 
@@ -39,7 +29,7 @@ Autolayout DSL for iOS, simple and powerful.
 
 ```swift
  view.vis_updateConstraints { (make) in
-   make.left.equalTo(view).offset(100)
+   make.left == view +~ 100
  }
 ```
 
@@ -50,7 +40,32 @@ Autolayout DSL for iOS, simple and powerful.
  }
 ```
 
+## Operator
+
+| Operator | Position | Description |
+| ---------|:--------:| -----------:|
+| == | mid | equal |
+| >= | mid | greaterThanOrEqual |
+| <= | mid | lessThanOrEqual |
+| +~ | mid | offset |
+| *~ | mid | multiplier |
+| ~~ | mid | priority |
+| ~| | mid | isActive |
+
+
 ## Installation
+
+### Swift Package Manager
+
+Package.swift
+```swift
+let package = Package(
+    name: "XXX",
+    dependencies: [
+        .Package(url: "https://github.com/Wzxhaha/Viscosity", "1.3")
+    ]
+)
+```
 
 ### CocoaPods
 
@@ -79,9 +94,6 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
-
-## Contact me
-Email: `wzxjiang@foxmail.com`
 
 ## License
 Viscosity is released under the MIT license. See LICENSE for details.
