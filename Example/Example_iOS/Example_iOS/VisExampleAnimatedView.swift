@@ -37,15 +37,15 @@ class VisExampleAnimatedView: UIView {
         
         redView.vis_makeConstraints { (make) in
             (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            make.bottom == blueView.vis_top ~~ -padding
+            (make.bottom == blueView.vis_top).offset(-padding)
             make.size == greenView
             make.height == blueView
         }
         
         greenView.vis_makeConstraints { (make) in
             (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            make.left == redView.vis_right ~~ padding
-            make.bottom == blueView.vis_top ~~ -padding
+            (make.left == redView.vis_right).offset(padding)
+            (make.bottom == blueView.vis_top).offset(-padding)
             make.height == blueView
         }
         
@@ -77,12 +77,12 @@ class VisExampleAnimatedView: UIView {
         
         redView.vis_updateConstraints { (make) in
             (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
-            make.bottom == blueView.vis_top ~~ -padding
+            (make.bottom == blueView.vis_top).offset(-padding)
         }
         
         greenView.vis_updateConstraints { (make) in
-            make.left == redView.vis_right ~~ padding
-            make.bottom == blueView.vis_top ~~ -padding
+            (make.left == redView.vis_right).offset(padding)
+            (make.bottom == blueView.vis_top).offset(-padding)
             (make.edges == self).insets(paddingInsets).priority(UILayoutPriorityDefaultLow)
         }
 

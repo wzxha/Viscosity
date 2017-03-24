@@ -29,18 +29,18 @@ class VisExampleBasicView: UIView {
         self.addSubview(blueView)
         
         redView.vis_makeConstraints { (make) in
-            make[.top, .left] == self ~~ padding
+            (make[.top, .left] == self).offset(padding)
         }
         
         greenView.vis_makeConstraints { (make) in
-            make.left == redView.vis_right ~~ padding
-            make[.right, .top] == self ~~ [-padding, padding]
+            (make.left == redView.vis_right).offset(padding)
+            (make[.right, .top] == self).offset([-padding, padding])
             make[.bottom, .width] == redView
         }
         
         blueView.vis_makeConstraints { (make) in
-            make[.left, .right, .bottom] == self ~~ [padding, -padding, -padding]
-            make.top == redView.vis_bottom ~~ padding
+            (make[.left, .right, .bottom] == self).offset([padding, -padding, -padding])
+            (make.top == redView.vis_bottom).offset(padding)
             make.height == redView
         }
     }

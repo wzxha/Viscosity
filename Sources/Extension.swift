@@ -158,7 +158,6 @@ public extension UIView {
 
 public extension Array where Element: Constraint {
     
-    // MARK: - other
     @discardableResult
     public func multiplier(_ multiplier: CGFloat) -> [Constraint] {
         return self.map { $0.multiplier(multiplier) }
@@ -208,3 +207,60 @@ public extension Array where Element: Constraint {
         return self.map { $0.offset(offset) }
     }
 }
+
+
+// MARK: - Generic
+
+public protocol VisNumeric {
+    var cgFloatValue: CGFloat { get }
+}
+
+extension Int: VisNumeric {
+    public var cgFloatValue: CGFloat {
+        return CGFloat(self)
+    }
+}
+
+extension Float: VisNumeric {
+    public var cgFloatValue: CGFloat {
+        return CGFloat(self)
+    }
+}
+
+extension Double: VisNumeric {
+    public var cgFloatValue: CGFloat {
+        return CGFloat(self)
+    }
+}
+extension CGFloat: VisNumeric {
+    public var cgFloatValue: CGFloat {
+        return self
+    }
+}
+
+public protocol VisStruct {
+    var members: [CGFloat] { get }
+}
+
+extension CGPoint: VisStruct {
+    public var members: [CGFloat] {
+        return [self.x, self.y]
+    }
+}
+
+extension CGSize: VisStruct {
+    public var members: [CGFloat] {
+        return [self.width, self.height]
+    }
+}
+
+extension UIEdgeInsets: VisStruct {
+    public var members: [CGFloat] {
+        return [self.top, self.left, -self.bottom, -self.right]
+    }
+}
+
+public protocol VisObject {}
+extension UIView: VisObject {}
+extension Constraint: VisObject {}
+

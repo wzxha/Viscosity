@@ -68,18 +68,28 @@ public class Constraint {
         return self
     }
     
+    internal func set <N: VisNumeric> (number: N, relation: NSLayoutRelation) {
+        toItem = nil
+        constant = number.cgFloatValue
+        self.relation = relation
+    }
+    
+    internal func set <O: VisObject> (object: O, relation: NSLayoutRelation) {
+        switch object {
+        case is UIView:
+            set(view: object as! UIView, relation: relation)
+        case is Constraint:
+            set(constraint: object as! Constraint, relation: relation)
+        default: break
+        }
+    }
+    
     internal func set(view: UIView, relation: NSLayoutRelation) {
         toItem        = view
         toAttribute   = attribute
         self.relation = relation
     }
-    
-    internal func set(number: CGFloat, relation: NSLayoutRelation) {
-        toItem        = nil
-        constant      = number
-        self.relation = relation
-    }
-    
+   
     internal func set(constraint: Constraint, relation: NSLayoutRelation) {
         toItem        = constraint.toItem
         toAttribute   = constraint.attribute

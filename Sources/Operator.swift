@@ -35,106 +35,117 @@ precedencegroup VisPriorityPrecedence {
     higherThan: AssignmentPrecedence
 }
 
+// MARK: - Constraint ==
 
-@discardableResult public func ==(lhs: Constraint, rhs: UIView) -> Constraint {
-    lhs.set(view: rhs, relation: .equal)
+@discardableResult public func == <O: VisObject>(lhs: Constraint, rhs: O) -> Constraint {
+    lhs.set(object: rhs, relation: .equal)
     return lhs
 }
 
-@discardableResult public func ==(lhs: Constraint, rhs: CGFloat) -> Constraint {
+@discardableResult public func == <N: VisNumeric>(lhs: Constraint, rhs: N) -> Constraint {
     lhs.set(number: rhs, relation: .equal)
     return lhs
 }
 
-@discardableResult public func ==(lhs: Constraint, rhs: Constraint) -> Constraint {
-    lhs.set(constraint: rhs, relation: .equal)
+
+// MARK: - Constraint >=
+
+@discardableResult public func >= <O: VisObject>(lhs: Constraint, rhs: O) -> Constraint {
+    lhs.set(object: rhs, relation: .greaterThanOrEqual)
     return lhs
 }
 
-@discardableResult public func >=<T>(lhs: Constraint, rhs: T) -> Constraint {
-    switch rhs {
-    case is UIView:
-        lhs.set(view: rhs as! UIView, relation: .greaterThanOrEqual)
-    case is Constraint:
-        lhs.set(constraint: rhs as! Constraint, relation: .greaterThanOrEqual)
-    case is CGFloat, is Int, is Float:
-        lhs.set(number: rhs as! CGFloat, relation: .greaterThanOrEqual)
-    default: break
-    }
-    return lhs
-}
-
-@discardableResult public func <=<T>(lhs: Constraint, rhs: T) -> Constraint {
-    switch rhs {
-    case is UIView:
-        lhs.set(view: rhs as! UIView, relation: .lessThanOrEqual)
-    case is Constraint:
-        lhs.set(constraint: rhs as! Constraint, relation: .lessThanOrEqual)
-    case is CGFloat, is Int, is Float:
-        lhs.set(number: rhs as! CGFloat, relation: .lessThanOrEqual)
-    default: break
-    }
-    return lhs
-}
-
-@discardableResult public func ~~(lhs: Constraint, rhs: CGFloat) -> Constraint {
-    lhs.offset(rhs)
+@discardableResult public func >= <N: VisNumeric>(lhs: Constraint, rhs: N) -> Constraint {
+    lhs.set(number: rhs, relation: .greaterThanOrEqual)
     return lhs
 }
 
 
-// MARK: Array
+// MARK: - Constraint <=
 
-@discardableResult public func ==(lhs: [Constraint], rhs: UIView) -> [Constraint] {
+@discardableResult public func <= <O: VisObject>(lhs: Constraint, rhs: O) -> Constraint {
+    lhs.set(object: rhs, relation: .lessThanOrEqual)
+    return lhs
+}
+
+@discardableResult public func <= <N: VisNumeric>(lhs: Constraint, rhs: N) -> Constraint {
+    lhs.set(number: rhs, relation: .lessThanOrEqual)
+    return lhs
+}
+
+
+// MARK: - [Constraint] ==
+
+@discardableResult public func == <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
     return lhs.map { $0==rhs }
 }
 
-@discardableResult public func ==(lhs: [Constraint], rhs: CGFloat) -> [Constraint] {
+@discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
     return lhs.map { $0==rhs }
 }
 
-@discardableResult public func ==(lhs: [Constraint], rhs: [CGFloat]) -> [Constraint] {
+@discardableResult public func == <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
+    return lhs==rhs.members
+}
+
+@discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
     var index = 0
     return lhs.map { constraint in
-        var offset: CGFloat = 0
-        if rhs.count > index {
-            offset = rhs[index]
-        }
+        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
+        constraint==rhs[index]
         index += 1
-        return constraint==offset
+        return constraint
     }
 }
 
-@discardableResult public func ==(lhs: [Constraint], rhs: CGSize) -> [Constraint] {
-    return lhs==[rhs.width, rhs.height]
-}
 
-@discardableResult public func ==(lhs: [Constraint], rhs: Constraint) -> [Constraint] {
-    return lhs.map { $0==rhs }
-}
+// MARK: - [Constraint] >=
 
-@discardableResult public func >=<T>(lhs: [Constraint], rhs: T) -> [Constraint] {
+@discardableResult public func >= <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
     return lhs.map { $0>=rhs }
 }
 
-@discardableResult public func <=<T>(lhs: [Constraint], rhs: T) -> [Constraint] {
-    return lhs.map { $0<=rhs }
+@discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
+    return lhs.map { $0>=rhs }
 }
 
-@discardableResult public func ~~(lhs: [Constraint], rhs: [CGFloat]) -> [Constraint] {
+@discardableResult public func >= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
+    return lhs>=rhs.members
+}
+
+@discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
     var index = 0
     return lhs.map { constraint in
-        var offset: CGFloat = 0
-        if rhs.count > index {
-            offset = rhs[index]
-        }
+        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
+        constraint>=rhs[index]
         index += 1
-        return constraint~~offset
+        return constraint
     }
 }
 
-@discardableResult public func ~~(lhs: [Constraint], rhs: CGFloat) -> [Constraint] {
-    return lhs~~Array(repeating: rhs, count: lhs.count)
+
+// MARK: - [Constraint] <=
+
+@discardableResult public func <= <O: VisObject>(lhs: [Constraint], rhs: O) -> [Constraint] {
+    return lhs.map { $0<=rhs }
+}
+
+@discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: N) -> [Constraint] {
+    return lhs.map { $0<=rhs }
+}
+
+@discardableResult public func <= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
+    return lhs<=rhs.members
+}
+
+@discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
+    var index = 0
+    return lhs.map { constraint in
+        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
+        constraint<=rhs[index]
+        index += 1
+        return constraint
+    }
 }
 
 
