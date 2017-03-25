@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E805ACB1E84BE1800D77BEB /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E805ACA1E84BE1800D77BEB /* Operator.swift */; };
 		1E805ACD1E84C2A300D77BEB /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E805ACC1E84C2A300D77BEB /* Subscript.swift */; };
-		1EA144D91E85FAFF004ECFF4 /* MakeConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA144D81E85FAFF004ECFF4 /* MakeConstraintsTests.swift */; };
-		1EA144DB1E85FBF0004ECFF4 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA144DA1E85FBF0004ECFF4 /* Description.swift */; };
 		OBJ_25 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Constraint.swift */; };
 		OBJ_26 /* Maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Maker.swift */; };
 		OBJ_27 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extension.swift */; };
@@ -31,8 +29,6 @@
 /* Begin PBXFileReference section */
 		1E805ACA1E84BE1800D77BEB /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		1E805ACC1E84C2A300D77BEB /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
-		1EA144D81E85FAFF004ECFF4 /* MakeConstraintsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeConstraintsTests.swift; sourceTree = "<group>"; };
-		1EA144DA1E85FBF0004ECFF4 /* Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maker.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		OBJ_14 /* ViscosityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViscosityTests.swift; sourceTree = "<group>"; };
@@ -72,9 +68,7 @@
 		OBJ_13 /* ViscosityTests */ = {
 			isa = PBXGroup;
 			children = (
-				1EA144DA1E85FBF0004ECFF4 /* Description.swift */,
 				OBJ_14 /* ViscosityTests.swift */,
-				1EA144D81E85FAFF004ECFF4 /* MakeConstraintsTests.swift */,
 			);
 			name = ViscosityTests;
 			path = Tests/ViscosityTests;
@@ -187,10 +181,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				1EA144D91E85FAFF004ECFF4 /* MakeConstraintsTests.swift in Sources */,
 				OBJ_25 /* Constraint.swift in Sources */,
 				1E805ACB1E84BE1800D77BEB /* Operator.swift in Sources */,
-				1EA144DB1E85FBF0004ECFF4 /* Description.swift in Sources */,
 				OBJ_26 /* Maker.swift in Sources */,
 				1E805ACD1E84C2A300D77BEB /* Subscript.swift in Sources */,
 				OBJ_27 /* Extension.swift in Sources */,
