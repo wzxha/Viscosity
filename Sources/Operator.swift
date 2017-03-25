@@ -84,7 +84,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func == <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs == rhs.members
+    return lhs == rhs.vis_members
 }
 
 @discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
@@ -109,7 +109,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func >= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs >= rhs.members
+    return lhs >= rhs.vis_members
 }
 
 @discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
@@ -134,7 +134,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func <= <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs <= rhs.members
+    return lhs <= rhs.vis_members
 }
 
 @discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
@@ -158,7 +158,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func +~ <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs +~ rhs.members
+    return lhs +~ rhs.vis_members
 }
 
 @discardableResult public func +~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
@@ -183,7 +183,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func *~ <S: VisStruct>(lhs: [Constraint], rhs: S) -> [Constraint] {
-    return lhs *~ rhs.members
+    return lhs *~ rhs.vis_members
 }
 
 @discardableResult public func *~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {

@@ -41,7 +41,7 @@ public class Maker {
     private var superView: UIView!
     
     init(view: UIView) {
-        assert(view.superview != nil, "[Viscosity]: \(view) superview == nil")
+        assert(view.superview != nil, "[Viscosity Error]: \(view) superview == nil")
         
         view.translatesAutoresizingMaskIntoConstraints = false
         

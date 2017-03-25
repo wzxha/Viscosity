@@ -156,39 +156,32 @@ public extension UIView {
     }
 }
 
-public extension Array where Element: Constraint {    
-    @discardableResult
-    public func isActive(_ isActive: Bool) -> [Constraint] {
-        return self.map { $0.isActive(isActive) }
-    }
-}
-
 
 // MARK: - VisNumeric
 
 public protocol VisNumeric {
-    var cgFloatValue: CGFloat { get }
+    var vis_floatValue: CGFloat { get }
 }
 
 extension Int: VisNumeric {
-    public var cgFloatValue: CGFloat {
+    public var vis_floatValue: CGFloat {
         return CGFloat(self)
     }
 }
 
 extension Float: VisNumeric {
-    public var cgFloatValue: CGFloat {
+    public var vis_floatValue: CGFloat {
         return CGFloat(self)
     }
 }
 
 extension Double: VisNumeric {
-    public var cgFloatValue: CGFloat {
+    public var vis_floatValue: CGFloat {
         return CGFloat(self)
     }
 }
 extension CGFloat: VisNumeric {
-    public var cgFloatValue: CGFloat {
+    public var vis_floatValue: CGFloat {
         return self
     }
 }
@@ -196,23 +189,23 @@ extension CGFloat: VisNumeric {
 // MARK: - VisStruct
 
 public protocol VisStruct {
-    var members: [CGFloat] { get }
+    var vis_members: [CGFloat] { get }
 }
 
 extension CGPoint: VisStruct {
-    public var members: [CGFloat] {
+    public var vis_members: [CGFloat] {
         return [self.x, self.y]
     }
 }
 
 extension CGSize: VisStruct {
-    public var members: [CGFloat] {
+    public var vis_members: [CGFloat] {
         return [self.width, self.height]
     }
 }
 
 extension UIEdgeInsets: VisStruct {
-    public var members: [CGFloat] {
+    public var vis_members: [CGFloat] {
         return [self.top, self.left, -self.bottom, -self.right]
     }
 }

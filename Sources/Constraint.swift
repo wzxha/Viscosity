@@ -45,32 +45,32 @@ public class Constraint {
 
     // MARK: - other
     @discardableResult
-    public func offset <N: VisNumeric>(_ offset: N) -> Constraint {
-        constant = offset.cgFloatValue
+    internal func offset <N: VisNumeric>(_ offset: N) -> Constraint {
+        constant = offset.vis_floatValue
         return self
     }
     
     @discardableResult
-    public func multiplier <N: VisNumeric>(_ multiplier: N) -> Constraint {
-        self.multiplier = multiplier.cgFloatValue
+    internal func multiplier <N: VisNumeric>(_ multiplier: N) -> Constraint {
+        self.multiplier = multiplier.vis_floatValue
         return self
     }
     
     @discardableResult
-    public func priority(_ priority: UILayoutPriority) -> Constraint {
+    internal func priority(_ priority: UILayoutPriority) -> Constraint {
         self.priority = priority
         return self
     }
     
     @discardableResult
-    public func isActive(_ isActive: Bool) -> Constraint {
+    internal func isActive(_ isActive: Bool) -> Constraint {
         self.isActive = isActive
         return self
     }
     
     internal func set <N: VisNumeric> (number: N, relation: NSLayoutRelation) {
         toItem = nil
-        constant = number.cgFloatValue
+        constant = number.vis_floatValue
         self.relation = relation
     }
     
