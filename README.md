@@ -63,7 +63,7 @@ Package.swift
 let package = Package(
     name: "XXX",
     dependencies: [
-        .Package(url: "https://github.com/Wzxhaha/Viscosity", "1.3")
+        .Package(url: "https://github.com/Wzxhaha/Viscosity", "1.4")
     ]
 )
 ```
@@ -85,7 +85,7 @@ To integrate Viscosity into your Xcode project using CocoaPods, specify it in yo
 target '<Your Target Name>' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Viscosity', '~> 1.1'
+  pod 'Viscosity', '~> 1.4'
 
 end
 ```
