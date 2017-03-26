@@ -4,18 +4,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/Viscosity.svg?style=flat)](https://github.com/Wzxhaha/Viscosity)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Viscosity.svg)](https://cocoapods.org/pods/Viscosity)
 <br/>
-Autolayout DSL for iOS, simple and powerful.
-
-## Requirements
-- iOS 8.0+
-- Xcode 8.0+
-- Swift 3.0+
-
-## Able to do
-- Support mode: normal, update and remake.
-- Support All `NSLayoutAttribute`
-- Support `center` and `edges`
-- And a lot of powerful usage, You can look at the `examples` in the file
+Autolayout DSL for iOS <br/>
+**Simple** and **Powerful**.
 
 ## Usage
 
@@ -23,34 +13,60 @@ Autolayout DSL for iOS, simple and powerful.
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make.left.equalTo(view.vis_right).offset(100).multiplier(2).priority(10)
-   make.size.lessThanOrEqualTo(100).priority(10)
+   make.left == view.vis_right *~ 2 +~ 100 ~~ UILayoutPriorityDefaultLow ~| true
  }
 ```
 
 ```swift
  view.vis_makeConstraints { (make) in
-   make[.left, .right, .top].equalTo(view)
-   make.height.equalTo(100)
+   make.size <= 100 ~~ UILayoutPriorityDefaultLow
  }
 ```
+
+```swift
+ view.vis_makeConstraints { (make) in
+   make[.left, .right, .top] == view
+ }
+```
+
 
 ### Update
 
 ```swift
- view.vis_updateConstraints { (make) in
-   make.left.equalTo(view).offset(100)
- }
+ view.vis_updateConstraints { (make) in }
 ```
 
 ### Remake
 ```swift
- view.vis_remakeConstraints { (make) in
-   make.left.equalTo(view).offset(100)
- }
+ view.vis_remakeConstraints { (make) in }
 ```
 
+## Operator
+
+| Operator | Position | Description |
+| ---------|:--------:| -----------:|
+| == | mid | equal |
+| >= | mid | greaterThanOrEqual |
+| <= | mid | lessThanOrEqual |
+| +~ | mid | offset |
+| *~ | mid | multiplier |
+| ~~ | mid | priority |
+| ~\| | mid | isActive |
+
+
 ## Installation
+
+### Swift Package Manager
+
+Package.swift
+```swift
+let package = Package(
+    name: "XXX",
+    dependencies: [
+        .Package(url: "https://github.com/Wzxhaha/Viscosity", "1.4")
+    ]
+)
+```
 
 ### CocoaPods
 
@@ -69,7 +85,7 @@ To integrate Viscosity into your Xcode project using CocoaPods, specify it in yo
 target '<Your Target Name>' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Viscosity', '~> 1.1'
+  pod 'Viscosity', '~> 1.4'
 
 end
 ```
@@ -79,9 +95,6 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
-
-## Contact me
-Email: `wzxjiang@foxmail.com`
 
 ## License
 Viscosity is released under the MIT license. See LICENSE for details.
