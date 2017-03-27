@@ -212,7 +212,7 @@ extension UIEdgeInsets: VisStruct {
 
 // MARK: - VisObject
 
-public protocol VisObject {}
+public protocol VisObject: class {}
 extension UIView: VisObject {}
 extension Constraint: VisObject {}
 

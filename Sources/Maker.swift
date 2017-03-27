@@ -28,13 +28,13 @@
 
 import UIKit
 
-internal enum MakerType {
-    case normal
-    case replace
-    case update
-}
-
 public class Maker {
+
+    internal enum MakerType {
+        case normal
+        case replace
+        case update
+    }
     
     private var constraints: [Constraint] = []
     private var view: UIView!
@@ -148,10 +148,10 @@ public class Maker {
         constraints.append(constraint)
         return constraint
     }
-}
-
-// MARK: - constraints
-extension Maker {
+    
+    
+    // MARK: - constraints
+    
     public var left: Constraint {
         return constraint(withAttribute: .left)
     }
@@ -253,4 +253,5 @@ extension Maker {
         return [width, height]
     }
 }
+
 
