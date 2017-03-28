@@ -30,19 +30,19 @@ import UIKit
 
 public extension UIView {
     
-    public func vis_makeConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
+    public func vis_makeConstraints(_ closure: (Maker) -> Void) {
         let maker = Maker(view: self)
         closure(maker)
         maker.install(.normal)
     }
     
-    public func vis_remakeConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
+    public func vis_remakeConstraints(_ closure: (Maker) -> Void) {
         let maker = Maker(view: self)
         closure(maker)
         maker.install(.replace)
     }
     
-    public func vis_updateConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
+    public func vis_updateConstraints(_ closure: (Maker) -> Void) {
         let maker = Maker(view: self)
         closure(maker)
         maker.install(.update)
