@@ -12,19 +12,19 @@ Autolayout DSL for iOS <br/>
 ### Normal
 
 ```swift
- view.vis_makeConstraints { make in
-   make.left == view.vis_right *~ 2 +~ 100 ~~ UILayoutPriorityDefaultLow ~| true
+ view.vis.makeConstraints { make in
+   make.left == view.vis.right *~ 2 +~ 100 ~~ .low ~| true
  }
 ```
 
 ```swift
- view.vis_makeConstraints { make in
-   make.size <= 100 ~~ UILayoutPriorityDefaultLow
+ view.vis.makeConstraints { make in
+   make.size <= 100 ~~ .low
  }
 ```
 
 ```swift
- view.vis_makeConstraints { make in
+ view.vis.makeConstraints { make in
    make[.left, .right, .top] == view
    make[.width, .height] == [100, 100] 
    // equal to `make[.width, .height] == 100`
@@ -36,12 +36,12 @@ Autolayout DSL for iOS <br/>
 ### Update
 
 ```swift
- view.vis_updateConstraints { make in }
+ view.vis.updateConstraints { make in }
 ```
 
 ### Remake
 ```swift
- view.vis_remakeConstraints { make in }
+ view.vis.remakeConstraints { make in }
 ```
 
 ## Operator
