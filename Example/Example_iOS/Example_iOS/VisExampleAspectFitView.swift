@@ -13,40 +13,40 @@ class VisExampleAspectFitView: UIView {
 
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
         
         let topView = UIView.exampleView(color: UIColor.blue.withAlphaComponent(0.5))
-        self.addSubview(topView)
-        topView.vis_makeConstraints { (make) in
+        addSubview(topView)
+        topView.vis.makeConstraints { (make) in
             make[.left, .right, .top] == self
         }
         
         let bottomView = UIView.exampleView(color: UIColor.green.withAlphaComponent(0.5))
-        self.addSubview(bottomView)
-        bottomView.vis_makeConstraints { (make) in
+        addSubview(bottomView)
+        bottomView.vis.makeConstraints { (make) in
             make[.left, .right, .bottom] == self
-            make.top == topView.vis_bottom
+            make.top == topView.vis.bottom
             make.height == topView
         }
         
         let topInnerView = UIView.exampleView(color: .blue)
         topView.addSubview(topInnerView)
-        topInnerView.vis_makeConstraints { (make) in
+        topInnerView.vis.makeConstraints { (make) in
             make.size <= topView
-            make.size == topView ~~ UILayoutPriorityDefaultLow
-            make.width == topInnerView.vis_height *~ 3
+            make.size == topView ~~ .low
+            make.width == topInnerView.vis.height *~ 3
             make.center == topView
         }
         
         let bottomInnerView = UIView.exampleView(color: .green)
         bottomView.addSubview(bottomInnerView)
-        bottomInnerView.vis_makeConstraints { (make) in
+        bottomInnerView.vis.makeConstraints { (make) in
             make.size <= bottomView
-            make.size == bottomView ~~ UILayoutPriorityDefaultLow
-            make.height == bottomInnerView.vis_width *~ 3
+            make.size == bottomView ~~ .low
+            make.height == bottomInnerView.vis.width *~ 3
             make.center == bottomView
         }
     }

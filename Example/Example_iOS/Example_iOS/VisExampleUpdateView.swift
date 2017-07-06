@@ -16,7 +16,7 @@ class VisExampleUpdateView: UIView {
     
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
@@ -25,14 +25,14 @@ class VisExampleUpdateView: UIView {
         growingButton.layer.borderColor = UIColor.green.cgColor
         growingButton.layer.borderWidth = 3
         growingButton.addTarget(self, action: #selector(didTapGrowButton(sender:)), for: .touchUpInside)
-        self.addSubview(growingButton)
+        addSubview(growingButton)
     }
     
     override func updateConstraints() {
-        growingButton.vis_updateConstraints { (make) in
+        growingButton.vis.updateConstraints { (make) in
             make.center == self
             make.size <= self
-            make.size == buttonSize ~~ UILayoutPriorityDefaultLow
+            make.size == buttonSize ~~ .low
         }
         
         super.updateConstraints()
@@ -41,8 +41,8 @@ class VisExampleUpdateView: UIView {
     func didTapGrowButton(sender: UIButton) -> Void {
         buttonSize *= 1.5
         
-        self.setNeedsUpdateConstraints()
-        self.updateConstraintsIfNeeded()
+        setNeedsUpdateConstraints()
+        updateConstraintsIfNeeded()
         
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()

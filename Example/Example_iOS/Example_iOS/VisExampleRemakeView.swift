@@ -16,7 +16,7 @@ class VisExampleRemakeView: UIView {
     
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
@@ -25,11 +25,11 @@ class VisExampleRemakeView: UIView {
         movingButton.layer.borderColor = UIColor.green.cgColor
         movingButton.layer.borderWidth = 2
         movingButton.addTarget(self, action: #selector(didTapMovingButton(sender:)), for: .touchUpInside)
-        self.addSubview(movingButton)
+        addSubview(movingButton)
     }
     
     override func updateConstraints() {
-        movingButton.vis_remakeConstraints { (make) in
+        movingButton.vis.remakeConstraints { (make) in
             make.width == 100.0
             make.height == 100.0
             if (isLeft) {
@@ -45,8 +45,8 @@ class VisExampleRemakeView: UIView {
     func didTapMovingButton(sender: UIButton) -> Void {
         isLeft = !isLeft
         
-        self.setNeedsUpdateConstraints()
-        self.updateConstraintsIfNeeded()
+        setNeedsUpdateConstraints()
+        updateConstraintsIfNeeded()
         
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()

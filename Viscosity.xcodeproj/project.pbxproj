@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1E805ACB1E84BE1800D77BEB /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E805ACA1E84BE1800D77BEB /* Operator.swift */; };
 		1E805ACD1E84C2A300D77BEB /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E805ACC1E84C2A300D77BEB /* Subscript.swift */; };
+		1EA0B4E81F0DDDC200D15F29 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4E71F0DDDC200D15F29 /* Manager.swift */; };
+		1EA0B4EA1F0DE79800D15F29 /* Constraintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4E91F0DE79800D15F29 /* Constraintable.swift */; };
+		1EA0B4EC1F0DE89900D15F29 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4EB1F0DE89900D15F29 /* Priority.swift */; };
 		OBJ_25 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Constraint.swift */; };
 		OBJ_26 /* Maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Maker.swift */; };
 		OBJ_27 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extension.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		1E805ACA1E84BE1800D77BEB /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		1E805ACC1E84C2A300D77BEB /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
+		1EA0B4E71F0DDDC200D15F29 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		1EA0B4E91F0DE79800D15F29 /* Constraintable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraintable.swift; sourceTree = "<group>"; };
+		1EA0B4EB1F0DE89900D15F29 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maker.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		OBJ_14 /* ViscosityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViscosityTests.swift; sourceTree = "<group>"; };
@@ -104,11 +110,14 @@
 		OBJ_8 /* Viscosity */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Constraint.swift */,
+				1EA0B4E71F0DDDC200D15F29 /* Manager.swift */,
 				OBJ_10 /* Maker.swift */,
+				OBJ_9 /* Constraint.swift */,
+				1EA0B4E91F0DE79800D15F29 /* Constraintable.swift */,
 				OBJ_11 /* Extension.swift */,
 				1E805ACA1E84BE1800D77BEB /* Operator.swift */,
 				1E805ACC1E84C2A300D77BEB /* Subscript.swift */,
+				1EA0B4EB1F0DE89900D15F29 /* Priority.swift */,
 			);
 			name = Viscosity;
 			path = Sources;
@@ -182,9 +191,12 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_25 /* Constraint.swift in Sources */,
+				1EA0B4E81F0DDDC200D15F29 /* Manager.swift in Sources */,
 				1E805ACB1E84BE1800D77BEB /* Operator.swift in Sources */,
+				1EA0B4EC1F0DE89900D15F29 /* Priority.swift in Sources */,
 				OBJ_26 /* Maker.swift in Sources */,
 				1E805ACD1E84C2A300D77BEB /* Subscript.swift in Sources */,
+				1EA0B4EA1F0DE79800D15F29 /* Constraintable.swift in Sources */,
 				OBJ_27 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
