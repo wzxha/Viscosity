@@ -31,7 +31,7 @@ import UIKit
 public class Maker {
     internal var manager: Manager
     
-    internal enum `Type` {
+    internal enum InstallType {
         case normal
         case replace
         case update
@@ -47,12 +47,11 @@ public class Maker {
         self.manager = manager
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         self.view = view
         superView = view.superview!
     }
     
-    internal func install(_ type: Type = .normal) {
+    internal func install(_ type: InstallType = .normal) {
         switch type {
         case .update:
             updateAllConstraints()

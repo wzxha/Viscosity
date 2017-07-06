@@ -29,7 +29,7 @@
 import UIKit
 
 public class Manager {
-    var constraints: [Constraint] = []
+    internal var constraints: [Constraint] = []
     
     internal var view: UIView
     
@@ -49,7 +49,7 @@ public class Manager {
         changeConstraints(type: .update, closure: closure)
     }
     
-    private func changeConstraints(type: Maker.`Type`, closure: (Maker) -> Void) {
+    private func changeConstraints(type: Maker.InstallType, closure: (Maker) -> Void) {
         let maker = Maker(view: view, manager: self)
         closure(maker)
         maker.install(type)
