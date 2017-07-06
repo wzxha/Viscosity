@@ -29,19 +29,22 @@
 import UIKit
 
 public class Maker {
-
-    internal enum MakerType {
+    internal var manager: Manager
+    
+    internal enum `Type` {
         case normal
         case replace
         case update
     }
     
-    private var constraints: [Constraint] = []
-    private var view: UIView!
+    internal var constraints: [Constraint] = []
+    internal var view: UIView!
     private var superView: UIView!
     
-    init(view: UIView) {
+    init(view: UIView, manager: Manager) {
         assert(view.superview != nil, "[Viscosity Error]: \(view) superview == nil")
+        
+        self.manager = manager
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,7 +52,7 @@ public class Maker {
         superView = view.superview!
     }
     
-    internal func install(_ type: MakerType = .normal) {
+    internal func install(_ type: Type = .normal) {
         switch type {
         case .update:
             updateAllConstraints()
@@ -142,116 +145,5 @@ public class Maker {
         }
         return (rough, perfect)
     }
-    
-    internal func constraint(withAttribute attribute: NSLayoutAttribute) -> Constraint {
-        let constraint = Constraint(attribute: attribute)
-        constraints.append(constraint)
-        return constraint
-    }
-    
-    
-    // MARK: - constraints
-    
-    public var left: Constraint {
-        return constraint(withAttribute: .left)
-    }
-    
-    public var right: Constraint {
-        return constraint(withAttribute: .right)
-    }
-    
-    public var top: Constraint {
-        return constraint(withAttribute: .top)
-    }
-    
-    public var bottom: Constraint {
-        return constraint(withAttribute: .bottom)
-    }
-    
-    public var leading: Constraint {
-        return constraint(withAttribute: .leading)
-    }
-    
-    public var trailing: Constraint {
-        return constraint(withAttribute: .trailing)
-    }
-    
-    public var width: Constraint {
-        return constraint(withAttribute: .width)
-    }
-    
-    public var height: Constraint {
-        return constraint(withAttribute: .height)
-    }
-    
-    public var centerX: Constraint {
-        return constraint(withAttribute: .centerX)
-    }
-    
-    public var centerY: Constraint {
-        return constraint(withAttribute: .centerY)
-    }
-    
-    public var lastBaseline: Constraint {
-        return constraint(withAttribute: .lastBaseline)
-    }
-    
-    @available(iOS 8.0, *)
-    public var firstBaseline: Constraint {
-        return constraint(withAttribute: .firstBaseline)
-    }
-    
-    @available(iOS 8.0, *)
-    public var leftMargin: Constraint {
-        return constraint(withAttribute: .leftMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var rightMargin: Constraint {
-        return constraint(withAttribute: .rightMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var topMargin: Constraint {
-        return constraint(withAttribute: .topMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var bottomMargin: Constraint {
-        return constraint(withAttribute: .bottomMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var leadingMargin: Constraint {
-        return constraint(withAttribute: .leadingMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var trailingMargin: Constraint {
-        return constraint(withAttribute: .trailingMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var centerXWithinMargins: Constraint {
-        return constraint(withAttribute: .centerXWithinMargins)
-    }
-    
-    @available(iOS 8.0, *)
-    public var centerYWithinMargins: Constraint {
-        return constraint(withAttribute: .centerYWithinMargins)
-    }
-    
-    public var center: [Constraint] {
-        return [centerX, centerY]
-    }
-    
-    public var edges: [Constraint] {
-        return [top, left, bottom, right]
-    }
-    
-    public var size: [Constraint] {
-        return [width, height]
-    }
 }
-
 
