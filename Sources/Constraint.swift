@@ -29,7 +29,7 @@
 import UIKit
 
 public class Constraint {
-    
+    internal var fromItem:    AnyObject
     internal var toItem:      AnyObject?
     internal var constant:    CGFloat = 0
     internal var multiplier:  CGFloat = 1
@@ -39,7 +39,8 @@ public class Constraint {
     internal var attribute:   NSLayoutAttribute = .notAnAttribute
     internal var toAttribute: NSLayoutAttribute = .notAnAttribute
     
-    init(attribute: NSLayoutAttribute) {
+    init(fromItem: AnyObject, attribute: NSLayoutAttribute) {
+        self.fromItem  = fromItem
         self.attribute = attribute
     }
 
@@ -91,8 +92,41 @@ public class Constraint {
     }
    
     internal func set(constraint: Constraint, relation: NSLayoutRelation) {
-        toItem        = constraint.toItem
+        toItem        = constraint.fromItem
         toAttribute   = constraint.attribute
         self.relation = relation
+    }
+}
+
+extension Constraint {
+    internal func toLayoutConstraint() -> NSLayoutConstraint {
+        let layoutConstraint
+            = NSLayoutConstraint(item:       fromItem,
+                                 attribute:  attribute,
+                                 relatedBy:  relation,
+                                 toItem:     toItem,
+                                 attribute:  toAttribute,
+                                 multiplier: multiplier,
+                                 constant:   constant)
+        
+        layoutConstraint.priority = priority
+        layoutConstraint.isActive = isActive
+        
+        return layoutConstraint
+    }
+}
+
+extension NSLayoutConstraint {
+    internal func toConstraint() -> Constraint {
+        let constraint = Constraint(fromItem: firstItem, attribute: firstAttribute)
+        constraint.relation    = relation
+        constraint.toItem      = secondItem
+        constraint.toAttribute = secondAttribute
+        constraint.multiplier  = multiplier
+        constraint.constant    = constant
+        constraint.priority    = priority
+        constraint.isActive    = isActive
+        
+        return constraint
     }
 }

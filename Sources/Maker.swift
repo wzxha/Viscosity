@@ -38,17 +38,24 @@ public class Maker {
     }
     
     internal var constraints: [Constraint] = []
-    internal var view: UIView!
-    private var superView: UIView!
     
-    init(view: UIView, manager: Manager) {
-        assert(view.superview != nil, "[Viscosity Error]: \(view) superview == nil")
+    internal var view: UIView {
+        return manager.view
+    }
+    
+    private var superView: UIView
+    
+    init?(manager: Manager) {
+        let view = manager.view
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let superView = view.superview else {
+            assert(view.superview != nil, "[Viscosity Error]: \(view) superview == nil")
+            return nil
+        }
         
         self.manager = manager
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view = view
-        superView = view.superview!
+        self.superView = superView
     }
     
     internal func install(_ type: InstallType = .normal) {
@@ -65,25 +72,13 @@ public class Maker {
     
     // MARK: - Add
     private func addAllConstraints() {
-        for constraint in constraints {
-            add(constraint: constraint)
+        constraints.forEach {
+            add(constraint: $0)
         }
     }
     
     private func add(constraint: Constraint) {
-        let layoutConstraint: NSLayoutConstraint
-            = NSLayoutConstraint(item:       view,
-                                 attribute:  constraint.attribute,
-                                 relatedBy:  constraint.relation,
-                                 toItem:     constraint.toItem,
-                                 attribute:  constraint.toAttribute,
-                                 multiplier: constraint.multiplier,
-                                 constant:   constraint.constant)
-        
-        layoutConstraint.priority = constraint.priority
-        layoutConstraint.isActive = constraint.isActive
-        
-        superView.addConstraint(layoutConstraint)
+        superView.addConstraint(constraint.toLayoutConstraint())
     }
     
     // MARK: - Remove
@@ -110,6 +105,7 @@ public class Maker {
                 if let rough = similars.rough {
                     superView.removeConstraint(rough)
                 }
+                
                 add(constraint: constraint)
                 continue
             }
@@ -120,25 +116,23 @@ public class Maker {
     
     private func constraintSimilar(to visConstraint: Constraint) ->
         (rough: NSLayoutConstraint?, perfect: NSLayoutConstraint?) {
+            
         var rough: NSLayoutConstraint?
         var perfect: NSLayoutConstraint?
         
         for constraint in superView.constraints {
-            guard constraint.firstItem is UIView else {
-                continue
-            }
-            
-            guard constraint.firstItem as! UIView == view,
-                  constraint.firstAttribute == visConstraint.attribute,
-                  constraint.relation == visConstraint.relation else {
+            guard let firstItem = constraint.firstItem as? UIView,
+                firstItem == view,
+                constraint.firstAttribute == visConstraint.attribute,
+                constraint.relation == visConstraint.relation  else {
                 continue
             }
             
             rough = constraint
             
             if rough == constraint,
-               constraint.multiplier  == visConstraint.multiplier,
-               constraint.priority    == visConstraint.priority {
+               constraint.multiplier == visConstraint.multiplier,
+               constraint.priority   == visConstraint.priority {
                perfect = constraint
             }
         }

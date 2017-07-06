@@ -192,8 +192,7 @@ public extension Constraintable {
 
 extension Manager: Constraintable {
     public func constraint(withAttribute attribute: NSLayoutAttribute) -> Constraint {
-        let constraint = Constraint(attribute: attribute)
-        constraint.toItem = view
+        let constraint = Constraint(fromItem: view, attribute: attribute)
         constraints.append(constraint)
         return constraint
     }
@@ -201,8 +200,7 @@ extension Manager: Constraintable {
 
 extension Maker: Constraintable {
     public func constraint(withAttribute attribute: NSLayoutAttribute) -> Constraint {
-        let constraint = Constraint(attribute: attribute)
-        constraint.toItem = view
+        let constraint = Constraint(fromItem: view, attribute: attribute)
         constraints.append(constraint)
         return constraint
     }

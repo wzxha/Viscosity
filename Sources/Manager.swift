@@ -50,8 +50,12 @@ public class Manager {
     }
     
     private func changeConstraints(type: Maker.InstallType, closure: (Maker) -> Void) {
-        let maker = Maker(view: view, manager: self)
+        guard let maker = Maker(manager: self) else { return }
         closure(maker)
         maker.install(type)
     }
+}
+
+extension Manager {
+    
 }
