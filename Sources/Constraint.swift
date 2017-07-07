@@ -99,7 +99,7 @@ public class Constraint {
 }
 
 extension Constraint {
-    internal func toLayoutConstraint() -> NSLayoutConstraint {
+    internal var layoutConstraint: NSLayoutConstraint {
         let layoutConstraint
             = NSLayoutConstraint(item:       fromItem,
                                  attribute:  attribute,
@@ -117,7 +117,7 @@ extension Constraint {
 }
 
 extension NSLayoutConstraint {
-    internal func toConstraint() -> Constraint {
+    internal var constraint: Constraint {
         let constraint = Constraint(fromItem: firstItem, attribute: firstAttribute)
         constraint.relation    = relation
         constraint.toItem      = secondItem

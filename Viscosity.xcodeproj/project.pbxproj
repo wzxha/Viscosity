@@ -12,15 +12,17 @@
 		1EA0B4E81F0DDDC200D15F29 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4E71F0DDDC200D15F29 /* Manager.swift */; };
 		1EA0B4EA1F0DE79800D15F29 /* Constraintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4E91F0DE79800D15F29 /* Constraintable.swift */; };
 		1EA0B4EC1F0DE89900D15F29 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B4EB1F0DE89900D15F29 /* Priority.swift */; };
+		1EA0B51B1F0E154300D15F29 /* Viscosity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Viscosity.framework */; };
+		1EA0B5251F0E157600D15F29 /* ViscosityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B5231F0E157600D15F29 /* ViscosityTests.swift */; };
+		1EA0B5271F0E162300D15F29 /* MakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B5261F0E162300D15F29 /* MakerTests.swift */; };
+		1EA0B54A1F0F7D6F00D15F29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0B5481F0F641D00D15F29 /* Debug.swift */; };
 		OBJ_25 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Constraint.swift */; };
 		OBJ_26 /* Maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Maker.swift */; };
 		OBJ_27 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Extension.swift */; };
-		OBJ_34 /* ViscosityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* ViscosityTests.swift */; };
-		OBJ_36 /* Viscosity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Viscosity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1E805AC91E84B8F300D77BEB /* PBXContainerItemProxy */ = {
+		1EA0B51C1F0E154300D15F29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -35,16 +37,27 @@
 		1EA0B4E71F0DDDC200D15F29 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		1EA0B4E91F0DE79800D15F29 /* Constraintable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraintable.swift; sourceTree = "<group>"; };
 		1EA0B4EB1F0DE89900D15F29 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		1EA0B5161F0E154300D15F29 /* ViscosityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViscosityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA0B5221F0E157600D15F29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EA0B5231F0E157600D15F29 /* ViscosityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViscosityTests.swift; sourceTree = "<group>"; };
+		1EA0B5261F0E162300D15F29 /* MakerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakerTests.swift; sourceTree = "<group>"; };
+		1EA0B5481F0F641D00D15F29 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maker.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		OBJ_14 /* ViscosityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViscosityTests.swift; sourceTree = "<group>"; };
 		OBJ_18 /* Viscosity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Viscosity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_19 /* ViscosityTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = ViscosityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1EA0B5131F0E154300D15F29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA0B51B1F0E154300D15F29 /* Viscosity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -52,29 +65,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_35 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_36 /* Viscosity.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_12 /* Tests */ = {
+		1EA0B5171F0E154300D15F29 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_13 /* ViscosityTests */,
+				1EA0B5211F0E157600D15F29 /* ViscosityTests */,
 			);
-			path = Tests;
+			name = Tests;
+			path = ViscosityTests;
 			sourceTree = "<group>";
 		};
-		OBJ_13 /* ViscosityTests */ = {
+		1EA0B5211F0E157600D15F29 /* ViscosityTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* ViscosityTests.swift */,
+				1EA0B5221F0E157600D15F29 /* Info.plist */,
+				1EA0B5231F0E157600D15F29 /* ViscosityTests.swift */,
+				1EA0B5261F0E162300D15F29 /* MakerTests.swift */,
+				1EA0B5481F0F641D00D15F29 /* Debug.swift */,
 			);
 			name = ViscosityTests;
 			path = Tests/ViscosityTests;
@@ -84,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_18 /* Viscosity.framework */,
-				OBJ_19 /* ViscosityTests.xctest */,
+				1EA0B5161F0E154300D15F29 /* ViscosityTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -94,7 +103,7 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_12 /* Tests */,
+				1EA0B5171F0E154300D15F29 /* Tests */,
 				OBJ_17 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +135,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1EA0B5151F0E154300D15F29 /* ViscosityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EA0B51E1F0E154300D15F29 /* Build configuration list for PBXNativeTarget "ViscosityTests" */;
+			buildPhases = (
+				1EA0B5121F0E154300D15F29 /* Sources */,
+				1EA0B5131F0E154300D15F29 /* Frameworks */,
+				1EA0B5141F0E154300D15F29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EA0B51D1F0E154300D15F29 /* PBXTargetDependency */,
+			);
+			name = ViscosityTests;
+			productName = ViscosityTests;
+			productReference = 1EA0B5161F0E154300D15F29 /* ViscosityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		OBJ_20 /* Viscosity */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_21 /* Build configuration list for PBXNativeTarget "Viscosity" */;
@@ -142,30 +169,21 @@
 			productReference = OBJ_18 /* Viscosity.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_29 /* ViscosityTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_30 /* Build configuration list for PBXNativeTarget "ViscosityTests" */;
-			buildPhases = (
-				OBJ_33 /* Sources */,
-				OBJ_35 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_37 /* PBXTargetDependency */,
-			);
-			name = ViscosityTests;
-			productName = ViscosityTests;
-			productReference = OBJ_19 /* ViscosityTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					1EA0B5151F0E154300D15F29 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 2HC4W9ZBH4;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Viscosity" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -180,12 +198,32 @@
 			projectRoot = "";
 			targets = (
 				OBJ_20 /* Viscosity */,
-				OBJ_29 /* ViscosityTests */,
+				1EA0B5151F0E154300D15F29 /* ViscosityTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		1EA0B5141F0E154300D15F29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		1EA0B5121F0E154300D15F29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA0B5271F0E162300D15F29 /* MakerTests.swift in Sources */,
+				1EA0B54A1F0F7D6F00D15F29 /* Debug.swift in Sources */,
+				1EA0B5251F0E157600D15F29 /* ViscosityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -201,25 +239,114 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_33 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_34 /* ViscosityTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_37 /* PBXTargetDependency */ = {
+		1EA0B51D1F0E154300D15F29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_20 /* Viscosity */;
-			targetProxy = 1E805AC91E84B8F300D77BEB /* PBXContainerItemProxy */;
+			targetProxy = 1EA0B51C1F0E154300D15F29 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1EA0B51F1F0E154300D15F29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2HC4W9ZBH4;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Tests/ViscosityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = wzxjiang.ViscosityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1EA0B5201F0E154300D15F29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 2HC4W9ZBH4;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Tests/ViscosityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = wzxjiang.ViscosityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		OBJ_22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,40 +416,6 @@
 			};
 			name = Debug;
 		};
-		OBJ_31 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Viscosity.xcodeproj/ViscosityTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = ViscosityTests;
-			};
-			name = Debug;
-		};
-		OBJ_32 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Viscosity.xcodeproj/ViscosityTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = ViscosityTests;
-			};
-			name = Release;
-		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,6 +440,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1EA0B51E1F0E154300D15F29 /* Build configuration list for PBXNativeTarget "ViscosityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EA0B51F1F0E154300D15F29 /* Debug */,
+				1EA0B5201F0E154300D15F29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		OBJ_2 /* Build configuration list for PBXProject "Viscosity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -361,15 +463,6 @@
 			buildConfigurations = (
 				OBJ_22 /* Debug */,
 				OBJ_23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_30 /* Build configuration list for PBXNativeTarget "ViscosityTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_31 /* Debug */,
-				OBJ_32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

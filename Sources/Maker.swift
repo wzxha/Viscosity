@@ -43,16 +43,13 @@ public class Maker {
         return manager.view
     }
     
-    private var superView: UIView
+    var superView: UIView
     
     init?(manager: Manager) {
         let view = manager.view
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        guard let superView = view.superview else {
-            assert(view.superview != nil, "[Viscosity Error]: \(view) superview == nil")
-            return nil
-        }
+        guard let superView = view.superview else { return nil }
         
         self.manager = manager
         self.superView = superView
@@ -78,7 +75,7 @@ public class Maker {
     }
     
     private func add(constraint: Constraint) {
-        superView.addConstraint(constraint.toLayoutConstraint())
+        superView.addConstraint(constraint.layoutConstraint)
     }
     
     // MARK: - Remove
