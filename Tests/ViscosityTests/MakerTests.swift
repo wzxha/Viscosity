@@ -22,39 +22,56 @@ class MakerTests: XCTestCase {
         XCTAssert(maker2 != nil)
     }
     
+    // MARK: - Add constraints
     func testAddConstraints() {
-        let view1 = UIView()
+        let superView = UIView()
         
-        let view2 = UIView()
-        
-        view1.addSubview(view2)
-        
-        view2.vis.makeConstraints {
-            $0.edges == $0.superView
+        // MARK: - .left, .right, .top, .bottom
+        let view1 = UIView().then {
+            superView.addSubview($0)
+            $0.vis.makeConstraints {
+                $0[.left, .right, .top, .bottom] == $0.superView
+            }
         }
         
-        XCTAssert(
-            view2.constraint(forAttribute: .top).first!.description
-                ==
-            "top == \(view1) top +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true"
-        )
+        test(lhs: view1.constraint(forAttribute: .top).first!.description,
+             rhs: "top == \(superView) top +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
         
-        XCTAssert(
-            view2.constraint(forAttribute: .left).first!.description
-                ==
-            "left == \(view1) left +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true"
-        )
+        test(lhs: view1.constraint(forAttribute: .left).first!.description,
+             rhs: "left == \(superView) left +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
         
-        XCTAssert(
-            view2.constraint(forAttribute: .right).first!.description
-                ==
-            "right == \(view1) right +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true"
-        )
+        test(lhs: view1.constraint(forAttribute: .right).first!.description,
+             rhs: "right == \(superView) right +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
         
-        XCTAssert(
-            view2.constraint(forAttribute: .bottom).first!.description
-                ==
-            "bottom == \(view1) bottom +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true"
-        )
+        test(lhs: view1.constraint(forAttribute: .bottom).first!.description,
+             rhs: "bottom == \(superView) bottom +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
+        
+        // MARK: - .edges
+        let view2 = UIView().then {
+            superView.addSubview($0)
+            $0.vis.makeConstraints {
+                $0.edges == $0.superView
+            }
+        }
+        
+        test(lhs: view2.constraint(forAttribute: .top).first!.description,
+             rhs: "top == \(superView) top +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
+        
+        test(lhs: view2.constraint(forAttribute: .left).first!.description,
+             rhs: "left == \(superView) left +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
+        
+        test(lhs: view2.constraint(forAttribute: .right).first!.description,
+             rhs: "right == \(superView) right +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
+        
+        test(lhs: view2.constraint(forAttribute: .bottom).first!.description,
+             rhs: "bottom == \(superView) bottom +~ 0.0 *~ 1.0 ~~ 1000.0 ~| true")
+        
+    }
+}
+
+extension XCTestCase {
+    func test<T: Comparable>(lhs: T, rhs: T, relation: (T, T) -> Bool = { $0 == $1 }) {
+        XCTAssert(relation(lhs, rhs),
+                  "********[Error]******\n\(lhs)\n!=\(rhs)\n*******************\n")
     }
 }

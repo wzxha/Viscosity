@@ -45,6 +45,12 @@ extension UIView {
                     return $0.attribute == attribute
                 }
     }
+    
+    @discardableResult
+    func then(_ closure: (UIView) -> Void) -> Self {
+        closure(self)
+        return self
+    }
 }
 
 extension NSLayoutAttribute: Descriptionable {
