@@ -199,7 +199,7 @@ infix operator *~: LogicalConjunctionPrecedence
 
 private extension Array where Element == Constraint {
      func calculate <N: VisNumeric>(withNumbers numbers: [N], closure: (Constraint, N) -> Void) -> [Constraint] {
-        let min = self.count > numbers.count ? self.count : numbers.count
+        let min = Swift.min(self.count, numbers.count)
         
         for (index, constraint) in self[0..<min].enumerated() {
             closure(constraint, numbers[index])
