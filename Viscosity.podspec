@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/Wzxhaha/Viscosity.git', :tag => '2.1.0'}
   s.platform = :ios
   s.ios.deployment_target = '8.0'
-  s.source_files = 'Source/*.swift'
+  s.source_files = 'Sources/*.swift'
   s.requires_arc = true
 end

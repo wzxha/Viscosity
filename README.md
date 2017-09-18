@@ -88,7 +88,7 @@ To integrate Viscosity into your Xcode project using CocoaPods, specify it in yo
 target '<Your Target Name>' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Viscosity', '~> 2.0'
+  pod 'Viscosity', '~> 2.1.0'
 
 end
 ```
