@@ -13,26 +13,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var tableView: UITableView!
     
-    let datas = [["title": "Basic",
-                  "class": "VisExampleBasicView"],
+    let datas = [
+        (title: "Basic", className: "VisExampleBasicView"),
+        
+        (title: "Update Constraints", className: "VisExampleUpdateView"),
+            
+        (title: "Remake Constraints", className: "VisExampleRemakeView"),
                  
-                 ["title": "Update Constraints",
-                  "class": "VisExampleUpdateView"],
+        (title: "Aspect Fit", className: "VisExampleSidesView"),
                  
-                 ["title": "Remake Constraints",
-                  "class": "VisExampleRemakeView"],
+        (title: "Composite Edges", className: "VisExampleAspectFitView"),
+            
+        (title: "Basic Animated", className: "VisExampleAnimatedView"),
                  
-                 ["title": "Aspect Fit",
-                  "class": "VisExampleSidesView"],
-                 
-                 ["title": "Composite Edges",
-                  "class": "VisExampleAspectFitView"],
-                 
-                 ["title": "Basic Animated",
-                  "class": "VisExampleAnimatedView"],
-                 
-                 ["title": "UIScrollView",
-                  "class": "VisExampleScrollView"]]
+        (title: "UIScrollView", className: "VisExampleScrollView")
+    ]
     
     override func viewDidLoad() {
         self.createUI()
@@ -47,17 +42,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let clsName = datas[indexPath.row]["class"] else {
-            return
-        }
+        let clsName = datas[indexPath.row].className
         
         let cls: AnyClass = NSClassFromString("Example_iOS." + clsName)!
         
-        self.navigationController?.pushViewController(VisExampleViewController.init(title: datas[indexPath.row]["title"]!, cls: cls), animated: true)
+        self.navigationController?.pushViewController(VisExampleViewController(title: datas[indexPath.row].title, cls: cls), animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.textLabel?.text = datas[indexPath.row]["title"]
+        cell.textLabel?.text = datas[indexPath.row].title
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,11 +59,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas.count
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

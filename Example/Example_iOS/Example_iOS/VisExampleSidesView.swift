@@ -13,7 +13,7 @@ class VisExampleSidesView: UIView {
     
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
@@ -21,9 +21,9 @@ class VisExampleSidesView: UIView {
         var lastView: UIView = self;
         for _ in 1...10 {
             let view = UIView.exampleView(color: UIColor.random())
-            self.addSubview(view)
+            addSubview(view)
             
-            view.vis_makeConstraints({ (make) in
+            view.vis.makeConstraints({ (make) in
                 make.edges == lastView +~ UIEdgeInsetsMake(5, 10, 15, 20)
             })
             

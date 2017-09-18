@@ -13,34 +13,34 @@ class VisExampleBasicView: UIView {
     
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
         let padding: CGFloat = 10.0
         
         let redView = UIView.exampleView(color: .red)
-        self.addSubview(redView)
+        addSubview(redView)
         
         let greenView = UIView.exampleView(color: .green)
-        self.addSubview(greenView)
+        addSubview(greenView)
         
         let blueView = UIView.exampleView(color: .blue)
-        self.addSubview(blueView)
+        addSubview(blueView)
         
-        redView.vis_makeConstraints { (make) in
+        redView.vis.makeConstraints { (make) in
             make[.top, .left] == self +~ padding
         }
         
-        greenView.vis_makeConstraints { (make) in
-            make.left == redView.vis_right +~ padding
+        greenView.vis.makeConstraints { (make) in
+            make.left == redView.vis.right +~ padding
             make[.right, .top] == self +~ [-padding, padding]
             make[.bottom, .width] == redView
         }
         
-        blueView.vis_makeConstraints { (make) in
+        blueView.vis.makeConstraints { (make) in
             make[.left, .right, .bottom] == self +~ [padding, -padding, -padding]
-            make.top == redView.vis_bottom +~ padding
+            make.top == redView.vis.bottom +~ padding
             make.height == redView
         }
     }

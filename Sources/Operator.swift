@@ -88,13 +88,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func == <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
-    var index = 0
-    return lhs.map { constraint in
-        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint == rhs[index]
-        index += 1
-        return constraint
-    }
+    return lhs.calculate(withNumbers: rhs, closure: { $0 == $1 })
 }
 
 
@@ -113,13 +107,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func >= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
-    var index = 0
-    return lhs.map { constraint in
-        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint >= rhs[index]
-        index += 1
-        return constraint
-    }
+    return lhs.calculate(withNumbers: rhs, closure: { $0 >= $1 })
 }
 
 
@@ -138,13 +126,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func <= <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
-    var index = 0
-    return lhs.map { constraint in
-        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint <= rhs[index]
-        index += 1
-        return constraint
-    }
+    return lhs.calculate(withNumbers: rhs, closure: { $0 <= $1 })
 }
 
 // MARK: - + 
@@ -162,13 +144,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func +~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
-    var index = 0
-    return lhs.map { constraint in
-        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint.offset(rhs[index])
-        index += 1
-        return constraint
-    }
+    return lhs.calculate(withNumbers: rhs, closure: { $0.offset($1) })
 }
 
 
@@ -187,13 +163,7 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func *~ <N: VisNumeric>(lhs: [Constraint], rhs: [N]) -> [Constraint] {
-    var index = 0
-    return lhs.map { constraint in
-        assert(rhs.count > index, "\(rhs).count must more than \(lhs).count")
-        constraint.multiplier(rhs[index])
-        index += 1
-        return constraint
-    }
+    return lhs.calculate(withNumbers: rhs, closure: { $0.multiplier($1) })
 }
 
 
@@ -205,6 +175,14 @@ infix operator *~: LogicalConjunctionPrecedence
 
 @discardableResult public func ~~(lhs: [Constraint], rhs: UILayoutPriority) -> [Constraint] {
     return lhs.map { $0.priority(rhs) }
+}
+
+@discardableResult public func ~~(lhs: Constraint, rhs: Priority) -> Constraint {
+    return lhs.priority(UILayoutPriority(rawValue: rhs.rawValue))
+}
+
+@discardableResult public func ~~(lhs: [Constraint], rhs: Priority) -> [Constraint] {
+    return lhs.map { $0.priority(UILayoutPriority(rawValue: rhs.rawValue)) }
 }
 
 
@@ -219,10 +197,17 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 
-
-
-
-
+private extension Array where Element == Constraint {
+     func calculate <N: VisNumeric>(withNumbers numbers: [N], closure: (Constraint, N) -> Void) -> [Constraint] {
+        let min = Swift.min(self.count, numbers.count)
+        
+        for (index, constraint) in self[0..<min].enumerated() {
+            closure(constraint, numbers[index])
+        }
+        
+        return self
+    }
+}
 
 
 

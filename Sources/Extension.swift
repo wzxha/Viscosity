@@ -29,133 +29,10 @@
 import UIKit
 
 public extension UIView {
-    
-    public func vis_makeConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
-        let maker = Maker(view: self)
-        closure(maker)
-        maker.install(.normal)
-    }
-    
-    public func vis_remakeConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
-        let maker = Maker(view: self)
-        closure(maker)
-        maker.install(.replace)
-    }
-    
-    public func vis_updateConstraints(_ closure: (_ maker: Maker) -> Void) -> Void {
-        let maker = Maker(view: self)
-        closure(maker)
-        maker.install(.update)
-    }
-    
-    public var vis_left: Constraint {
-        return constraint(attribute: .left)
-    }
-
-    public var vis_right: Constraint {
-        return constraint(attribute: .right)
-    }
-    
-    public var vis_top: Constraint {
-        return constraint(attribute: .top)
-    }
-    
-    public var vis_bottom: Constraint {
-        return constraint(attribute: .bottom)
-    }
-    
-    public var vis_leading: Constraint {
-        return constraint(attribute: .leading)
-    }
-    
-    public var vis_trailing: Constraint {
-        return constraint(attribute: .trailing)
-    }
-    
-    public var vis_width: Constraint {
-        return constraint(attribute: .width)
-    }
-    
-    public var vis_height: Constraint {
-        return constraint(attribute: .height)
-    }
-    
-    public var vis_centerX: Constraint {
-        return constraint(attribute: .centerX)
-    }
-    
-    public var vis_centerY: Constraint {
-        return constraint(attribute: .centerY)
-    }
-    
-    public var vis_lastBaseline: Constraint {
-        return constraint(attribute: .lastBaseline)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_firstBaseline: Constraint {
-        return constraint(attribute: .firstBaseline)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_leftMargin: Constraint {
-        return constraint(attribute: .leftMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_rightMargin: Constraint {
-        return constraint(attribute: .rightMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_topMargin: Constraint {
-        return constraint(attribute: .topMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_bottomMargin: Constraint {
-        return constraint(attribute: .bottomMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_leadingMargin: Constraint {
-        return constraint(attribute: .leadingMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_trailingMargin: Constraint {
-        return constraint(attribute: .trailingMargin)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_centerXWithinMargins: Constraint {
-        return constraint(attribute: .centerXWithinMargins)
-    }
-    
-    @available(iOS 8.0, *)
-    public var vis_centerYWithinMargins: Constraint {
-        return constraint(attribute: .centerYWithinMargins)
-    }
-    
-    public var vis_center: [Constraint] {
-        return [vis_centerX, vis_centerY]
-    }
-    
-    public var vis_edges: [Constraint] {
-        return [vis_top, vis_left, vis_bottom, vis_right]
-    }
-    
-    public var vis_size: [Constraint] {
-        return [vis_width, vis_height]
-    }
-    
-    private func constraint(attribute: NSLayoutAttribute) -> Constraint {
-        let constraint = Constraint(attribute: attribute)
-        constraint.toItem = self
-        return constraint
+    public var vis: Manager {
+        return Manager(withView: self)
     }
 }
-
 
 // MARK: - VisNumeric
 
@@ -164,26 +41,18 @@ public protocol VisNumeric {
 }
 
 extension Int: VisNumeric {
-    public var vis_floatValue: CGFloat {
-        return CGFloat(self)
-    }
+    public var vis_floatValue: CGFloat { return CGFloat(self) }
 }
 
 extension Float: VisNumeric {
-    public var vis_floatValue: CGFloat {
-        return CGFloat(self)
-    }
+    public var vis_floatValue: CGFloat { return CGFloat(self) }
 }
 
 extension Double: VisNumeric {
-    public var vis_floatValue: CGFloat {
-        return CGFloat(self)
-    }
+    public var vis_floatValue: CGFloat { return CGFloat(self) }
 }
 extension CGFloat: VisNumeric {
-    public var vis_floatValue: CGFloat {
-        return self
-    }
+    public var vis_floatValue: CGFloat { return self }
 }
 
 // MARK: - VisStruct
@@ -194,25 +63,25 @@ public protocol VisStruct {
 
 extension CGPoint: VisStruct {
     public var vis_members: [CGFloat] {
-        return [self.x, self.y]
+        return [x, y]
     }
 }
 
 extension CGSize: VisStruct {
     public var vis_members: [CGFloat] {
-        return [self.width, self.height]
+        return [width, height]
     }
 }
 
 extension UIEdgeInsets: VisStruct {
     public var vis_members: [CGFloat] {
-        return [self.top, self.left, -self.bottom, -self.right]
+        return [top, left, -bottom, -right]
     }
 }
 
 // MARK: - VisObject
 
-public protocol VisObject {}
+public protocol VisObject: class {}
 extension UIView: VisObject {}
 extension Constraint: VisObject {}
 

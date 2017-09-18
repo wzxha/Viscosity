@@ -19,7 +19,7 @@ class VisExampleAnimatedView: UIView {
     
     init() {
         super.init(frame: .null)
-        self.createUI()
+        createUI()
     }
     
     func createUI() -> Void {
@@ -27,30 +27,30 @@ class VisExampleAnimatedView: UIView {
         let paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding)
         
         redView = UIView.exampleView(color: .red)
-        self.addSubview(redView)
+        addSubview(redView)
         
         greenView = UIView.exampleView(color: .green)
-        self.addSubview(greenView)
+        addSubview(greenView)
         
         blueView = UIView.exampleView(color: .blue)
-        self.addSubview(blueView)
+        addSubview(blueView)
         
-        redView.vis_makeConstraints { (make) in
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
-            make.bottom == blueView.vis_top +~ -padding
+        redView.vis.makeConstraints { make in
+            make.edges == self +~ paddingInsets ~~ .low
+            make.bottom == blueView.vis.top +~ -padding
             make.size == greenView
             make.height == blueView
         }
         
-        greenView.vis_makeConstraints { (make) in
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
-            make.left == redView.vis_right +~ padding
-            make.bottom == blueView.vis_top +~ -padding
+        greenView.vis.makeConstraints { make in
+            make.edges == self +~ paddingInsets ~~ .low
+            make.left == redView.vis.right +~ padding
+            make.bottom == blueView.vis.top +~ -padding
             make.height == blueView
         }
         
-        blueView.vis_makeConstraints { (make) in
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+        blueView.vis.makeConstraints { make in
+            make.edges == self +~ paddingInsets ~~ .low
         }
     }
     
@@ -59,42 +59,40 @@ class VisExampleAnimatedView: UIView {
     }
     
     override func didMoveToWindow() {
-        self.layoutIfNeeded()
+        layoutIfNeeded()
         
-        if ((self.window) != nil) {
+        if ((window) != nil) {
             animating = true
-            self.animate(withInvertedInsets: false)
+            animate(withInvertedInsets: false)
         }
     }
     
     func animate(withInvertedInsets invertedInsets: Bool) -> Void {
-        if (!animating) {
-            return
-        }
+        if (!animating) { return }
         
         let padding = invertedInsets ? 100 : self.padding;
         let paddingInsets = UIEdgeInsetsMake(padding, padding, padding, padding)
         
-        redView.vis_updateConstraints { (make) in
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
-            make.bottom == blueView.vis_top +~ -padding
+        redView.vis.updateConstraints { make in
+            make.edges == self +~ paddingInsets ~~ .low
+            make.bottom == blueView.vis.top +~ -padding
         }
         
-        greenView.vis_updateConstraints { (make) in
-            make.left == redView.vis_right +~ padding
-            make.bottom == blueView.vis_top +~ -padding
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+        greenView.vis.updateConstraints { make in
+            make.left == redView.vis.right +~ padding
+            make.bottom == blueView.vis.top +~ -padding
+            make.edges == self +~ paddingInsets ~~ .low
         }
 
         
-        blueView.vis_updateConstraints { (make) in
-            make.edges == self +~ paddingInsets ~~ UILayoutPriorityDefaultLow
+        blueView.vis.updateConstraints { make in
+            make.edges == self +~ paddingInsets ~~ .low
         }
 
         
         UIView.animate(withDuration: 1, animations: { 
             self.layoutIfNeeded()
-        }) { (finished) in
+        }) { _ in
             self.animate(withInvertedInsets: !invertedInsets)
         }
     }

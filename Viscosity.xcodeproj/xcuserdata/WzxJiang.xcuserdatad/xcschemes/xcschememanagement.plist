@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ViscosityTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1EA0B4F71F0E149A00D15F29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EA0B5061F0E151200D15F29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EA0B5151F0E154300D15F29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>OBJ_19</key>
 		<dict>
 			<key>primary</key>

@@ -1,14 +1,14 @@
 import XCTest
-@testable import Viscosity
 
 class ViscosityTests: XCTestCase {
-    func testExample() {
-        
+    
+    override func setUp() {
+        super.setUp()
     }
     
-    static var allTests : [(String, (ViscosityTests) -> () throws -> Void)] {
-        return [
-            ("testExample", testExample),
-        ]
+    override func tearDown() {
+        super.tearDown()
     }
+    
+    func testExample() {}
 }

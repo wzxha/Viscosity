@@ -1,9 +1,9 @@
 //
-//  Subscript.swift
+//  Priority.swift
 //  Viscosity
 //
-//  Created by WzxJiang on 16/7/21.
-//  Copyright © 2016年 WzxJiang. All rights reserved.
+//  Created by WzxJiang on 17/7/6.
+//  Copyright © 2017年 WzxJiang. All rights reserved.
 //
 //  https://github.com/Wzxhaha/Viscosity
 //
@@ -28,12 +28,9 @@
 
 import UIKit
 
-public extension Maker {
-    public subscript (types: NSLayoutAttribute...) -> [Constraint] {
-        return types.map {
-            constraint(withAttribute: $0)
-        }
-    }
+public enum Priority: Float {
+    case fittingSizeLevel = 50
+    case low              = 250
+    case high             = 750
+    case require          = 1000
 }
-
-

@@ -1,9 +1,9 @@
 //
-//  Subscript.swift
+//  Manager.swift
 //  Viscosity
 //
-//  Created by WzxJiang on 16/7/21.
-//  Copyright © 2016年 WzxJiang. All rights reserved.
+//  Created by WzxJiang on 17/7/6.
+//  Copyright © 2017年 WzxJiang. All rights reserved.
 //
 //  https://github.com/Wzxhaha/Viscosity
 //
@@ -28,12 +28,34 @@
 
 import UIKit
 
-public extension Maker {
-    public subscript (types: NSLayoutAttribute...) -> [Constraint] {
-        return types.map {
-            constraint(withAttribute: $0)
-        }
+public class Manager {
+    internal var constraints: [Constraint] = []
+    
+    internal var view: UIView
+    
+    internal init(withView view: UIView) {
+        self.view = view
+    }
+    
+    public func makeConstraints(_ closure: (Maker) -> Void) {
+        changeConstraints(type: .normal, closure: closure)
+    }
+    
+    public func remakeConstraints(_ closure: (Maker) -> Void) {
+        changeConstraints(type: .replace, closure: closure)
+    }
+    
+    public func updateConstraints(_ closure: (Maker) -> Void) {
+        changeConstraints(type: .update, closure: closure)
+    }
+    
+    private func changeConstraints(type: Maker.InstallType, closure: (Maker) -> Void) {
+        guard let maker = Maker(manager: self) else { return }
+        closure(maker)
+        maker.install(type)
     }
 }
 
-
+extension Manager {
+    
+}
