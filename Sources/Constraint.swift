@@ -34,7 +34,7 @@ public class Constraint {
     internal var constant:    CGFloat = 0
     internal var multiplier:  CGFloat = 1
     internal var isActive:    Bool    = true
-    internal var priority:    UILayoutPriority  = UILayoutPriorityRequired
+    internal var priority:    UILayoutPriority  = .required
     internal var relation:    NSLayoutRelation  = .equal
     internal var attribute:   NSLayoutAttribute = .notAnAttribute
     internal var toAttribute: NSLayoutAttribute = .notAnAttribute
@@ -118,7 +118,7 @@ extension Constraint {
 
 extension NSLayoutConstraint {
     internal var constraint: Constraint {
-        let constraint = Constraint(fromItem: firstItem, attribute: firstAttribute)
+        let constraint = Constraint(fromItem: firstItem!, attribute: firstAttribute)
         constraint.relation    = relation
         constraint.toItem      = secondItem
         constraint.toAttribute = secondAttribute

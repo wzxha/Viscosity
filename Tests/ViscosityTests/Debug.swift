@@ -103,10 +103,10 @@ extension Constraint: Descriptionable {
              "*~",
              multiplier.description,
              "~~",
-             priority.description,
+             priority.rawValue.description,
              "~|",
              isActive.description]
-            .joined(separator: " ")
+                .joined(separator: " ")
     }
 }
 

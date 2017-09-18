@@ -42,7 +42,7 @@ class VisExampleRemakeView: UIView {
         super.updateConstraints()
     }
     
-    func didTapMovingButton(sender: UIButton) -> Void {
+    @objc func didTapMovingButton(sender: UIButton) -> Void {
         isLeft = !isLeft
         
         setNeedsUpdateConstraints()

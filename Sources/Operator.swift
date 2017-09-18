@@ -178,11 +178,11 @@ infix operator *~: LogicalConjunctionPrecedence
 }
 
 @discardableResult public func ~~(lhs: Constraint, rhs: Priority) -> Constraint {
-    return lhs.priority(rhs.rawValue)
+    return lhs.priority(UILayoutPriority(rawValue: rhs.rawValue))
 }
 
 @discardableResult public func ~~(lhs: [Constraint], rhs: Priority) -> [Constraint] {
-    return lhs.map { $0.priority(rhs.rawValue) }
+    return lhs.map { $0.priority(UILayoutPriority(rawValue: rhs.rawValue)) }
 }
 
 

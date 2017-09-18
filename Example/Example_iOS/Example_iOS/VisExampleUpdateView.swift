@@ -31,14 +31,14 @@ class VisExampleUpdateView: UIView {
     override func updateConstraints() {
         growingButton.vis.updateConstraints { (make) in
             make.center == self
-            make.size <= self
-            make.size == buttonSize ~~ .low
+            make.size <= self ~~ .require
+            make.size == buttonSize ~~ .high
         }
         
         super.updateConstraints()
     }
     
-    func didTapGrowButton(sender: UIButton) -> Void {
+    @objc func didTapGrowButton(sender: UIButton) -> Void {
         buttonSize *= 1.5
         
         setNeedsUpdateConstraints()

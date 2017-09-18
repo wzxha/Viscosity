@@ -32,5 +32,5 @@ public enum Priority: Float {
     case fittingSizeLevel = 50
     case low              = 250
     case high             = 750
-    case Required         = 1000
+    case require          = 1000
 }
