@@ -1,5 +1,5 @@
 # Viscosity
-![swift version](https://img.shields.io/badge/Language-Swift3-blue.svg)
+![swift version](https://img.shields.io/badge/Language-Swift4-blue.svg)
 [![travis-ci](https://travis-ci.org/Wzxhaha/Viscosity.svg?branch=master)](https://travis-ci.org/Wzxhaha/Viscosity)
 [![Platform](https://img.shields.io/cocoapods/p/Viscosity.svg?style=flat)](https://github.com/Wzxhaha/Viscosity)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Viscosity.svg)](https://cocoapods.org/pods/Viscosity)
